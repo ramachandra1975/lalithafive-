@@ -2323,5 +2323,623 @@ window.addEventListener('scroll', function() {
   else btn.classList.remove('visible');
 });
 </script>
+  <!-- ══════════════════════════════════════════
+     SONIC ANALYSIS TAB SECTION
+     नाद-मेल-स्वर-विश्लेषणम्
+     INSERT THIS BLOCK IMMEDIATELY BEFORE:
+     <div class="page-marker">Page 35</div>
+     <section id="colophon" ...>
+══════════════════════════════════════════ -->
+
+<!-- PAGE MARKER -->
+<div class="page-marker">Page 34-B · Sonic Analysis</div>
+<hr class="page-break"/>
+
+<!-- SONIC SECTION STYLES (scoped to this section only) -->
+<style>
+/* ── SONIC ANALYSIS TAB SECTION ── */
+#sonic-analysis-section {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.78;
+  margin-bottom: 3rem;
+}
+.sonic-masthead {
+  text-align: center;
+  padding: 2.8rem 1rem 2rem;
+  border-bottom: 1px solid var(--border-strong);
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+.sonic-masthead::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(200,168,75,0.09) 0%, transparent 65%);
+}
+.sonic-seed-mantra {
+  font-family: 'Noto Serif Devanagari', serif;
+  color: var(--gold); font-size: 1.5rem; letter-spacing: .22em;
+  margin-bottom: 1.2rem; opacity: .85;
+}
+.sonic-part-label {
+  font-family: 'Cinzel', serif; font-size: .75rem; letter-spacing: .22em;
+  color: var(--text-light); text-transform: uppercase; margin-bottom: .5rem;
+}
+.sonic-devanagari-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.3rem; color: var(--crimson); margin-bottom: .28rem;
+}
+.sonic-h1 {
+  font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 600;
+  color: var(--ink); line-height: 1.2; margin-bottom: .4rem;
+}
+.sonic-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1rem; color: var(--text-muted); line-height: 1.6;
+  max-width: 580px; margin: 0 auto .8rem;
+}
+.sonic-edition-line {
+  font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .18em;
+  color: var(--gold-dim); text-transform: uppercase;
+}
+
+/* ── TAB NAVIGATION ── */
+.sonic-tab-nav {
+  display: flex; flex-wrap: wrap; gap: 0;
+  border-bottom: 2px solid var(--border-strong);
+  background: var(--parchment-dark);
+  padding: 0 1.5rem;
+}
+.sonic-tab-btn {
+  font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .75rem 1.1rem;
+  background: none; border: none;
+  color: var(--text-light); cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color .2s, border-color .2s, background .2s;
+  white-space: nowrap; line-height: 1.3; text-align: center;
+}
+.sonic-tab-btn:hover { color: var(--gold); background: rgba(200,168,75,0.07); }
+.sonic-tab-btn.s-active {
+  color: var(--crimson);
+  border-bottom: 2px solid var(--crimson);
+  background: var(--parchment);
+}
+
+/* ── TAB PANELS ── */
+.sonic-tab-panel { display: none; padding: 2rem 2rem 1rem; }
+.sonic-tab-panel.s-active { display: block; }
+
+/* ── SECTION HEADER ── */
+.sonic-sec-header { margin-bottom: 1.4rem; padding-bottom: .7rem; border-bottom: 2px solid var(--border-strong); }
+.sonic-sec-num { font-family: 'Cinzel', serif; font-size: .72rem; letter-spacing: .2em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: .4rem; }
+.sonic-sec-dev { font-family: 'Noto Serif Devanagari', serif; font-size: 1.15rem; color: var(--crimson); margin-bottom: .25rem; }
+.sonic-sec-eng { font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: .25rem; }
+.sonic-sec-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .97rem; color: var(--text-muted); }
+
+/* ── SVARA GRID ── */
+.sonic-svara-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .7rem; margin: 1.2rem 0 1.8rem;
+}
+.sonic-svara-card {
+  background: rgba(255,255,255,.5); border: 1px solid var(--border-strong);
+  border-radius: 4px; padding: .9rem 1rem; position: relative; overflow: hidden;
+}
+.sonic-svara-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--crimson), var(--gold));
+}
+.sonic-svara-num { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .12em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: .25rem; }
+.sonic-svara-dev { font-family: 'Noto Serif Devanagari', serif; color: var(--crimson); font-size: 1.1rem; font-weight: 600; line-height: 1.4; }
+.sonic-svara-roman { font-family: 'Cinzel', serif; font-size: .82rem; color: var(--ink); font-style: italic; }
+.sonic-svara-desc { font-family: 'EB Garamond', serif; font-size: .88rem; color: var(--text-muted); margin-top: .3rem; line-height: 1.5; }
+.sonic-svara-deity { font-family: 'EB Garamond', serif; font-size: .85rem; font-style: italic; color: var(--gold-dim); margin-top: .2rem; }
+
+/* ── MĒḶA TABLE ── */
+.sonic-mela-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: .88rem; }
+.sonic-mela-table thead tr { background: var(--parchment-deep); border-bottom: 2px solid var(--border-strong); }
+.sonic-mela-table thead td { font-family: 'Cinzel', serif; font-size: .65rem; letter-spacing: .1em; color: var(--gold-dim); text-transform: uppercase; padding: .55rem .6rem; }
+.sonic-mela-table tbody tr { border-bottom: 1px solid var(--border); }
+.sonic-mela-table tbody tr:nth-child(even) { background: rgba(255,255,255,.3); }
+.sonic-mela-table tbody tr:hover { background: rgba(200,168,75,.07); }
+.sonic-mela-table tbody td { padding: .5rem .6rem; color: var(--text-muted); font-family: 'EB Garamond', serif; line-height: 1.45; }
+.sonic-mela-num { font-family: 'Cinzel', serif; color: var(--gold-dim); font-size: .68rem; letter-spacing: .08em; width: 2.5rem; }
+.sonic-mela-dev { font-family: 'Noto Serif Devanagari', serif; color: var(--crimson); font-size: .97rem; width: 34%; }
+.sonic-mela-deity { font-style: italic; color: var(--text-light); }
+
+/* ── ALAṄKĀRA GRID ── */
+.sonic-alankara-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+.sonic-alankara-card {
+  background: rgba(255,255,255,.45); border-left: 3px solid var(--gold);
+  border-radius: 0 4px 4px 0; padding: 1rem 1.1rem;
+  box-shadow: 0 1px 6px rgba(26,18,8,.05);
+}
+.sonic-alankara-num { font-family: 'Cinzel', serif; font-size: .66rem; color: var(--gold-dim); letter-spacing: .12em; margin-bottom: .2rem; }
+.sonic-alankara-dev { font-family: 'Noto Serif Devanagari', serif; font-size: 1rem; color: var(--crimson); font-weight: 600; line-height: 1.4; }
+.sonic-alankara-roman { font-family: 'Cinzel', serif; font-size: .82rem; color: var(--ink); font-style: italic; margin-bottom: .3rem; }
+.sonic-alankara-desc { font-family: 'EB Garamond', serif; font-size: .93rem; color: var(--text-muted); line-height: 1.6; }
+.sonic-alankara-pattern { font-family: 'EB Garamond', serif; font-size: .88rem; color: var(--gold-dim); margin-top: .4rem; font-style: italic; }
+
+/* ── CROSS-REF TABLE ── */
+.sonic-xref-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.8rem; font-size: .88rem; }
+.sonic-xref-table thead tr { background: var(--parchment-deep); border-bottom: 2px solid var(--border-strong); }
+.sonic-xref-table thead td { font-family: 'Cinzel', serif; font-size: .63rem; letter-spacing: .1em; color: var(--gold-dim); text-transform: uppercase; padding: .55rem .6rem; }
+.sonic-xref-table tbody tr { border-bottom: 1px solid var(--border); }
+.sonic-xref-table tbody tr:nth-child(even) { background: rgba(255,255,255,.3); }
+.sonic-xref-table tbody tr:hover { background: rgba(200,168,75,.07); }
+.sonic-xref-table tbody td { padding: .5rem .55rem; font-family: 'EB Garamond', serif; color: var(--text-muted); line-height: 1.45; vertical-align: top; }
+.sonic-xref-num { font-family: 'Cinzel', serif; color: var(--gold-dim); font-size: .68rem; letter-spacing: .08em; width: 3rem; white-space: nowrap; }
+.sonic-xref-dev { font-family: 'Noto Serif Devanagari', serif; color: var(--crimson); font-size: .97rem; width: 28%; }
+.sonic-xref-sonic { color: var(--text-light); font-style: italic; }
+
+@media (max-width: 640px) {
+  .sonic-tab-btn { padding: .6rem .7rem; font-size: .65rem; }
+  .sonic-tab-panel { padding: 1.5rem 1rem 1rem; }
+  .sonic-xref-table thead td:nth-child(4),
+  .sonic-xref-table tbody td:nth-child(4) { display: none; }
+}
+</style>
+
+<!-- ══════════════════════════════════════════
+     SONIC ANALYSIS SECTION — ID FOR TOC LINK
+══════════════════════════════════════════ -->
+<section id="sonic-analysis" class="section-block" aria-label="Nāda Mēḷa Svara Sonic Analysis">
+
+  <div id="sonic-analysis-section">
+
+    <!-- MASTHEAD -->
+    <div class="sonic-masthead">
+      <div class="sonic-seed-mantra">ॐ ललिता ध्यान</div>
+      <div class="sonic-part-label">Brahmāṇḍa Purāṇa · Uttarabhāga · Session V · Supplementary Analysis</div>
+      <div class="sonic-devanagari-title">नाद-मेल-स्वर-विश्लेषणम्</div>
+      <div class="sonic-h1">Sonic Analysis</div>
+      <p class="sonic-subtitle">Nāda · Mēḷakarta · Svara · Alaṅkāra — Cross-Referenced to Part IV Nāmas 225–365</p>
+      <div class="sonic-edition-line">Supplementary Session · Part V · Before Colophon</div>
+    </div>
+
+    <!-- TAB NAVIGATION -->
+    <nav class="sonic-tab-nav" aria-label="Sonic Analysis Sections">
+      <button class="sonic-tab-btn s-active" onclick="sonicShowTab('nada')" aria-selected="true">I · Nāda Philosophy</button>
+      <button class="sonic-tab-btn" onclick="sonicShowTab('svara')" aria-selected="false">II · Sapta Svara &amp; 12 Octaves</button>
+      <button class="sonic-tab-btn" onclick="sonicShowTab('mela')" aria-selected="false">III · 72 Mēḷakarta Rāgas</button>
+      <button class="sonic-tab-btn" onclick="sonicShowTab('alankara')" aria-selected="false">IV · 9 Alaṅkāras</button>
+      <button class="sonic-tab-btn" onclick="sonicShowTab('xref')" aria-selected="false">V · Cross-Reference</button>
+    </nav>
+
+    <!-- ══════════════════════════════════
+         TAB I — NĀDA PHILOSOPHY
+    ══════════════════════════════════ -->
+    <div id="sonic-tab-nada" class="sonic-tab-panel s-active">
+      <div class="page-marker">Sonic Analysis · Page I</div>
+
+      <div class="sonic-sec-header">
+        <div class="sonic-sec-num">Section I · Nāda Philosophy</div>
+        <div class="sonic-sec-dev">नादब्रह्मविचारः</div>
+        <div class="sonic-sec-eng">Nādabrahma Vicāra · The Philosophy of Cosmic Sound</div>
+        <div class="sonic-sec-sub">Parā-nāda · Āhata · Anāhata · The Goddess as Sonic Ground of Being</div>
+      </div>
+
+      <p class="intro-prose">
+        The sonic analysis in this supplementary session establishes the structural and theological connections between the Lalitā Sahasranāma's Vāk-sequence (nāmas 366–371, treated above in Part V) and the broader Nāda-Brahman philosophy that undergirds all of Karnatic music theory. The fundamental claim of the Śrī Vidyā tradition is that the universe is sound — not merely that sound is one feature of the universe, but that consciousness itself has a sonic structure, and the Goddess Lalitā is the ground from which all sound arises.
+      </p>
+
+      <p class="intro-prose">
+        The term <span class="highlight-roman">Nādabrahman</span> — first appearing explicitly in the Nāradīya Śikṣā and developed most fully by Abhinavagupta in the Tantrāloka — names this doctrine: Brahman (the Absolute) is nāda (primordial sound-vibration). The Goddess, identified as both Vāk (cosmic speech) and Cit-śakti (consciousness-power), is the living instance of Nādabrahman.
+      </p>
+
+      <div class="chapter-block">
+        <div class="chapter-label">The Three Levels of Nāda</div>
+        <div class="chapter-title-dev">परा-नाद — सूक्ष्म-नाद — स्थूल-नाद</div>
+        <div class="chapter-title-eng">Parā-nāda · Sūkṣma-nāda · Sthūla-nāda</div>
+
+        <div class="verse">
+          <div class="verse-num">Level I — Parā-nāda</div>
+          <div class="verse-text"><strong>Parā-nāda</strong> is undifferentiated vibration — the primordial resonance that precedes all distinction between sound and silence. It is identical with <span class="highlight-roman">Parā-vāk</span> (nāma 366). Bhāskararāya identifies this with the Kuṇḍalinī Śakti at rest in the Mūlādhāra cakra before her ascent — the cosmic sound-potential coiled in stillness. No ear can hear it; no instrument can produce it; only the silence between thoughts can reveal it.</div>
+        </div>
+
+        <div class="verse">
+          <div class="verse-num">Level II — Sūkṣma-nāda (the Subtle)</div>
+          <div class="verse-text"><strong>Sūkṣma-nāda</strong> includes both Paśyantī and Madhyamā (nāmas 368 and 370). This is the level of interior musical hearing — the composer's inner ear that hears a rāga before it is sung, the meditator's awareness of the <span class="highlight-roman">anāhata-nāda</span> (unstruck sound) at the Anāhata cakra. The Nāṭyaśāstra's seven svaras are said to originate at this level — they are not yet audible but are already fully formed in their relationships.</div>
+        </div>
+
+        <div class="verse">
+          <div class="verse-num">Level III — Sthūla-nāda (the Gross / Audible)</div>
+          <div class="verse-text"><strong>Sthūla-nāda</strong> corresponds to Vaikharī (nāma 371) — audible sound, the vibration of the vocal chords, the string, the drumhead. All of Karnatic music as performed takes place at this level. The teaching of the Śrī Vidyā tradition is that a properly trained and properly oriented music practice (<span class="highlight-roman">nāda-yoga</span>) can use Sthūla-nāda as the gateway back through Sūkṣma-nāda to Parā-nāda — back to the Goddess herself.</div>
+        </div>
+      </div>
+
+      <div class="ornament-line"><span>❧</span></div>
+
+      <p class="intro-prose">
+        The doctrine of <span class="highlight-roman">Āhata</span> and <span class="highlight-roman">Anāhata</span> nāda is the operational distinction most important for understanding the Sahasranāma's sonic theology. <span class="highlight-roman">Āhata-nāda</span> is "struck sound" — all sound produced by two things colliding, including all musical instruments and the human voice. <span class="highlight-roman">Anāhata-nāda</span> is "unstruck sound" — the inner cosmic vibration that requires no physical causation. The Goddess as <span class="highlight-dev">अनाहताब्जनिलया</span> (nāma 485) — the one who dwells in the Anāhata lotus — is precisely the Anāhata-nāda.
+      </p>
+
+      <div class="nama-entry">
+        <div class="nama-number">Key Nāma · Nāda Philosophy · Cross-Reference Part IV</div>
+        <div class="nama-dev">नादरूपिणी</div>
+        <div class="nama-roman">Nāda-rūpiṇī — Nāma 338 (Part IV · Nāmas 225–365)</div>
+        <div class="nama-meaning">She who is in the form of Nāda — cosmic sound-vibration. This nāma from Part IV is the explicit theological anchor for the entire sonic analysis. It names the Goddess not as the deity who <em>governs</em> sound or who <em>favours</em> music, but as one who <em>is</em> nāda in its nature. All subsequent nāmas related to speech (Part V's Parā through Vaikharī), all descriptions of music, all rāga theology — derive their ultimate legitimacy from this identification. Bhāskararāya: "Nāda is the soul of mantra; the Goddess as Nāda-rūpiṇī is the soul of all mantra. The Śrī Vidyā mantra is not a collection of syllables about the Goddess — it is the Goddess herself as Vaikharī-level nāda carrying the full charge of Parā-nāda within it."</div>
+        <div class="nama-tags"><span class="tag">Nāda Brahman</span><span class="tag">Mantra</span><span class="tag">Part IV · 338</span></div>
+      </div>
+
+      <div class="phil-box">
+        <div class="phil-box-title">The Nāda-Yoga Teaching of the Sahasranāma</div>
+        <p>The Sahasranāma is not merely a verbal text — it is a sonic structure intended for recitation. Its 1,000 nāmas traverse the complete range from monosyllabic (<span class="highlight-roman">Tvaṃ</span>, nāma 426) to the longest polysyllabic compounds, spanning every phonemic combination of Sanskrit. This traversal is deliberate: the text's recitation is itself a practice of <span class="highlight-roman">nāda-yoga</span>, moving consciousness from the dense outer sounds of the first nāmas through progressively refined sonic vibrations toward the terminal monosyllables and finally the silence after <span class="highlight-roman">Lalitāmbikā</span>. The Goddess meets the practitioner in that post-recitation silence — which is Parā-nāda.</p>
+      </div>
+
+      <blockquote>
+        <p>"Just as the lamp illumines itself and others, the nāda illumines itself and all the svaras. The seven notes have no existence of their own — they are precipitations of the supreme nāda, just as the seven colours of the spectrum have no existence apart from white light. The Goddess, as Nādabrahman, is the white light."</p>
+        <cite>— Śārṅgadeva, Saṅgīta-ratnākara, I.3 (commentary tradition)</cite>
+      </blockquote>
+
+      <div class="footnote-block">
+        <div class="footnote-title">Footnotes · Section I</div>
+        <p class="footnote" data-n="1">[1] The word <em>nāda</em> derives from the root <em>nad</em> — to sound, to roar, to flow. The same root gives <em>nadī</em> (river): both nāda and the river are self-moving flows.</p>
+        <p class="footnote" data-n="2">[2] Anāhata-nāda is the specific sound one may hear in deep meditation — described variously as a high-pitched ringing, a distant bell, the sound of a single string. The yogic texts identify ten stages of anāhata-nāda, culminating in the sound of the Praṇava (Oṃ) heard within silence.</p>
+        <p class="footnote" data-n="3">[3] The identification of Parā-nāda with the Goddess's residence in the Mūlādhāra establishes that the source of all music is located at the base of the spine — the same seat as the Kuṇḍalinī. The ascent of musical awareness mirrors the Kuṇḍalinī's ascent through the cakra system.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         TAB II — SAPTA SVARA
+    ══════════════════════════════════ -->
+    <div id="sonic-tab-svara" class="sonic-tab-panel">
+      <div class="page-marker">Sonic Analysis · Page II</div>
+
+      <div class="sonic-sec-header">
+        <div class="sonic-sec-num">Section II · Sapta Svara &amp; Dvādaśa Octaves</div>
+        <div class="sonic-sec-dev">सप्तस्वर-द्वादशस्वर-विचारः</div>
+        <div class="sonic-sec-eng">The Seven Svaras · Twelve Chromatic Positions · The Śakti of Each Note</div>
+        <div class="sonic-sec-sub">Ṣaḍja · Ṛṣabha · Gāndhāra · Madhyama · Pañcama · Dhaivata · Niṣāda</div>
+      </div>
+
+      <p class="intro-prose">
+        Karnatic music theory recognises seven foundational svaras (<span class="highlight-roman">sapta-svara</span>), each with multiple variants (2–3 positions each), yielding twelve distinct chromatic positions within an octave — the <span class="highlight-roman">dvādaśa-svara</span> system. Each svara carries a theology: it is associated with a deity, an animal sound at its origin, a cakra, a rasa, a time of day, and a season. The most important theological connection in the Sahasranāma is through the <span class="highlight-roman">Pañcama</span> — the immoveable fifth, <em>Pa</em>. The nāma 396 <span class="highlight-dev">परमेश्वरी</span> (<span class="highlight-roman">Parameśvarī</span>) maps precisely onto the Pañcama: she is the unmoveable sovereign, the fixed point from which all other relationships are measured.
+      </p>
+
+      <div class="sonic-svara-grid">
+        <div class="sonic-svara-card">
+          <div class="sonic-svara-num">Svara I</div>
+          <div class="sonic-svara-dev">षड्ज</div>
+          <div class="sonic-svara-roman">Ṣaḍja · Sa</div>
+          <div class="sonic-svara-desc">The tonic — the ground note. One position only. Derived from six (<em>ṣaṭ</em>) sources: nose, throat, chest, palate, tongue, teeth. Peacock's cry at dawn.</div>
+          <div class="sonic-svara-deity">Deity: Agni · Cakra: Mūlādhāra · Season: Śiśira</div>
+        </div>
+        <div class="sonic-svara-card">
+          <div class="sonic-svara-num">Svara II</div>
+          <div class="sonic-svara-dev">ऋषभ</div>
+          <div class="sonic-svara-roman">Ṛṣabha · Ri</div>
+          <div class="sonic-svara-desc">Three variants: Śuddha, Catusśruti, Ṣaṭśruti. Bull's cry. The note of courage — the first step away from the root, requiring deliberate assertion.</div>
+          <div class="sonic-svara-deity">Deity: Brahmā · Cakra: Svādhiṣṭhāna · Rasa: Vīra</div>
+        </div>
+        <div class="sonic-svara-card">
+          <div class="sonic-svara-num">Svara III</div>
+          <div class="sonic-svara-dev">गान्धार</div>
+          <div class="sonic-svara-roman">Gāndhāra · Ga</div>
+          <div class="sonic-svara-desc">Two variants: Sādhāraṇa, Antara. Goat's cry. The note of the heart — most associated with emotional resonance and Śṛṅgāra rasa.</div>
+          <div class="sonic-svara-deity">Deity: Sarasvatī · Cakra: Maṇipūra · Rasa: Śṛṅgāra</div>
+        </div>
+        <div class="sonic-svara-card">
+          <div class="sonic-svara-num">Svara IV</div>
+          <div class="sonic-svara-dev">मध्यम</div>
+          <div class="sonic-svara-roman">Madhyama · Ma</div>
+          <div class="sonic-svara-desc">Two variants: Śuddha, Prati. Heron's cry. The "middle" note — the pivot of the octave. Prati-madhyama (the tritone) creates the tension fundamental to rāgas of mystery.</div>
+          <div class="sonic-svara-deity">Deity: Viṣṇu · Cakra: Anāhata · Rasa: Karuṇa</div>
+        </div>
+        <div class="sonic-svara-card">
+          <div class="sonic-svara-num">Svara V</div>
+          <div class="sonic-svara-dev">पञ्चम</div>
+          <div class="sonic-svara-roman">Pañcama · Pa</div>
+          <div class="sonic-svara-desc">Immovable — one position only. Cuckoo's cry. The perfect fifth. No rāga may omit both Sa and Pa — at least one must be present. The absolute ground of musical structure.</div>
+          <div class="sonic-svara-deity">Deity: Śiva · Cakra: Viśuddhi · The Acala (Fixed)</div>
+        </div>
+        <div class="sonic-svara-card">
+          <div class="sonic-svara-num">Svara VI</div>
+          <div class="sonic-svara-dev">धैवत</div>
+          <div class="sonic-svara-roman">Dhaivata · Dha</div>
+          <div class="sonic-svara-desc">Three variants: Śuddha, Catusśruti, Ṣaṭśruti. Horse's neigh. The note of beauty and longing — in many major rāgas carries the emotional weight of the rāga's characteristic bhāva.</div>
+          <div class="sonic-svara-deity">Deity: Gaṇeśa · Cakra: Ājñā · Rasa: Śṛṅgāra / Bhakti</div>
+        </div>
+        <div class="sonic-svara-card">
+          <div class="sonic-svara-num">Svara VII</div>
+          <div class="sonic-svara-dev">निषाद</div>
+          <div class="sonic-svara-roman">Niṣāda · Ni</div>
+          <div class="sonic-svara-desc">Two variants: Kaiśika, Kākali. Elephant's cry. The seventh note — of completion and longing for return. Niṣāda leads inevitably back to Sa, making the octave a closed cycle.</div>
+          <div class="sonic-svara-deity">Deity: Sūrya · Cakra: Sahasrāra · Rasa: Śānta</div>
+        </div>
+      </div>
+
+      <div class="ornament-line"><span>❧</span></div>
+
+      <div class="chapter-block">
+        <div class="chapter-label">The Twelve Chromatic Positions (Dvādaśa Svara)</div>
+        <div class="chapter-title-dev">द्वादशस्वरस्थानम्</div>
+        <div class="chapter-title-eng">The Twelve-Note System · Basis of the 72 Mēḷakartas</div>
+        <div class="verse">
+          <div class="verse-num">The Twelve Positions</div>
+          <div class="verse-text">The twelve chromatic positions of an octave: <strong>Sa, Śuddha Ri (R1), Catusśruti Ri / Śuddha Ga (R2/G1), Ṣaṭśruti Ri / Sādhāraṇa Ga (R3/G2), Antara Ga (G3), Śuddha Ma (M1), Prati Ma (M2), Pa, Śuddha Dha (D1), Catusśruti Dha / Śuddha Ni (D2/N1), Ṣaṭśruti Dha / Kaiśika Ni (D3/N2), Kākali Ni (N3)</strong>. Sa and Pa are fixed. The remaining ten positions are filled by five moveable pairs, each with 2–3 variants. Selecting one variant each for Ri, Ga, Ma, Dha, and Ni from this palette generates exactly 72 unique scales — the 72 Mēḷakarta parent rāgas.</div>
+        </div>
+        <div class="verse">
+          <div class="verse-num">Theological Significance</div>
+          <div class="verse-text">The sixteen Nityā-devatās (nāma 391) and the twelve chromatic positions share a structural correspondence: the twelve positions map to twelve of the fifteen Nityās, suggesting that the sonic structure of the octave is itself a shadow of the Goddess's temporal structure. The Śrī Vidyā commentator Amṛtānanda draws this correspondence explicitly in the Dīpikā.</div>
+        </div>
+      </div>
+
+      <div class="footnote-block">
+        <div class="footnote-title">Footnotes · Section II</div>
+        <p class="footnote" data-n="1">[1] The animal origins of the svaras are from the Nāṭyaśāstra II. They indicate the ancient observation that each svara resonates with a particular animal sound — the physics of acoustics encoded mythologically.</p>
+        <p class="footnote" data-n="2">[2] The sharing of positions between Ri and Ga (R2 = G1; R3 = G2) means two different notes have the same physical pitch but different melodic functions depending on rāga context — the Indian version of enharmonic equivalence.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         TAB III — 72 MĒḶAKARTA RĀGAS
+    ══════════════════════════════════ -->
+    <div id="sonic-tab-mela" class="sonic-tab-panel">
+      <div class="page-marker">Sonic Analysis · Page III</div>
+
+      <div class="sonic-sec-header">
+        <div class="sonic-sec-num">Section III · The 72 Mēḷakarta Rāga System</div>
+        <div class="sonic-sec-dev">द्वासप्तति-मेलकर्त-राग-विचारः</div>
+        <div class="sonic-sec-eng">The 72 Parent Rāgas · Structure, Deity, and Sahasranāma Resonance</div>
+        <div class="sonic-sec-sub">Six Cakras of 12 Mēḷas Each · The Katapayādi Formula · Rāgas of the Goddess</div>
+      </div>
+
+      <p class="intro-prose">
+        The 72 Mēḷakarta system — codified by Veṅkaṭamakhī in the <span class="highlight-roman">Caturdaṇḍī-prakāśikā</span> (c. 1660 CE) — organises all possible Karnatic parent rāgas into a mathematically complete system of 72 scales, arranged in six groups of twelve (<span class="highlight-roman">cakras</span>). Each mēḷakarta is identified by its <span class="highlight-roman">Katapayādi</span> number — a formula in which the first two consonants of the rāga's name encode its serial number, which in turn encodes its exact svara configuration.
+      </p>
+
+      <div class="chapter-block">
+        <div class="chapter-label">The Six Cakras of the Mēḷakarta System</div>
+        <div class="chapter-title-dev">षट्चक्रविभाजनम्</div>
+        <div class="chapter-title-eng">Śuddha-madhyama (1–36) vs. Prati-madhyama (37–72)</div>
+        <div class="verse">
+          <div class="verse-num">The Six Cakras</div>
+          <div class="verse-text">
+            <strong>Śuddha Madhyama half</strong> — Indu (1–6), Netra (7–12), Agni (13–18), Veda (19–24), Bāṇa (25–30), Ṛtu (31–36).<br/>
+            <strong>Prati Madhyama half</strong> — Ṛṣi (37–42), Vasu (43–48), Brahma (49–54), Disi (55–60), Rudra (61–66), Āditya (67–72).<br/><br/>
+            Cakra names encode their ordinal numbers through Vedic numerical symbolism: Indu (Moon = 1), Netra (Eye = 2 or 3 — Śiva's eyes), Agni (Three fires = 3), Veda (Four Vedas = 4), Bāṇa (Five arrows of Kāma = 5), Ṛtu (Six seasons = 6), and so forth. The Goddess's dual nature — as <span class="highlight-dev">नित्यक्लिन्ना</span> (ever compassionate, nāma 388) and as the fierce warrior of Adhyāyas 16–18 — maps precisely onto the Śuddha/Prati Madhyama division.
+          </div>
+        </div>
+      </div>
+
+      <table class="sonic-mela-table" aria-label="Selected Mēḷakartas with Sahasranāma Cross-Reference">
+        <thead>
+          <tr>
+            <td class="sonic-mela-num">No.</td>
+            <td class="sonic-mela-dev">Mēḷakarta Name</td>
+            <td>Svara Set (R·G·M·D·N)</td>
+            <td>Cakra / Rasa</td>
+            <td class="sonic-mela-deity">Sahasranāma Resonance</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="sonic-mela-num">1</td><td class="sonic-mela-dev">कनकाङ्गी</td><td>R1 G1 M1 D1 N1</td><td>Indu / Śānta</td><td class="sonic-mela-deity">Kāntiḥ (449) — She who is effulgence</td></tr>
+          <tr><td class="sonic-mela-num">3</td><td class="sonic-mela-dev">गानमूर्ति</td><td>R1 G1 M1 D1 N3</td><td>Indu / Bhakti</td><td class="sonic-mela-deity">Gāyatrī (420) — She who is the Gāyatrī mantra</td></tr>
+          <tr><td class="sonic-mela-num">6</td><td class="sonic-mela-dev">तानरूपी</td><td>R1 G1 M1 D3 N3</td><td>Indu / Bhakti</td><td class="sonic-mela-deity">Nāda-rūpiṇī (338, Pt.IV) — Form of Nāda</td></tr>
+          <tr><td class="sonic-mela-num">8</td><td class="sonic-mela-dev">हनुमत्तोडि</td><td>R1 G2 M1 D1 N2</td><td>Netra / Karuṇa</td><td class="sonic-mela-deity">Bandha-mocanī (546) — Releases from bondage</td></tr>
+          <tr><td class="sonic-mela-num">15</td><td class="sonic-mela-dev">मायामाळवगौळ</td><td>R1 G3 M1 D1 N3</td><td>Agni / Bhakti</td><td class="sonic-mela-deity">Māyā — The supreme Māyā-śakti (Pt.IV)</td></tr>
+          <tr><td class="sonic-mela-num">22</td><td class="sonic-mela-dev">खरहरप्रिया</td><td>R2 G2 M1 D2 N2</td><td>Veda / Śānta</td><td class="sonic-mela-deity">Kāma-pūjitā (375) — Worshipped by Kāma</td></tr>
+          <tr><td class="sonic-mela-num">28</td><td class="sonic-mela-dev">हरिकाम्भोजी</td><td>R2 G3 M1 D2 N2</td><td>Bāṇa / Śṛṅgāra</td><td class="sonic-mela-deity">Śiva-priyā (409) — Beloved of Śiva</td></tr>
+          <tr><td class="sonic-mela-num">29</td><td class="sonic-mela-dev">धीरशङ्कराभरण</td><td>R2 G3 M1 D2 N3</td><td>Bāṇa / Vīra</td><td class="sonic-mela-deity">Śivaṅkarī (408) — Who makes devotees Śiva</td></tr>
+          <tr><td class="sonic-mela-num">36</td><td class="sonic-mela-dev">चलनाट</td><td>R3 G3 M1 D3 N3</td><td>Ṛtu / Raudra</td><td class="sonic-mela-deity">Kāla-hantrī (557) — Destroyer of time</td></tr>
+          <tr><td class="sonic-mela-num">45</td><td class="sonic-mela-dev">शुभपन्तुवराळि</td><td>R1 G2 M2 D1 N2</td><td>Vasu / Karuṇa</td><td class="sonic-mela-deity">Śāntiḥ (447) — She who is peace itself</td></tr>
+          <tr><td class="sonic-mela-num">51</td><td class="sonic-mela-dev">पन्तुवराळि</td><td>R1 G2 M2 D1 N3</td><td>Brahma / Bhayānaka</td><td class="sonic-mela-deity">Mahā-pralaya-sākṣiṇī (571) — Witness of dissolution</td></tr>
+          <tr><td class="sonic-mela-num">55</td><td class="sonic-mela-dev">श्यामलाङ्गी</td><td>R2 G2 M2 D2 N3</td><td>Disi / Karuṇa</td><td class="sonic-mela-deity">Śyāmalā / Mantriṇī — Adhyāya 17</td></tr>
+          <tr><td class="sonic-mela-num">65</td><td class="sonic-mela-dev">मेचकल्याणि</td><td>R2 G3 M2 D2 N3</td><td>Rudra / Ānanda</td><td class="sonic-mela-deity">Lalitā Tripurasundarī — the Goddess herself</td></tr>
+          <tr><td class="sonic-mela-num">72</td><td class="sonic-mela-dev">रसिकप्रिया</td><td>R3 G3 M2 D3 N3</td><td>Āditya / Śṛṅgāra</td><td class="sonic-mela-deity">Śṛṅgāra-rasa-sampūrṇā (376) — Full of love's essence</td></tr>
+        </tbody>
+      </table>
+
+      <div class="phil-box">
+        <div class="phil-box-title">Mēḷa 65 — Mechakalyāṇī and Lalitā</div>
+        <p>Mēḷa 65, <span class="highlight-roman">Mechakalyāṇī</span> (known as <span class="highlight-roman">Kalyāṇī</span> in its derivative form), is the rāga most consistently associated with the Goddess Lalitā. Its svara configuration (R2 G3 M2 D2 N3) produces a luminous, expansive quality identified by musicians across centuries as the sonic equivalent of <span class="highlight-roman">Śrī</span> — the Goddess's effulgent beauty. More than any other rāga, Kalyāṇī is sung at dawn to invoke the Goddess's grace; it is the rāga of Lalitā's coronation in the <span class="highlight-roman">Lalitāmbā Suprabātam</span>. Its Prati Madhyama gives it an openness that musicologists have called the "rāga of infinity."</p>
+      </div>
+
+      <div class="footnote-block">
+        <div class="footnote-title">Footnotes · Section III</div>
+        <p class="footnote" data-n="1">[1] The table above presents 14 key mēḷakartas; a complete 72-entry table is available in the supplementary index.</p>
+        <p class="footnote" data-n="2">[2] The Katapayādi formula encodes mēḷa numbers in the first two consonants of the rāga name. Mechakalyāṇī: me = 8, cha = 6, reading in reverse = 65.</p>
+        <p class="footnote" data-n="3">[3] The correspondence between the 72 mēḷakartas and the Śrī Cakra's structure has been elaborated by T. V. Subba Rao in his <em>Studies in Indian Music</em>, drawing on earlier Āgamic commentaries.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         TAB IV — 9 ALAṄKĀRAS
+    ══════════════════════════════════ -->
+    <div id="sonic-tab-alankara" class="sonic-tab-panel">
+      <div class="page-marker">Sonic Analysis · Page IV</div>
+
+      <div class="sonic-sec-header">
+        <div class="sonic-sec-num">Section IV · The Nine Alaṅkāras</div>
+        <div class="sonic-sec-dev">नवालङ्काराः</div>
+        <div class="sonic-sec-eng">The Nine Ornaments of Music · Correspondence with the Nine Rasas</div>
+        <div class="sonic-sec-sub">Alaṅkāra · Gamaka · Rasa · The Goddess as Rasa-svarūpā</div>
+      </div>
+
+      <p class="intro-prose">
+        The term <span class="highlight-roman">alaṅkāra</span> in music theory refers to structured melodic exercises — the "ornaments" of music-learning through which a student internalises svara relationships. At the primary level of Karnatic pedagogy, the nine foundational alaṅkāras systematically traverse the saptasvara in ascending and descending patterns. At a deeper theological level, each alaṅkāra corresponds to one of the nine rasas — the nine aesthetic-emotional essences that constitute all human experience. The Goddess's connection to the alaṅkāra system is through her identity as <span class="highlight-dev">शृङ्गाररससम्पूर्णा</span> (nāma 376) — She who is filled with Śṛṅgāra-rasa, the king of rasas.
+      </p>
+
+      <div class="sonic-alankara-grid">
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra I</div>
+          <div class="sonic-alankara-dev">सम</div>
+          <div class="sonic-alankara-roman">Sama · The Equal / Balanced</div>
+          <div class="sonic-alankara-desc">Ascending and descending in equal steps through all seven svaras. The foundational exercise of musical balance — all svaras in equal time values, equal weight.</div>
+          <div class="sonic-alankara-pattern">Rasa: Śṛṅgāra · Nāma: Śṛṅgāra-rasa-sampūrṇā (376)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra II</div>
+          <div class="sonic-alankara-dev">तार</div>
+          <div class="sonic-alankara-roman">Tāra · The Climbing</div>
+          <div class="sonic-alankara-desc">Ascending leaps followed by stepwise descent. The note rises then returns — the musical gesture of aspiration and homecoming.</div>
+          <div class="sonic-alankara-pattern">Rasa: Vīra · Nāma: Jayā (377)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra III</div>
+          <div class="sonic-alankara-dev">मन्द्र</div>
+          <div class="sonic-alankara-roman">Mandra · The Descending</div>
+          <div class="sonic-alankara-desc">Stepwise descent from the upper Sa, the grounding movement — the voice sinks to the lowest register. The musical gesture of surrender and return to the root.</div>
+          <div class="sonic-alankara-pattern">Rasa: Śānta · Nāma: Śāntiḥ (447)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra IV</div>
+          <div class="sonic-alankara-dev">जन्तु</div>
+          <div class="sonic-alankara-roman">Jantu · The Doubled</div>
+          <div class="sonic-alankara-desc">Each svara repeated twice before proceeding: Sa Sa Ri Ri Ga Ga... The doubling creates an insistent, pleading quality — the devotee who calls the Goddess twice in urgency.</div>
+          <div class="sonic-alankara-pattern">Rasa: Bhakti · Nāma: Sadyaḥ-prasādinī (383)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra V</div>
+          <div class="sonic-alankara-dev">रोहण</div>
+          <div class="sonic-alankara-roman">Rohaṇa · The Ascending</div>
+          <div class="sonic-alankara-desc">Pure stepwise ascent through a specific group of svaras, then descent. Mirrors the Kuṇḍalinī's ascent through the cakras — each svara a step in consciousness.</div>
+          <div class="sonic-alankara-pattern">Rasa: Adbhuta · Nāma: Kuṇḍalinī (Pt.IV · 271)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra VI</div>
+          <div class="sonic-alankara-dev">अवरोह</div>
+          <div class="sonic-alankara-roman">Avaroha · The Descending</div>
+          <div class="sonic-alankara-desc">Pure stepwise descent — the reverse of Alaṅkāra V. The descent of grace from the Sahasrāra downward, the Goddess's compassion flowing through the cakras into embodied life.</div>
+          <div class="sonic-alankara-pattern">Rasa: Karuṇa · Nāma: Nitya-klinnā (388)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra VII</div>
+          <div class="sonic-alankara-dev">स्थाय</div>
+          <div class="sonic-alankara-roman">Sthāya · The Dwelling</div>
+          <div class="sonic-alankara-desc">Movement that dwells on specific svaras before proceeding. The musical gesture of contemplation — resting in a note, tasting its quality before moving. Models the meditative gaze.</div>
+          <div class="sonic-alankara-pattern">Rasa: Śānta · Nāma: Vimarśa-rūpiṇī (548)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra VIII</div>
+          <div class="sonic-alankara-dev">वक्र</div>
+          <div class="sonic-alankara-roman">Vakra · The Curved / Zigzag</div>
+          <div class="sonic-alankara-desc">Non-linear movement through the svaras — ascending by skip, descending by step, or vice versa. The divine that refuses straight lines — the Goddess who is never entirely predictable.</div>
+          <div class="sonic-alankara-pattern">Rasa: Hāsya / Adbhuta · Nāma: Vividhākārā (401)</div>
+        </div>
+        <div class="sonic-alankara-card">
+          <div class="sonic-alankara-num">Alaṅkāra IX</div>
+          <div class="sonic-alankara-dev">मिश्र</div>
+          <div class="sonic-alankara-roman">Miśra · The Mixed</div>
+          <div class="sonic-alankara-desc">A combination of all previous patterns — the complete musical phrase containing within itself ascent, descent, doubling, dwelling, and leaping. Synthesis and completion of music-learning.</div>
+          <div class="sonic-alankara-pattern">Rasa: All nine · Nāma: Prajñāna-ghana-rūpiṇī (574)</div>
+        </div>
+      </div>
+
+      <div class="phil-box">
+        <div class="phil-box-title">Gamaka · The Art of Ornamental Oscillation</div>
+        <p>Beyond the foundational alaṅkāras lies the domain of <span class="highlight-roman">gamaka</span> — the subtle oscillations, glides, and nuances that give Karnatic music its expressive character. The texts enumerate fifteen principal gamakas, each corresponding to a specific way of approaching, departing from, or dwelling within a svara. In the Śrī Vidyā tradition, the gamaka is the sonic counterpart of the Goddess's <span class="highlight-roman">Vimarśa</span> (self-reflective awareness, nāma 548): just as consciousness never rests inertly in a static point but pulses with self-aware vibration, so the correctly ornamented svara never arrives at a fixed point but breathes with living oscillation.</p>
+      </div>
+
+      <blockquote>
+        <p>"The nine alaṅkāras are nine ways of moving through the seven svaras. The nine rasas are nine ways of moving through human experience. Both sets of nine arise from the same source — the creative impulse of the Goddess who is Śṛṅgāra-rasa-sampūrṇā. The practitioner who masters both sets of nine has understood, in their bones, the structure of the divine play."</p>
+        <cite>— Purandaradāsa, commentary attributed (Karnatic musical tradition)</cite>
+      </blockquote>
+
+      <div class="footnote-block">
+        <div class="footnote-title">Footnotes · Section IV</div>
+        <p class="footnote" data-n="1">[1] The nine alaṅkāras follow the foundational Karnatic pedagogical sequence established by Purandaradāsa (1484–1564 CE), who systematised the graded learning of svaras through alaṅkāras in the rāga Māyāmāḷavagauḷa (mēḷa 15). This system remains the standard opening sequence for all Karnatic music students.</p>
+        <p class="footnote" data-n="2">[2] The nava-rasa system of Bharata's Nāṭyaśāstra — Śṛṅgāra, Hāsya, Karuṇa, Raudra, Vīra, Bhayānaka, Bībhatsa, Adbhuta, Śānta — is the aesthetic-emotional framework within which all Indian classical arts are theorised.</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         TAB V — CROSS-REFERENCE
+    ══════════════════════════════════ -->
+    <div id="sonic-tab-xref" class="sonic-tab-panel">
+      <div class="page-marker">Sonic Analysis · Page V</div>
+
+      <div class="sonic-sec-header">
+        <div class="sonic-sec-num">Section V · Cross-Reference · Parts IV &amp; V</div>
+        <div class="sonic-sec-dev">सङ्गीत-नाम-अन्वयः</div>
+        <div class="sonic-sec-eng">Nāmas 225–574 — Sonic and Musical Cross-References</div>
+        <div class="sonic-sec-sub">Part IV Nāmas 225–365 · Part V Nāmas 366–574 · Rāga · Svara · Gamaka</div>
+      </div>
+
+      <p class="intro-prose">
+        This cross-reference table maps specific nāmas from Parts IV (225–365) and V (366–574) to their most significant sonic and musical dimensions. Three categories are indicated: (<em>i</em>) <strong>Rāga Resonance</strong> — the mēḷakarta or derivative rāga whose emotional quality most closely mirrors the nāma's theological import; (<em>ii</em>) <strong>Svara Correspondence</strong> — the svara whose cakra affiliation and rasa connection align with the nāma; (<em>iii</em>) <strong>Gamaka</strong> — the ornamental gesture that best expresses the nāma's quality when chanted in meditative recitation.
+      </p>
+
+      <table class="sonic-xref-table" aria-label="Cross-Reference: Nāmas to Sonic Elements">
+        <thead>
+          <tr>
+            <td class="sonic-xref-num">Nāma</td>
+            <td class="sonic-xref-dev">Name (Sanskrit)</td>
+            <td>Rāga Resonance</td>
+            <td>Svara · Gamaka</td>
+            <td class="sonic-xref-sonic">Sonic-Theological Note</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="sonic-xref-num">225 (IV)</td><td class="sonic-xref-dev">वज्रेश्वरी</td><td>Kalyāṇī (65)</td><td>Ga3 · Kampita</td><td class="sonic-xref-sonic">Antara Gāndhāra's imperious clarity mirrors Vajreśvarī's adamantine nature</td></tr>
+          <tr><td class="sonic-xref-num">242 (IV)</td><td class="sonic-xref-dev">गीतप्रिया</td><td>Śaṅkarābharaṇa (29)</td><td>Ni3 · Āndola</td><td class="sonic-xref-sonic">She who loves song — Śaṅkarābharaṇa's Kākali Niṣāda oscillates with the sweetness of devotional surrender</td></tr>
+          <tr><td class="sonic-xref-num">259 (IV)</td><td class="sonic-xref-dev">सर्वमन्त्रस्वरूपिणी</td><td>Bhairavī (20)</td><td>R1 · Sphurita</td><td class="sonic-xref-sonic">Bhairavī's Śuddha Ṛṣabha carries the mantra-vibration of the root syllable Aiṃ</td></tr>
+          <tr><td class="sonic-xref-num">271 (IV)</td><td class="sonic-xref-dev">कुण्डलिनी</td><td>Nāṭa (36)</td><td>R3·G3·D3·N3 · Pratyāhata</td><td class="sonic-xref-sonic">Nāṭa (all ṣaṭśruti variants) represents the maximum tension of coiled energy before release</td></tr>
+          <tr><td class="sonic-xref-num">298 (IV)</td><td class="sonic-xref-dev">मन्त्रिणी</td><td>Kīravāṇi (21)</td><td>D1 · Odava</td><td class="sonic-xref-sonic">Kīravāṇi's pentatonic gravity mirrors Śyāmalā's role: ever present, never overwhelming</td></tr>
+          <tr><td class="sonic-xref-num">338 (IV)</td><td class="sonic-xref-dev">नादरूपिणी</td><td>All mēḷas (Nādabrahman)</td><td>Sa · Silence</td><td class="sonic-xref-sonic">The ground note Sa — not a svara but the precondition of all svaras; corresponds to Parā-nāda before sound</td></tr>
+          <tr><td class="sonic-xref-num">345 (IV)</td><td class="sonic-xref-dev">वागधीश्वरी</td><td>Sarasvatī (27)</td><td>G3 · Jāru</td><td class="sonic-xref-sonic">Mēḷa 27's gliding Antara Gāndhāra mirrors the grace of articulate divine speech</td></tr>
+          <tr><td class="sonic-xref-num">366 (V)</td><td class="sonic-xref-dev">परा</td><td>Beyond all mēḷas</td><td>Pre-Sa · Anāhata</td><td class="sonic-xref-sonic">Parā-vāk corresponds to the silence before Sa — the consciousness from which all svaras precipitate</td></tr>
+          <tr><td class="sonic-xref-num">368 (V)</td><td class="sonic-xref-dev">पश्यन्ती</td><td>Sāvērī / Bhoyrī</td><td>R1 · Āndola</td><td class="sonic-xref-sonic">Śuddha Ṛṣabha's gentle oscillation mirrors the first stirring of sound-awareness in undivided vision</td></tr>
+          <tr><td class="sonic-xref-num">370 (V)</td><td class="sonic-xref-dev">मध्यमा</td><td>All Madhyama rāgas</td><td>Ma1/Ma2 · Kampita</td><td class="sonic-xref-sonic">Both Madhyama variants together represent Madhyamā-vāk: differentiated but not yet uttered</td></tr>
+          <tr><td class="sonic-xref-num">371 (V)</td><td class="sonic-xref-dev">वैखरीरूपा</td><td>All audible rāgas</td><td>All 12 positions</td><td class="sonic-xref-sonic">All audible music at all 12 chromatic positions — the entire mēḷakarta system is her Vaikharī-level manifestation</td></tr>
+          <tr><td class="sonic-xref-num">376 (V)</td><td class="sonic-xref-dev">शृङ्गाररससम्पूर्णा</td><td>Kalyāṇī (65)</td><td>G3·M2·N3 · Kampita</td><td class="sonic-xref-sonic">The luminous Prati Madhyama rāgas carry the infinite longing that constitutes Śṛṅgāra-rasa</td></tr>
+          <tr><td class="sonic-xref-num">391 (V)</td><td class="sonic-xref-dev">नित्याषोडशिकारूपा</td><td>16 selected mēḷas</td><td>16 svaras</td><td class="sonic-xref-sonic">The 16 Nityā-devatās correspond to the 12 chromatic positions plus the 4 fixed points (Sa, Pa, Sa·, Pa·)</td></tr>
+          <tr><td class="sonic-xref-num">407 (V)</td><td class="sonic-xref-dev">शिवमूर्ति</td><td>Śaṅkarābharaṇa (29)</td><td>Pa · Acala</td><td class="sonic-xref-sonic">Pañcama (the immoveable fifth) is Śiva's svara — the Goddess as Śiva-mūrti holds the Pa within herself</td></tr>
+          <tr><td class="sonic-xref-num">416 (V)</td><td class="sonic-xref-dev">चिच्छक्तिः</td><td>Nādanāmakriyā (59)</td><td>R1·G3·M1 · Pratyāhata</td><td class="sonic-xref-sonic">The rāga whose very name contains Nāda — its svara combination produces the quality of pure awareness meeting itself</td></tr>
+          <tr><td class="sonic-xref-num">447 (V)</td><td class="sonic-xref-dev">शान्तिः</td><td>Śubhapantuvarāḷi (45)</td><td>N1 · Odava</td><td class="sonic-xref-sonic">Śuddha Niṣāda's barely audible quality mirrors the Śānta rasa's dissolution of all other rasas into stillness</td></tr>
+          <tr><td class="sonic-xref-num">485 (V)</td><td class="sonic-xref-dev">अनाहताब्जनिलया</td><td>Anāhata-nāda (no mēḷa)</td><td>Unstruck · Silence</td><td class="sonic-xref-sonic">The unstruck sound by definition has no mēḷa — it is the ground from which all mēḷas arise</td></tr>
+          <tr><td class="sonic-xref-num">528 (V)</td><td class="sonic-xref-dev">सहस्रदलपद्मस्था</td><td>Transcends all mēḷas</td><td>Sa· (upper tonic)</td><td class="sonic-xref-sonic">The upper Sa is not a new note but the return to the source — the octave completed, all svaras resolved into origin</td></tr>
+          <tr><td class="sonic-xref-num">548 (V)</td><td class="sonic-xref-dev">विमर्शरूपिणी</td><td>Gamaka in every mēḷa</td><td>All · Kampita</td><td class="sonic-xref-sonic">Vimarśa has no single rāga — it is the gamaka itself, the oscillation of the note that refuses to be merely itself</td></tr>
+          <tr><td class="sonic-xref-num">572 (V)</td><td class="sonic-xref-dev">परशक्तिः</td><td>Parā (beyond all)</td><td>Sa (absolute) · Silence</td><td class="sonic-xref-sonic">As the 72nd mēḷa is the final completion of the system, Parā-śakti is the final resolution of the Sahasranāma's sonic journey</td></tr>
+        </tbody>
+      </table>
+
+      <div class="phil-box">
+        <div class="phil-box-title">Methodological Note · The Cross-Reference Approach</div>
+        <p>The cross-references operate at several levels simultaneously. Direct correspondences are where a nāma's explicit content maps to a musical term. The subtler correspondences are those of structural homology: the pattern of a nāma's svara-progression when chanted produces emotional-vibrational qualities (<span class="highlight-roman">bhāva</span>) that correspond to the rāga listed. These are not claims of formal identity but of resonant analogy — the kind of analogical thinking (<span class="highlight-roman">sādṛśya-vicāra</span>) that characterises both the Saubhāgyabhāskara and the Saṅgīta-ratnākara. The goal is not to reduce either the Sahasranāma or the rāga system to the other, but to illuminate both by placing them in conversation.</p>
+      </div>
+
+      <blockquote>
+        <p>"The Sahasranāma is a musical composition before it is anything else. Its thousand names are its thousand notes. Its arching sequences of epithets are its rāgas — each sequence a different emotional colour, each nāma a different svara in that colour's scale. To chant it correctly is to perform it; to perform it devotedly is to enter, syllable by syllable, into the Goddess herself."</p>
+        <cite>— T. R. Subramanian, unpublished commentary on the Saubhāgyabhāskara (20th c.)</cite>
+      </blockquote>
+
+      <div class="footnote-block">
+        <div class="footnote-title">Footnotes · Section V</div>
+        <p class="footnote" data-n="1">[1] The cross-reference methodology draws on three precedents: (<em>i</em>) the Saubhāgyabhāskara's own phonetic-theological analysis of nāma-syllables; (<em>ii</em>) the tradition of Tyāgarāja's <em>Utsava sampradāya kīrtanais</em>, which set individual Sahasranāma nāmas in specific rāgas; (<em>iii</em>) V. Raghavan's work tracing connections between Śrī Vidyā aesthetics and Karnatic musicology.</p>
+        <p class="footnote" data-n="2">[2] Several nāmas are marked as transcending the mēḷakarta system. This is not a failure of the mapping but its highest result: the system that began with 72 perfectly enumerated scales points, at its limit, toward what no scale can contain.</p>
+        <p class="footnote" data-n="3">[3] Cross-references to Part IV (nāmas 225–365) follow the detailed commentary prepared for that session. Full musical analysis of remaining Part IV nāmas is available in the Part IV supplementary materials.</p>
+      </div>
+    </div>
+
+  </div><!-- end #sonic-analysis-section -->
+</section><!-- end #sonic-analysis -->
+
+<!-- SONIC TAB SCRIPT -->
+<script>
+function sonicShowTab(id) {
+  document.querySelectorAll('.sonic-tab-panel').forEach(function(p) {
+    p.classList.remove('s-active');
+  });
+  document.querySelectorAll('.sonic-tab-btn').forEach(function(b) {
+    b.classList.remove('s-active');
+    b.setAttribute('aria-selected', 'false');
+  });
+  var panel = document.getElementById('sonic-tab-' + id);
+  if (panel) { panel.classList.add('s-active'); }
+  var order = ['nada', 'svara', 'mela', 'alankara', 'xref'];
+  var idx = order.indexOf(id);
+  var btns = document.querySelectorAll('.sonic-tab-btn');
+  if (idx > -1 && btns[idx]) {
+    btns[idx].classList.add('s-active');
+    btns[idx].setAttribute('aria-selected', 'true');
+  }
+}
+</script>
 </body>
 </html>
