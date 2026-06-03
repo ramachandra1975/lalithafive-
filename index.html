@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lalitopākhyāna — Part V | Nāmas 366–574 | Scholarly Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --gold: #c8a84b;
+  --gold-light: #e2c97e;
+  --gold-dim: #8a7035;
+  --crimson: #8b1a1a;
+  --crimson-light: #b52020;
+  --ink: #1a1208;
+  --parchment: #fdf6e8;
+  --parchment-dark: #f5ecd4;
+  --parchment-deep: #ede0c0;
+  --text-main: #2a1f0e;
+  --text-muted: #5c4a2a;
+  --text-light: #7a6040;
+  --border: #c8a84b44;
+  --border-strong: #c8a84b88;
+  --shadow: rgba(26,18,8,0.18);
+  --red-accent: #9b2335;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--text-main);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.78;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(200,168,75,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(139,26,26,0.05) 0%, transparent 60%);
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* ── TOC SIDEBAR ── */
+#toc-toggle {
+  position: fixed; top: 1.2rem; left: 1.2rem; z-index: 200;
+  background: var(--ink); color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 0.45rem 0.9rem; font-family: 'Cinzel', serif; font-size: 0.78rem;
+  letter-spacing: 0.08em; cursor: pointer; border-radius: 2px;
+  box-shadow: 0 2px 12px var(--shadow);
+  transition: background 0.2s;
+}
+#toc-toggle:hover { background: #2a1f0e; }
+
+#toc-panel {
+  position: fixed; top: 0; left: 0; height: 100vh; width: 310px;
+  background: var(--ink);
+  border-right: 1px solid var(--gold-dim);
+  z-index: 190; overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(.4,0,.2,1);
+  padding: 1.5rem 1.5rem 3rem;
+  box-shadow: 4px 0 32px rgba(0,0,0,0.4);
+}
+#toc-panel.open { transform: translateX(0); }
+
+#toc-close {
+  background: none; border: none; color: var(--gold-light);
+  font-size: 1.1rem; cursor: pointer; float: right; margin-bottom: 1rem;
+  font-family: 'EB Garamond', serif;
+}
+
+#toc-panel h3 {
+  font-family: 'Cinzel', serif; color: var(--gold);
+  font-size: 0.82rem; letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 1.4rem;
+  padding-bottom: 0.6rem; border-bottom: 1px solid var(--gold-dim);
+}
+#toc-panel a {
+  display: block; color: #c8a84baa; text-decoration: none;
+  font-family: 'EB Garamond', serif; font-size: 0.92rem;
+  padding: 0.32rem 0; border-bottom: 1px solid #ffffff08;
+  transition: color 0.18s;
+  line-height: 1.4;
+}
+#toc-panel a:hover { color: var(--gold-light); }
+#toc-panel a.sub { padding-left: 1rem; font-size: 0.86rem; color: #c8a84b77; }
+#toc-panel a.sub:hover { color: #c8a84bcc; }
+
+/* ── MAIN LAYOUT ── */
+main {
+  max-width: 820px; margin: 0 auto;
+  padding: 3rem 2.5rem 6rem;
+  position: relative; z-index: 1;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  text-align: center;
+  padding: 3.5rem 1rem 2.5rem;
+  border-bottom: 1px solid var(--border-strong);
+  margin-bottom: 3rem;
+}
+.masthead .seed-mantra {
+  font-family: 'Noto Serif Devanagari', serif;
+  color: var(--gold);
+  font-size: 1.6rem;
+  letter-spacing: 0.22em;
+  margin-bottom: 1.6rem;
+  opacity: 0.85;
+}
+.masthead .part-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem; letter-spacing: 0.22em;
+  color: var(--text-light); text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.masthead h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem; font-weight: 600;
+  color: var(--ink); line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.masthead .devanagari-title {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.5rem; color: var(--crimson);
+  margin-bottom: 1rem;
+}
+.masthead .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; color: var(--text-muted);
+  font-style: italic; line-height: 1.6;
+  max-width: 600px; margin: 0 auto 1.2rem;
+}
+.masthead .edition-line {
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.18em; color: var(--gold-dim);
+  text-transform: uppercase;
+}
+.breadcrumb {
+  text-align: center;
+  font-family: 'EB Garamond', serif; font-size: 0.9rem;
+  color: var(--text-light); margin-top: 1.2rem;
+}
+.breadcrumb a { color: var(--crimson); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ── ORNAMENTAL DIVIDER ── */
+.ornament {
+  text-align: center; margin: 2.2rem 0;
+  color: var(--gold); font-size: 1.1rem;
+  letter-spacing: 0.5em; opacity: 0.6;
+}
+.ornament-line {
+  display: flex; align-items: center; gap: 1rem;
+  margin: 2.5rem 0;
+}
+.ornament-line::before, .ornament-line::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+}
+.ornament-line span {
+  color: var(--gold); font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* ── PAGE MARKER ── */
+.page-marker {
+  font-family: 'Cinzel', serif; font-size: 0.68rem;
+  letter-spacing: 0.18em; color: var(--gold-dim);
+  text-align: right; text-transform: uppercase;
+  margin: 2.8rem 0 0.3rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── SECTION HEADERS ── */
+.section-block {
+  margin-bottom: 3.5rem;
+}
+.section-header {
+  margin-bottom: 2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--border-strong);
+}
+.section-number {
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.2em; color: var(--gold-dim);
+  text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.section-title-dev {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.25rem; color: var(--crimson);
+  margin-bottom: 0.3rem;
+}
+.section-title-eng {
+  font-family: 'Cinzel', serif; font-size: 1.35rem;
+  font-weight: 600; color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.section-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1rem; color: var(--text-muted);
+}
+
+/* ── NAMA ENTRY ── */
+.nama-entry {
+  margin-bottom: 2.4rem;
+  padding: 1.4rem 1.6rem 1.4rem 1.8rem;
+  background: rgba(255,255,255,0.45);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 1px 8px rgba(26,18,8,0.06);
+  position: relative;
+}
+.nama-entry::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 40px; height: 40px;
+  background: radial-gradient(circle at top right, rgba(200,168,75,0.06), transparent 70%);
+}
+.nama-number {
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  color: var(--gold-dim); letter-spacing: 0.12em;
+  margin-bottom: 0.25rem;
+}
+.nama-dev {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.18rem; color: var(--crimson);
+  font-weight: 600; margin-bottom: 0.15rem;
+  line-height: 1.5;
+}
+.nama-roman {
+  font-family: 'Cinzel', serif; font-size: 0.95rem;
+  color: var(--ink); font-style: italic;
+  margin-bottom: 0.35rem;
+}
+.nama-meaning {
+  font-family: 'EB Garamond', serif; font-size: 1rem;
+  color: var(--text-muted); line-height: 1.6;
+}
+.nama-tags {
+  margin-top: 0.5rem;
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+}
+.tag {
+  font-family: 'Cinzel', serif; font-size: 0.62rem;
+  letter-spacing: 0.1em; padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-strong); color: var(--gold-dim);
+  border-radius: 2px; text-transform: uppercase;
+}
+
+/* ── COMPACT NAMA LIST (for grouped namas) ── */
+.nama-table {
+  width: 100%; border-collapse: collapse;
+  margin: 1.2rem 0 2rem;
+}
+.nama-table tr { border-bottom: 1px solid var(--border); }
+.nama-table tr:last-child { border-bottom: none; }
+.nama-table td {
+  padding: 0.7rem 0.6rem; vertical-align: top;
+  font-family: 'EB Garamond', serif; font-size: 0.97rem;
+}
+.nama-table .num {
+  color: var(--gold-dim); font-family: 'Cinzel', serif;
+  font-size: 0.7rem; white-space: nowrap; width: 3rem;
+  letter-spacing: 0.08em;
+}
+.nama-table .dev {
+  font-family: 'Noto Serif Devanagari', serif;
+  color: var(--crimson); font-size: 1.05rem;
+  width: 44%; line-height: 1.5;
+}
+.nama-table .meaning {
+  color: var(--text-muted); line-height: 1.5;
+}
+
+/* ── BLOCKQUOTE / COMMENTARY ── */
+blockquote {
+  margin: 1.8rem 0;
+  padding: 1.2rem 1.6rem 1.2rem 2rem;
+  border-left: 3px solid var(--crimson);
+  background: rgba(139,26,26,0.04);
+  border-radius: 0 4px 4px 0;
+}
+blockquote p {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1.08rem; color: var(--text-muted); line-height: 1.7;
+}
+blockquote cite {
+  display: block; margin-top: 0.6rem;
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.1em; color: var(--gold-dim);
+  font-style: normal;
+}
+
+/* ── ADHYAYA CHAPTER BLOCK ── */
+.chapter-block {
+  background: var(--parchment-dark);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 2rem 2rem 1.8rem;
+  margin: 2.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.chapter-block::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, var(--crimson), var(--gold), var(--crimson));
+}
+.chapter-label {
+  font-family: 'Cinzel', serif; font-size: 0.7rem;
+  letter-spacing: 0.2em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.chapter-title-dev {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.3rem; color: var(--crimson); margin-bottom: 0.2rem;
+}
+.chapter-title-eng {
+  font-family: 'Cinzel', serif; font-size: 1.18rem;
+  color: var(--ink); font-weight: 600; margin-bottom: 1rem;
+}
+.verse {
+  margin: 1.2rem 0;
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.5);
+  border-radius: 3px;
+}
+.verse-num {
+  font-family: 'Cinzel', serif; font-size: 0.68rem;
+  color: var(--gold-dim); letter-spacing: 0.1em; margin-bottom: 0.3rem;
+}
+.verse-text {
+  font-family: 'EB Garamond', serif; font-size: 1rem;
+  color: var(--text-main); line-height: 1.75;
+}
+.verse-dev {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1rem; color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+/* ── FOOTNOTE ── */
+.footnote-block {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.footnote-title {
+  font-family: 'Cinzel', serif; font-size: 0.7rem;
+  letter-spacing: 0.15em; color: var(--gold-dim);
+  text-transform: uppercase; margin-bottom: 0.8rem;
+}
+.footnote {
+  font-family: 'EB Garamond', serif; font-size: 0.93rem;
+  color: var(--text-light); line-height: 1.65;
+  margin-bottom: 0.5rem; padding-left: 1.2rem;
+  position: relative;
+}
+.footnote::before {
+  content: attr(data-n);
+  position: absolute; left: 0;
+  font-family: 'Cinzel', serif; font-size: 0.7rem;
+  color: var(--gold-dim);
+}
+
+/* ── PHILOSOPHICAL BOX ── */
+.phil-box {
+  background: linear-gradient(135deg, rgba(200,168,75,0.07) 0%, rgba(139,26,26,0.04) 100%);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 1.6rem 1.8rem;
+  margin: 2rem 0;
+}
+.phil-box-title {
+  font-family: 'Cinzel', serif; font-size: 0.8rem;
+  letter-spacing: 0.16em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.phil-box p {
+  font-size: 1rem; color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ── COLOPHON ── */
+.colophon {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  border-top: 2px solid var(--border-strong);
+  margin-top: 4rem;
+}
+.colophon .final-dev {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-size: 1.8rem; color: var(--gold);
+  margin-bottom: 1rem; opacity: 0.9;
+}
+.colophon p {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 1.05rem; color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.colophon .nav-links {
+  margin-top: 1.5rem; display: flex;
+  justify-content: center; gap: 2rem; flex-wrap: wrap;
+}
+.colophon .nav-links a {
+  font-family: 'Cinzel', serif; font-size: 0.78rem;
+  letter-spacing: 0.12em; color: var(--crimson);
+  text-decoration: none; text-transform: uppercase;
+}
+.colophon .nav-links a:hover { text-decoration: underline; }
+
+/* ── PROSE BODY ── */
+p { margin-bottom: 1.1rem; }
+p:last-child { margin-bottom: 0; }
+
+.intro-prose {
+  font-size: 1.02rem; color: var(--text-muted);
+  line-height: 1.8; margin-bottom: 1.8rem;
+}
+
+/* ── SPECIAL HIGHLIGHT ── */
+.highlight-dev {
+  font-family: 'Noto Serif Devanagari', serif;
+  color: var(--crimson); font-size: 1.08em;
+}
+.highlight-roman { font-style: italic; color: var(--crimson); }
+
+/* ── PAGE BREAK SIMULATION ── */
+.page-break {
+  border: none;
+  border-top: 1px dashed var(--border);
+  margin: 3rem 0;
+}
+
+/* ── SCROLL TO TOP ── */
+#scrolltop {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: var(--ink); color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  width: 38px; height: 38px; border-radius: 50%;
+  cursor: pointer; font-size: 1rem; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px var(--shadow);
+  opacity: 0; transition: opacity 0.3s;
+}
+#scrolltop.visible { opacity: 1; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  main { padding: 2rem 1.1rem 4rem; }
+  .masthead h1 { font-size: 1.4rem; }
+  .nama-entry { padding: 1rem 1rem 1rem 1.2rem; }
+  .nama-table .dev { width: 36%; }
+  #toc-panel { width: 260px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOC TOGGLE -->
+<button id="toc-toggle" onclick="document.getElementById('toc-panel').classList.toggle('open')">☰ Contents</button>
+
+<!-- TOC PANEL -->
+<nav id="toc-panel">
+  <button id="toc-close" onclick="document.getElementById('toc-panel').classList.remove('open')">✕ Close</button>
+  <h3>Part V · Navigation</h3>
+  <a href="#prefatory">Prefatory Note प्रस्तावना</a>
+  <a href="#s1" class="sub">Nāmas 366–385 · Sound & Sovereignty</a>
+  <a href="#s2" class="sub">Nāmas 386–410 · Nitya & Śiva Series</a>
+  <a href="#s3" class="sub">Nāmas 411–430 · Consciousness Forms</a>
+  <a href="#s4" class="sub">Nāmas 431–460 · The Luminous Body</a>
+  <a href="#s5" class="sub">Nāmas 461–503 · Six Chakras</a>
+  <a href="#s6" class="sub">Nāmas 504–534 · The Higher Chakras</a>
+  <a href="#s7" class="sub">Nāmas 535–574 · Purity & Liberation</a>
+  <a href="#adhyaya14">Adhyāya 14 · Kāmeśvara's Manifestation</a>
+  <a href="#adhyaya15">Adhyāya 15 · The Marriage of Lalitā</a>
+  <a href="#adhyaya16">Adhyāya 16 · March of Victory</a>
+  <a href="#adhyaya17">Adhyāya 17 · Army of Śyāmalā</a>
+  <a href="#adhyaya18">Adhyāya 18 · March of Lalitā</a>
+  <a href="#adhyaya19">Adhyāya 19 · Deities of Cakrarāja</a>
+  <a href="#philosophical">Philosophical Analysis दार्शनिकविश्लेषणम्</a>
+  <a href="#sound">Sound Cosmology नादविचारः</a>
+  <a href="#chakra">Chakra Theology चक्रविमर्शः</a>
+  <a href="#colophon">Colophon उपसंहारः</a>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════════════════════
+     MASTHEAD
+══════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="seed-mantra">ऐं ह्रीं श्रीं</div>
+  <div class="part-label">Brahmāṇḍa Purāṇa · Uttarabhāga · Adhyāya 14–19</div>
+  <div class="devanagari-title">ललितोपाख्यान — पञ्चम भाग</div>
+  <h1>Lalitopākhyāna — Part Five</h1>
+  <p class="subtitle">
+    Nāmas 366–574 · The Four Levels of Sound · The Śiva Series · Consciousness & Creation ·
+    The Luminous Body · The Six Cakras & the Thousand-Petalled Lotus ·
+    Kāmeśvara's Manifestation · The Sacred Marriage · The March of Victory ·
+    The Army of Śyāmalā · The Chariot Cakrarāja & Its Deities
+  </p>
+  <p class="subtitle" style="font-size:0.92rem;">
+    After Bhāskararāya Makhin · Śaṅkarācārya · The Brahmāṇḍa Purāṇa
+  </p>
+  <div class="edition-line">Scholarly Edition · Session V · 35 Pages</div>
+  <div class="breadcrumb">
+    <a href="https://lalithatwo.culturalmusings.com/">Lalitā Culturalmusings</a> ›
+    <a href="https://lalithatwo.culturalmusings.com/part-1">Part I</a> ›
+    <a href="https://lalithatwo.culturalmusings.com/part-2">Part II</a> ›
+    <a href="https://lalithathree.culturalmusings.com/">Part III</a> ›
+    <a href="https://lalithafour.culturalmusings.com/">Part IV</a> ›
+    <strong>Part V · Nāmas 366–574 · Adhyāya 14–19</strong>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PREFATORY NOTE
+══════════════════════════════════════════ -->
+<section id="prefatory" class="section-block">
+  <div class="page-marker">Page 1</div>
+  <div class="section-header">
+    <div class="section-number">Prefatory Note · Session V</div>
+    <div class="section-title-dev">पञ्चमभागस्य प्रारम्भः</div>
+    <div class="section-title-eng">Opening of the Fifth Session</div>
+  </div>
+
+  <p class="intro-prose">
+    Part V continues the Lalitā Sahasranāma at nāma 366 — <span class="highlight-roman">Parā</span> — and carries the commentary through nāma 574, <span class="highlight-roman">Prajñānaghana-rūpiṇī</span>. This session traverses some of the most technically profound and devotionally rich terrain in the entire Sahasranāma: the four levels of Vāk (sound — <span class="highlight-roman">Parā, Paśyantī, Madhyamā, Vaikharī</span>); the complete Śiva-series of epithets establishing the Goddess as the supreme and singular ground of Śiva's own being; the Caitanya-series (pure consciousness forms); the extraordinary description of the Goddess's body in a state of rapturous intoxication; and the full Cakra-sequence in which the Goddess is identified with each of the six principal energy centres of the yogic body, together with the presiding Yoginīs, their colours, faces, weapons, food-offerings and associated elements — culminating in Her residence in the thousand-petalled lotus of the Sahasrāra.
+  </p>
+  <p class="intro-prose">
+    Simultaneously, Part V contains the great Purāṇic narrative of Adhyāyas 14–19 of the Brahmāṇḍa Purāṇa's Uttarabhāga: the miraculous manifestation of Kāmeśvara, the sacred marriage of Lalitā and Kāmeśvara celebrated by all the gods, the royal coronation and procession, the march of victory against Bhaṇḍāsura with the armies of Sampatkari and Daṇḍanāthā, the march of Śyāmalā with her musical retinue, and the complete description of the divine chariot Cakrarāja with its nine steps and their presiding deities.
+  </p>
+
+  <blockquote>
+    <p>"The four levels of sound — Parā, Paśyantī, Madhyamā, Vaikharī — describe the descent of consciousness into manifestation. Parā is pure awareness before any movement; Paśyantī is the first stirring, the undivided vision; Madhyamā is the intermediate stage where meaning differentiates; Vaikharī is audible speech. The Goddess as all four simultaneously is the teaching that she is present at every moment of the journey from silence to utterance — she is not merely the destination but the entire path."</p>
+    <cite>— Bhāskararāya Makhin, Saubhāgyabhāskara, commentary to nāma 366</cite>
+  </blockquote>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION I — NĀMAS 366–385
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 2</div>
+<section id="s1" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Section I · Nāmas 366–385</div>
+    <div class="section-title-dev">परा — विश्वसाक्षिणी</div>
+    <div class="section-title-eng">The Four Levels of Sound · Sovereignty Epithets · The Cosmic Witness</div>
+    <div class="section-subtitle">Vāk Cosmology · The Four Pīṭhas · Secret Rites · Immediate Grace</div>
+  </div>
+
+  <p class="intro-prose">
+    Nāmas 366–385 open with the exquisite Vāk-sequence, the most philosophically concentrated passage on sound-cosmology in the entire Sahasranāma. The four nāmas <span class="highlight-roman">Parā, Paśyantī, Madhyamā</span> and <span class="highlight-roman">Vaikharī-rūpā</span> are not merely attributes but a complete cosmological model. They are followed by epithets establishing the Goddess as the supreme Deity worshipped even by Kāma, and as the sovereign over the three sacred seats (Pīṭhas). The section culminates in the paired nāmas of the Cosmic Witness and the Witnessless One — perhaps the most paradoxical and philosophically precise pair in the Sahasranāma.
+  </p>
+
+  <div class="nama-entry" id="n366">
+    <div class="nama-number">Nāma 366</div>
+    <div class="nama-dev">परा</div>
+    <div class="nama-roman">Parā</div>
+    <div class="nama-meaning">She who is the supreme; She who transcends all. <em>Parā</em> is the first and highest of the four levels of Vāk (divine sound/speech). It resides in the Mūlādhāra cakra as undifferentiated, unmoving pure consciousness — before any thought, impulse, or stirring. Bhāskararāya: "Parā-vāk is not speech at all in any ordinary sense; it is the awareness that precedes the desire to speak. It is the Goddess in her most absolute, unspeakable form."</div>
+    <div class="nama-tags"><span class="tag">Vāk Cosmology</span><span class="tag">Mūlādhāra</span><span class="tag">Transcendence</span></div>
+  </div>
+
+  <div class="nama-entry" id="n367">
+    <div class="nama-number">Nāma 367</div>
+    <div class="nama-dev">प्रत्यक्चितीरूपा</div>
+    <div class="nama-roman">Pratyakcitī-rūpā</div>
+    <div class="nama-meaning">She who is of the nature of unmanifested consciousness; She who is the form of unmanifested Brahman. <em>Pratyak</em> = turned inward, the inner self. <em>Citi</em> = pure consciousness. This nāma identifies the Goddess with the innermost witness-consciousness that neither arises nor sets, the Ātman of Vedāntic discourse understood through the Śākta lens as the Goddess herself.</div>
+    <div class="nama-tags"><span class="tag">Vedānta</span><span class="tag">Citi-śakti</span><span class="tag">Inner Witness</span></div>
+  </div>
+
+  <div class="nama-entry" id="n368">
+    <div class="nama-number">Nāma 368</div>
+    <div class="nama-dev">पश्यन्ती</div>
+    <div class="nama-roman">Paśyantī</div>
+    <div class="nama-meaning">She who is <em>Paśyantī</em> — the second level of sound after <em>Parā</em>, residing in the Svādhiṣṭhāna cakra. <em>Paśyantī</em> means "the seeing one" — the first movement of consciousness toward manifestation, where the undivided awareness first "sees" its own content without yet differentiating word from meaning. It is the level where mantra exists before syllabification.</div>
+    <div class="nama-tags"><span class="tag">Vāk Cosmology</span><span class="tag">Svādhiṣṭhāna</span><span class="tag">Second Level</span></div>
+  </div>
+
+  <div class="nama-entry" id="n369">
+    <div class="nama-number">Nāma 369</div>
+    <div class="nama-dev">परदेवता</div>
+    <div class="nama-roman">Paradevāta</div>
+    <div class="nama-meaning">She who is the supreme deity; Parāśakti herself. Among all the deities of all traditions and lineages, the Goddess Lalitā is the <em>Paradevāta</em> — the highest, the first, the one from whom all other divine forms derive their power and existence. This nāma is the Sahasranāma's clearest statement of absolute theological supremacy.</div>
+    <div class="nama-tags"><span class="tag">Theological Primacy</span><span class="tag">Parāśakti</span></div>
+  </div>
+
+  <div class="nama-entry" id="n370">
+    <div class="nama-number">Nāma 370</div>
+    <div class="nama-dev">मध्यमा</div>
+    <div class="nama-roman">Madhyamā</div>
+    <div class="nama-meaning">She who stays in the middle; She who is the third level of Vāk, residing in the Maṇipūra cakra (or heart, in some traditions). <em>Madhyamā</em> is the intermediate sound — where word and meaning begin to differentiate but have not yet reached the vocal organs. It is the mental "hearing" that precedes speech, the inner formulation of language.</div>
+    <div class="nama-tags"><span class="tag">Vāk Cosmology</span><span class="tag">Madhyamā</span><span class="tag">Mental Speech</span></div>
+  </div>
+
+  <div class="nama-entry" id="n371">
+    <div class="nama-number">Nāma 371</div>
+    <div class="nama-dev">वैखरीरूपा</div>
+    <div class="nama-roman">Vaikharī-rūpā</div>
+    <div class="nama-meaning">She who is in the form of <em>Vaikharī</em> — sound in its manifested, audible form, the fourth and outermost level of Vāk. This is the speech we hear with our ears, the Vedic mantras as chanted, the name of the Goddess as uttered in worship. That the Goddess is equally this outermost level teaches that the divine is not confined to silence or the interior — she is equally present in every uttered sound.</div>
+    <div class="nama-tags"><span class="tag">Vāk Cosmology</span><span class="tag">Audible Sound</span><span class="tag">Vaikharī</span></div>
+  </div>
+
+  <div class="ornament-line"><span>❧</span></div>
+
+  <p class="intro-prose">
+    With nāma 372, the Sahasranāma shifts from the metaphysics of sound to a series of intimate epithets: the Goddess as swan in the devotee's mind, as the very life-breath of Kāmeśvara, as the object of Kāma's own worship, and as the embodiment of the <em>śṛṅgāra</em> rasa — the supreme aesthetic experience of love. These nāmas prepare the devotional ground for the great narrative of Adhyāya 14.
+  </p>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">372</td>
+      <td class="dev">भक्तमानसहंसिका</td>
+      <td class="meaning"><em>Bhakta-mānasa-haṃsikā</em> — She who is the swan in the minds of Her devotees. The haṃsa (swan) is the bird of discernment, able to separate milk from water. As the swan in the devotee's mind, the Goddess is the discriminating wisdom that separates the eternal from the transient.</td>
+    </tr>
+    <tr>
+      <td class="num">373</td>
+      <td class="dev">कामेश्वरप्राणनाडी</td>
+      <td class="meaning"><em>Kāmeśvara-prāṇa-nāḍī</em> — She who is the very life-force (prāṇa-nāḍī) of Kāmeśvara, Her consort. The Goddess is not merely Śiva's companion; she is the vital current within him. Without her, Śiva is <em>śava</em> (a corpse) — the famous Śākta axiom is embodied here.</td>
+    </tr>
+    <tr>
+      <td class="num">374</td>
+      <td class="dev">कृतज्ञा</td>
+      <td class="meaning"><em>Kṛtajñā</em> — She who knows all of our actions as they occur. <em>Kṛta</em> = action performed. <em>Jñā</em> = knowing. She is the omniscient witness of every act, thought, and intention — not a distant judge but the very awareness within which all action occurs.</td>
+    </tr>
+    <tr>
+      <td class="num">375</td>
+      <td class="dev">कामपूजिता</td>
+      <td class="meaning"><em>Kāma-pūjitā</em> — She who is worshipped by Kāma (the god of love). Even Manmatha, the deity who rules the entire domain of desire and beauty, performs worship of the Goddess — for she is the source of all beauty, the ultimate object of all longing.</td>
+    </tr>
+    <tr>
+      <td class="num">376</td>
+      <td class="dev">शृङ्गाररससम्पूर्णा</td>
+      <td class="meaning"><em>Śṛṅgāra-rasa-sampūrṇā</em> — She who is filled with the essence of Love. <em>Śṛṅgāra</em> is the king of the nine aesthetic rasas — the rasa of romantic love, beauty, and union. The Goddess does not merely inspire this rasa in others; she IS it, in its fullness and completeness.</td>
+    </tr>
+    <tr>
+      <td class="num">377</td>
+      <td class="dev">जया</td>
+      <td class="meaning"><em>Jayā</em> — She who is victorious always and everywhere. Victory here is not merely martial; it is the ontological priority of the real over the illusory, of consciousness over inertia, of liberation over bondage.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 3</div>
+
+  <p class="intro-prose">
+    Nāmas 378–382 introduce the geography of the Goddess's sovereignty — the three great <em>Pīṭhas</em> (sacred seats) and the <em>bindu-maṇḍala</em> of the Śrī Cakra — followed by the profound dyad of the Cosmic Witness and the Witnessless One.
+  </p>
+
+  <div class="nama-entry" id="n378">
+    <div class="nama-number">Nāma 378</div>
+    <div class="nama-dev">जालन्धरस्थिता</div>
+    <div class="nama-roman">Jālandhara-sthitā</div>
+    <div class="nama-meaning">She who resides in the Jālandhara Pīṭha, located in the throat region. Jālandhara is one of the four primary Śākta Pīṭhas (sacred seats), corresponding to the Viśuddhi cakra region. The Goddess's presence here connects the cosmic geography of India's sacred geography to the interior geography of the yogic body.</div>
+    <div class="nama-tags"><span class="tag">Śākta Pīṭha</span><span class="tag">Throat</span><span class="tag">Sacred Geography</span></div>
+  </div>
+
+  <div class="nama-entry" id="n379">
+    <div class="nama-number">Nāma 379</div>
+    <div class="nama-dev">ओड्याणपीठनिलया</div>
+    <div class="nama-roman">Oḍyāṇa-pīṭha-nilayā</div>
+    <div class="nama-meaning">She whose abode is the sacred centre known as Oḍyāṇa, associated with the Ājñā cakra. Oḍyāṇa (Oḍiyāna, the historical Swat Valley region) is renowned as one of the greatest Tantric power-seats. Its correspondence with the Ājñā cakra establishes a homology between outer sacred geography and inner spiritual anatomy.</div>
+    <div class="nama-tags"><span class="tag">Oḍyāṇa Pīṭha</span><span class="tag">Ājñā Cakra</span><span class="tag">Tantra</span></div>
+  </div>
+
+  <div class="nama-entry" id="n380">
+    <div class="nama-number">Nāma 380</div>
+    <div class="nama-dev">बिन्दुमण्डलवासिनी</div>
+    <div class="nama-roman">Bindu-maṇḍala-vāsinī</div>
+    <div class="nama-meaning">She who resides in the Bindu-maṇḍala — the central point (bindu) of the Śrī Cakra. The <em>bindu</em> is the most concentrated point of the yantra, representing undivided consciousness before creation. The Goddess dwelling here is the awareness that is simultaneously the source of all manifestation and its ultimate resting point.</div>
+    <div class="nama-tags"><span class="tag">Śrī Cakra</span><span class="tag">Bindu</span><span class="tag">Yantra</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">381</td>
+      <td class="dev">रहोयागक्रमाराध्या</td>
+      <td class="meaning"><em>Raho-yāga-kramārādhyā</em> — She who is worshipped in secret through the sequence of sacrificial rites. The Śrī Vidyā worship is described as <em>rahas</em> (secret) — not because it must be hidden from others but because its innermost significance cannot be communicated through ordinary language; it must be transmitted directly from teacher to disciple.</td>
+    </tr>
+    <tr>
+      <td class="num">382</td>
+      <td class="dev">रहस्तर्पणतर्पिता</td>
+      <td class="meaning"><em>Rahas-tarpaṇa-tarpitā</em> — She who is gratified by the secret rites of worship. <em>Tarpaṇa</em> = the act of satisfying, of filling to contentment. The Goddess is not merely the object of secret worship; she is genuinely nourished and delighted by the sincere offering — a deeply relational theology.</td>
+    </tr>
+    <tr>
+      <td class="num">383</td>
+      <td class="dev">सद्यःप्रसादिनी</td>
+      <td class="meaning"><em>Sadyaḥ-prasādinī</em> — She who bestows Her grace immediately. <em>Sadyaḥ</em> = at once, without delay. Unlike mediated blessings that require the passage of time or accumulated merit, the Goddess's grace is instantaneous. The devotee who sincerely calls upon her receives her response in the very moment of calling.</td>
+    </tr>
+    <tr>
+      <td class="num">384</td>
+      <td class="dev">विश्वसाक्षिणी</td>
+      <td class="meaning"><em>Viśva-sākṣiṇī</em> — She who is witness to the whole universe. The Goddess pervades all phenomena as their pure witness-consciousness: the unchanging awareness within which all change occurs, the still point of the turning world.</td>
+    </tr>
+    <tr>
+      <td class="num">385</td>
+      <td class="dev">साक्षिवर्जिता</td>
+      <td class="meaning"><em>Sākṣi-varjitā</em> — She who has no other witness; She who is beyond being witnessed. The profound sequel to nāma 384: she witnesses all, but nothing can witness her. She is the ultimate subject who can never become an object. Pure, self-luminous awareness does not require — and cannot have — an external observer.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION II — NĀMAS 386–410
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 5</div>
+<section id="s2" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Section II · Nāmas 386–410</div>
+    <div class="section-title-dev">षडङ्गदेवता — शिवपरा</div>
+    <div class="section-title-eng">The Ṣaḍ-aṅga Deities · The Nitya Series · The Śiva Series</div>
+    <div class="section-subtitle">Six-Limbed Worship · Sixteen Eternals · Śiva as Consort, Form & Beloved</div>
+  </div>
+
+  <p class="intro-prose">
+    This section moves through three distinct but interconnected sequences. First, nāmas 386–391 deal with the divine apparatus of six-limbed worship (<em>ṣaḍ-aṅga pūjā</em>) and the six qualities, followed by the cluster of "Nitya" epithets. Then comes the famous sixteen-fold Nitya-devatā declaration. The section concludes with the remarkable Śiva-series (nāmas 405–410), which establishes the exact relationship between the Goddess and Śiva across six dimensions — messenger, object of worship, form, bestower, beloved, and supreme devotion.
+  </p>
+
+  <div class="nama-entry" id="n386">
+    <div class="nama-number">Nāma 386</div>
+    <div class="nama-dev">षडङ्गदेवतायुक्ता</div>
+    <div class="nama-roman">Ṣaḍ-aṅga-devatā-yuktā</div>
+    <div class="nama-meaning">She who is accompanied by the deities of the six <em>aṅgas</em> (limbs) — heart (<em>hṛdaya</em>), head (<em>śiras</em>), topknot (<em>śikhā</em>), armour (<em>kavaca</em>), eyes (<em>netra</em>), and weapons (<em>astra</em>). In Tantric ritual, these six limbs are invoked before the main deity as protective and empowering presences; the Goddess is accompanied by their deified forms at all times.</div>
+    <div class="nama-tags"><span class="tag">Ṣaḍ-aṅga Pūjā</span><span class="tag">Ritual</span><span class="tag">Protection</span></div>
+  </div>
+
+  <div class="nama-entry" id="n387">
+    <div class="nama-number">Nāma 387</div>
+    <div class="nama-dev">षाड्गुण्यपरिपूरिता</div>
+    <div class="nama-roman">Ṣāḍguṇya-paripūritā</div>
+    <div class="nama-meaning">She who is fully endowed with the six great qualities: prosperity (<em>aiśvarya</em>), valour (<em>vīrya</em>), dispassion (<em>vairāgya</em>), fame (<em>yaśas</em>), wealth (<em>śrī</em>), and wisdom (<em>jñāna</em>). These are the <em>ṣaḍ-guṇas</em> of the supreme sovereign — in Vaiṣṇava theology they define Bhagavān; here they are fully present in the Goddess.</div>
+    <div class="nama-tags"><span class="tag">Six Divine Qualities</span><span class="tag">Sovereignty</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">388</td>
+      <td class="dev">नित्यक्लिन्ना</td>
+      <td class="meaning"><em>Nitya-klinnā</em> — She who is ever compassionate, ever moist with love. <em>Klinnā</em> = wetted, softened, melted with tenderness. The Goddess's compassion is not occasional or contingent; it is her permanent, unchanging state.</td>
+    </tr>
+    <tr>
+      <td class="num">389</td>
+      <td class="dev">निरुपमा</td>
+      <td class="meaning"><em>Nirupamā</em> — She who is incomparable; She for whom no comparison exists. All metaphors used in the Sahasranāma to describe her — sun, moon, lotus, ocean — are ultimately inadequate. She is the standard of comparison against which everything else is measured.</td>
+    </tr>
+    <tr>
+      <td class="num">390</td>
+      <td class="dev">निर्वाणसुखदायिनी</td>
+      <td class="meaning"><em>Nirvāṇa-sukha-dāyinī</em> — She who confers the bliss of Liberation. <em>Nirvāṇa</em> (used here in its classical sense of complete liberation, not the technical Buddhist sense) — the Goddess is not merely one path to liberation among many; she is the very giver of liberation's bliss.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 6</div>
+
+  <div class="nama-entry" id="n391">
+    <div class="nama-number">Nāma 391</div>
+    <div class="nama-dev">नित्या-षोडशिकारूपा</div>
+    <div class="nama-roman">Nityā-ṣoḍaśikā-rūpā</div>
+    <div class="nama-meaning">She who is in the form of the sixteen daily (<em>nitya</em>) deities. The sixteen Nityā-devatās are: Kāmeśvarī, Bhagamālinī, Nityaklinnā, Bheruṇḍā, Vahni-vāsinī, Mahā-vajreśvarī, Śiva-dūtī, Tvaritā, Kulasundarī, Nityā, Nīla-patākinī, Vijayā, Sarvamaṅgalā, Jvālāmālinī, Citrā, and Tripurasundarī. Each of the sixteen phases of the lunar fortnight is presided over by one of these goddesses; the Goddess Lalitā herself is the sixteenth — the full moon, the complete circle.</div>
+    <div class="nama-tags"><span class="tag">Sixteen Nityās</span><span class="tag">Lunar Cycle</span><span class="tag">Śrī Vidyā</span></div>
+  </div>
+
+  <div class="phil-box">
+    <div class="phil-box-title">The Sixteen Nityā Devatās · Lunar Theology</div>
+    <p>
+      The sixteen Nityā-devatās represent one of the most elegant cosmological encodings in the Śrī Vidyā system. The lunar cycle has fifteen visible phases (<em>tithis</em>); each is presided over by one of the first fifteen Nityās. Lalitā Tripurasundarī herself is the sixteenth — the full-moon night and the dark-moon night simultaneously, the ever-present completion underlying all phases. This is why the Ṣoḍaśī mantra has sixteen syllables and why Bhāskararāya states that worship of the Nityās is inseparable from worship of the Goddess herself: she IS the totality of time's turning.
+    </p>
+  </div>
+
+  <div class="nama-entry" id="n392">
+    <div class="nama-number">Nāma 392</div>
+    <div class="nama-dev">श्रीकण्ठार्धशरीरिणी</div>
+    <div class="nama-roman">Śrīkaṇṭha-ardha-śarīriṇī</div>
+    <div class="nama-meaning">She who possesses half of the body of Śrīkaṇṭha (Śiva); She who is in the form of Ardhanārīśvara. The great Ardhanārīśvara image — half Śiva, half Śakti — is the visual theology of non-duality. The Goddess is not separate from Śiva; she constitutes his very body. The right half belongs to her, the left to him — or vice versa depending on tradition — in either case, wholeness requires both.</div>
+    <div class="nama-tags"><span class="tag">Ardhanārīśvara</span><span class="tag">Non-Duality</span><span class="tag">Form</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">393</td>
+      <td class="dev">प्रभावती</td>
+      <td class="meaning"><em>Prabhāvatī</em> — She who is effulgent, the possessor of supreme radiance. Her light is not reflected but self-generated — <em>svayam-jyotis</em>, self-luminous.</td>
+    </tr>
+    <tr>
+      <td class="num">394</td>
+      <td class="dev">प्रभारूपा</td>
+      <td class="meaning"><em>Prabhā-rūpā</em> — She who IS effulgence; not merely one who possesses light but light itself in its nature. The distinction from nāma 393: there she has effulgence as an attribute; here she IS effulgence as essence.</td>
+    </tr>
+    <tr>
+      <td class="num">395</td>
+      <td class="dev">प्रसिद्धा</td>
+      <td class="meaning"><em>Prasiddhā</em> — She who is celebrated, renowned throughout all worlds and all traditions. Her fame is self-established and requires no propagation.</td>
+    </tr>
+    <tr>
+      <td class="num">396</td>
+      <td class="dev">परमेश्वरी</td>
+      <td class="meaning"><em>Parameśvarī</em> — She who is the supreme sovereign. <em>Parama</em> = highest. <em>Īśvarī</em> = the sovereign feminine. This title supersedes all others: she is not merely an important deity but the ultimate ruler of all that exists.</td>
+    </tr>
+    <tr>
+      <td class="num">397</td>
+      <td class="dev">मूलप्रकृतिः</td>
+      <td class="meaning"><em>Mūla-prakṛtiḥ</em> — She who is the first cause of the entire universe; the primordial Nature underlying all manifestation. In Sāṃkhya terms, Prakṛti is the ultimate material substratum; here the Goddess IS that Mūla-prakṛti — not as inert matter but as conscious creative power.</td>
+    </tr>
+    <tr>
+      <td class="num">398</td>
+      <td class="dev">अव्यक्ता</td>
+      <td class="meaning"><em>Avyaktā</em> — She who is unmanifested. In her most primordial state, before any differentiation, the Goddess is beyond perception, beyond inference, beyond all means of knowledge — the unmanifest ground of the manifest.</td>
+    </tr>
+    <tr>
+      <td class="num">399</td>
+      <td class="dev">व्यक्ताव्यक्तस्वरूपिणी</td>
+      <td class="meaning"><em>Vyaktā-vyakta-svarūpiṇī</em> — She who is in both the manifested and the unmanifested forms simultaneously. This nāma transcends the apparent contradiction of nāma 398 and 401: she is neither exclusively manifest nor exclusively unmanifest. She is the dynamic reality that encompasses both polarities.</td>
+    </tr>
+    <tr>
+      <td class="num">400</td>
+      <td class="dev">व्यापिनी</td>
+      <td class="meaning"><em>Vyāpinī</em> — She who is all-pervading. There is no space, no time, no object, no experience in which the Goddess is not fully present. Pervasion here is not spatial extension (she is not spread thin across the universe) but ontological presence — she IS the being of every being.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 7</div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">401</td>
+      <td class="dev">विविधाकारा</td>
+      <td class="meaning"><em>Vividhākārā</em> — She who has a multitude of forms. Though ultimately formless, the Goddess assumes infinite forms across all traditions, all cultures, all epochs of cosmic time. Each form is real and complete; none exhausts her.</td>
+    </tr>
+    <tr>
+      <td class="num">402</td>
+      <td class="dev">विद्याऽविद्यास्वरूपिणी</td>
+      <td class="meaning"><em>Vidyā-avidyā-svarūpiṇī</em> — She who is the form of both knowledge and ignorance. The Goddess is not merely the source of wisdom; she is equally the power of <em>avidyā</em> (nescience) that causes the appearance of multiplicity. Both Vidyā (liberating knowledge) and Avidyā (binding nescience) are her powers — this is the Śākta resolution of the problem of evil and bondage.</td>
+    </tr>
+  </table>
+
+  <div class="ornament-line"><span>❧</span></div>
+
+  <p class="intro-prose">
+    Nāmas 403–404 are among the most poetically magnificent in the Sahasranāma — two compound epithets of extraordinary length and beauty, each employing an extended metaphor drawn from nature to describe the Goddess's relationship with her devotees and with Kāmeśvara.
+  </p>
+
+  <div class="nama-entry" id="n403">
+    <div class="nama-number">Nāma 403</div>
+    <div class="nama-dev">महाकामेशनयनकुमुदाह्लादकौमुदी</div>
+    <div class="nama-roman">Mahā-kāmeśa-nayana-kumuda-āhlāda-kaumudī</div>
+    <div class="nama-meaning">She who is the moonlight that gladdens the water-lilies that are Mahākāmeśa's eyes. Kumuda water-lilies bloom at night when the moon rises. Kāmeśvara's eyes — wide, beautiful, longing — are compared to kumuda flowers; the Goddess's radiant beauty is the moonlight that causes them to bloom open with joy. A tender image of mutual delight between the divine couple.</div>
+    <div class="nama-tags"><span class="tag">Śṛṅgāra Rasa</span><span class="tag">Divine Couple</span><span class="tag">Poetic Imagery</span></div>
+  </div>
+
+  <div class="nama-entry" id="n404">
+    <div class="nama-number">Nāma 404</div>
+    <div class="nama-dev">भक्तहार्दतमोभेदभानुमद्भानुसन्ततिः</div>
+    <div class="nama-roman">Bhakta-hārda-tamo-bheda-bhānumad-bhānu-santatih</div>
+    <div class="nama-meaning">She who is the sunbeam which dispels the darkness from the hearts of Her devotees. The darkness of <em>avidyā</em> (ignorance), doubt, and grief that accumulates in the devotee's heart is like the darkness of night; the Goddess, arising in the devotee's awareness through grace, is like the blazing sun that instantly dissolves that darkness. Not a gradual process but a sudden illumination.</div>
+    <div class="nama-tags"><span class="tag">Grace</span><span class="tag">Illumination</span><span class="tag">Avidyā</span></div>
+  </div>
+
+  <div class="page-marker">Page 8</div>
+
+  <p class="intro-prose">
+    The Śiva-series (nāmas 405–410) constitutes one of the most theologically precise passages in the Sahasranāma. Six successive epithets define exactly what Śiva is to the Goddess: her messenger, the one she is worshipped by, her own form, the one who turns devotees into Śiva, her beloved, and the supreme object of her own devotion. Read together, they present a complete theology of the Śiva-Śakti relationship.
+  </p>
+
+  <div class="nama-entry" id="n405">
+    <div class="nama-number">Nāma 405</div>
+    <div class="nama-dev">शिवदूती</div>
+    <div class="nama-roman">Śiva-dūtī</div>
+    <div class="nama-meaning">She for whom Śiva is the messenger; She who is Śiva's messenger. The compound is purposely ambiguous: the Goddess sends Śiva as her emissary (he is her <em>dūta</em>), OR Śiva sends her as his messenger. Both readings are traditional. In the first, she is sovereign; in the second, she acts on behalf of the divine couple's shared purpose.</div>
+    <div class="nama-tags"><span class="tag">Śiva-Śakti</span><span class="tag">Divine Mission</span></div>
+  </div>
+
+  <div class="nama-entry" id="n406">
+    <div class="nama-number">Nāma 406</div>
+    <div class="nama-dev">शिवाराध्या</div>
+    <div class="nama-roman">Śivārādhyā</div>
+    <div class="nama-meaning">She who is worshipped by Śiva. The supreme deity of the Śaiva tradition is himself a devotee of the Goddess. This is the fundamental Śākta reversal: not Śiva at the apex worshipped by a lesser Śakti, but Śakti at the apex with Śiva performing her worship. The Śāradā-tilaka and Bhāskararāya both affirm this emphatically.</div>
+    <div class="nama-tags"><span class="tag">Śākta Primacy</span><span class="tag">Śiva as Devotee</span></div>
+  </div>
+
+  <div class="nama-entry" id="n407">
+    <div class="nama-number">Nāma 407</div>
+    <div class="nama-dev">शिवमूर्तिः</div>
+    <div class="nama-roman">Śiva-mūrtiḥ</div>
+    <div class="nama-meaning">She whose form is Śiva himself. The Goddess is not merely similar to Śiva or related to Śiva — she IS Śiva in her ultimate nature. The distinction between Śakti and Śaktimān collapses in pure awareness: from the absolute standpoint, they are one reality, and that reality is the Goddess.</div>
+    <div class="nama-tags"><span class="tag">Non-Duality</span><span class="tag">Śiva-Śakti Identity</span></div>
+  </div>
+
+  <div class="nama-entry" id="n408">
+    <div class="nama-number">Nāma 408</div>
+    <div class="nama-dev">शिवङ्करी</div>
+    <div class="nama-roman">Śivaṅkarī</div>
+    <div class="nama-meaning">She who confers auspiciousness; She who turns Her devotees into Śiva. <em>Śivaṃ karoti iti Śivaṅkarī</em> — she who makes Śiva. This is the highest promise of the Śrī Vidyā path: the devotee who worships the Goddess with complete surrender is not merely blessed by her — they are transformed INTO Śiva, into pure consciousness itself.</div>
+    <div class="nama-tags"><span class="tag">Grace</span><span class="tag">Transformation</span><span class="tag">Liberation</span></div>
+  </div>
+
+  <div class="nama-entry" id="n409">
+    <div class="nama-number">Nāma 409</div>
+    <div class="nama-dev">शिवप्रिया</div>
+    <div class="nama-roman">Śiva-priyā</div>
+    <div class="nama-meaning">She who is the beloved of Śiva. The tender, relational dimension: she is dearest to him, the one he loves above all else. In the theology of the Lalitopākhyāna, this love is eternal and unconditional — not dependent on any external condition or situation.</div>
+    <div class="nama-tags"><span class="tag">Divine Love</span><span class="tag">Śṛṅgāra</span></div>
+  </div>
+
+  <div class="nama-entry" id="n410">
+    <div class="nama-number">Nāma 410</div>
+    <div class="nama-dev">शिवपरा</div>
+    <div class="nama-roman">Śiva-parā</div>
+    <div class="nama-meaning">She who is solely devoted to Śiva; She for whom Śiva is the supreme (<em>para</em>). The culminating nāma of the Śiva-series: after establishing her sovereignty over Śiva (nāmas 405–408), the Sahasranāma presents her complete, voluntary devotion to him. She is supreme AND devoted; both are simultaneously true. This paradox is the lived reality of the divine couple.</div>
+    <div class="nama-tags"><span class="tag">Devotion</span><span class="tag">Paradox</span><span class="tag">Śiva-Śakti</span></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION III — NĀMAS 411–430
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 10</div>
+<section id="s3" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Section III · Nāmas 411–430</div>
+    <div class="section-title-dev">शिष्टेष्टा — गायत्री</div>
+    <div class="section-title-eng">The Righteous & the Self-Luminous · Consciousness Forms · Gāyatrī</div>
+    <div class="section-subtitle">Beyond Mind & Speech · Cit-śakti · Jaḍa-śakti · The Five Sheaths</div>
+  </div>
+
+  <p class="intro-prose">
+    This section spans the transition from the relational epithets of the Śiva-series to the purely metaphysical epithets of consciousness. It includes the famous nāma 415 — <em>Mano-vācām-agocarā</em> ("beyond the reach of mind and speech") — and the important Cit-Jaḍa dyad (nāmas 416–419) that establishes the Goddess as both pure consciousness and its apparent opposite, inert matter. The section concludes with the great Vedic identification: she is the Gāyatrī mantra itself.
+  </p>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">411</td>
+      <td class="dev">शिष्टेष्टा</td>
+      <td class="meaning"><em>Śiṣṭeṣṭā</em> — She who is loved by the righteous; She who is the chosen deity of devoted practitioners; She who loves righteous people. A three-fold meaning: the righteous love her, she accepts them as her chosen worshippers, and she reciprocates with love.</td>
+    </tr>
+    <tr>
+      <td class="num">412</td>
+      <td class="dev">शिष्टपूजिता</td>
+      <td class="meaning"><em>Śiṣṭa-pūjitā</em> — She who is always worshipped by the righteous. The <em>śiṣṭas</em> — the cultivated, learned, and morally refined — naturally gravitate toward her worship. Her tradition is one of beauty, learning, and ethical refinement.</td>
+    </tr>
+    <tr>
+      <td class="num">413</td>
+      <td class="dev">अप्रमेया</td>
+      <td class="meaning"><em>Aprameyā</em> — She who is immeasurable by the senses or any instrument of knowledge. <em>Pramā</em> = valid cognition. <em>Aprameyā</em> = she who cannot be grasped by any valid means of cognition — perception, inference, or testimony — for she is the very ground of all knowing.</td>
+    </tr>
+    <tr>
+      <td class="num">414</td>
+      <td class="dev">स्वप्रकाशा</td>
+      <td class="meaning"><em>Sva-prakāśā</em> — She who is self-luminous. Her light requires no external source. All other forms of light — sun, fire, moon — borrow their luminosity from her. The famous Upaniṣadic verse "By her light all this shines" is the scriptural basis for this nāma.</td>
+    </tr>
+    <tr>
+      <td class="num">415</td>
+      <td class="dev">मनोवाचामगोचरा</td>
+      <td class="meaning"><em>Mano-vācām-agocarā</em> — She who is beyond the range of mind and speech. Possibly the most important epistemological nāma in the entire Sahasranāma. The Goddess cannot be known by the mind because she is the knowing capacity of the mind; she cannot be described by speech because she is the power of speech. She is known only by herself, through herself.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 11</div>
+
+  <div class="nama-entry" id="n416">
+    <div class="nama-number">Nāma 416</div>
+    <div class="nama-dev">चिच्छक्तिः</div>
+    <div class="nama-roman">Cic-chaktiḥ</div>
+    <div class="nama-meaning">She who is the power of consciousness; the Śakti of pure awareness. <em>Cit</em> = pure consciousness. <em>Śakti</em> = power, energy. The Goddess is not merely conscious; she IS the very energy that makes consciousness possible. Bhāskararāya: "Where there is consciousness, there is the Goddess. Not as a secondary attribute but as the constitutive reality."</div>
+    <div class="nama-tags"><span class="tag">Cit-śakti</span><span class="tag">Consciousness</span><span class="tag">Metaphysics</span></div>
+  </div>
+
+  <div class="nama-entry" id="n417">
+    <div class="nama-number">Nāma 417</div>
+    <div class="nama-dev">चेतनारूपा</div>
+    <div class="nama-roman">Cetanā-rūpā</div>
+    <div class="nama-meaning">She who is pure consciousness in form; She who has taken the form of sentience itself. Every spark of awareness in every being — from the simplest sensation to the most profound meditation — is a manifestation of this Goddess as Cetanā-rūpā.</div>
+    <div class="nama-tags"><span class="tag">Sentience</span><span class="tag">Universal Consciousness</span></div>
+  </div>
+
+  <div class="nama-entry" id="n418">
+    <div class="nama-number">Nāma 418</div>
+    <div class="nama-dev">जडशक्तिः</div>
+    <div class="nama-roman">Jaḍa-śaktiḥ</div>
+    <div class="nama-meaning">She who is the Māyā that has transformed itself as the power of creation; She who is the śakti of the inert. The counterpart to nāma 416: if Cic-chakti is the Goddess as pure consciousness, Jaḍa-śakti is the Goddess as the principle of matter, inertia, and the material world. She is equally present in both poles of existence.</div>
+    <div class="nama-tags"><span class="tag">Māyā</span><span class="tag">Jaḍa-śakti</span><span class="tag">Matter</span></div>
+  </div>
+
+  <div class="nama-entry" id="n419">
+    <div class="nama-number">Nāma 419</div>
+    <div class="nama-dev">जडात्मिका</div>
+    <div class="nama-roman">Jaḍātmikā</div>
+    <div class="nama-meaning">She who is in the form of the inanimate world. A radical statement: even the inert, the unconscious, the material — stone, water, earth, metal — are forms of the Goddess. There is no domain of existence, however apparently lifeless, that is devoid of the divine. This is the Śākta resolution of the mind-matter divide.</div>
+    <div class="nama-tags"><span class="tag">Pantheism</span><span class="tag">Non-Duality</span><span class="tag">Śākta Philosophy</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">420</td>
+      <td class="dev">गायत्री</td>
+      <td class="meaning"><em>Gāyatrī</em> — She who is the Gāyatrī mantra. The Gāyatrī — the most sacred mantra of the Vedic tradition, addressed to the solar divinity as the illuminator of the intellect — is here identified with the Goddess. She is the saving power (<em>gāyantam trāyate iti</em>) embodied in that supreme mantra.</td>
+    </tr>
+    <tr>
+      <td class="num">421</td>
+      <td class="dev">व्याहृतिः</td>
+      <td class="meaning"><em>Vyāhṛtiḥ</em> — She who is in the nature of utterance; She who presides over the power of speech. The <em>vyāhṛtis</em> — the sacred syllables Bhūḥ, Bhuvaḥ, Svaḥ chanted at the beginning of the Gāyatrī — represent the three worlds. The Goddess as <em>Vyāhṛti</em> is the cosmic speech that called these worlds into being.</td>
+    </tr>
+    <tr>
+      <td class="num">422</td>
+      <td class="dev">सन्ध्या</td>
+      <td class="meaning"><em>Sandhyā</em> — She who is in the form of twilight; the meeting-point of day and night. The <em>sandhyā</em> (twilight worship) is the most ancient Vedic rite. The Goddess as <em>Sandhyā</em> is the threshold moment of consciousness — the liminal space between waking and sleeping, between activity and rest, where awareness is most open to the divine.</td>
+    </tr>
+    <tr>
+      <td class="num">423</td>
+      <td class="dev">द्विजवृन्दनिषेविता</td>
+      <td class="meaning"><em>Dvija-vṛnda-niṣevitā</em> — She who is worshipped by the twice-born (those who have undergone sacred initiation). The Vedic tradition of <em>dvija</em> (twice-born through the sacred thread ceremony) finds its highest fulfilment in the worship of the Goddess.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 12</div>
+
+  <div class="nama-entry" id="n424">
+    <div class="nama-number">Nāma 424</div>
+    <div class="nama-dev">तत्त्वासना</div>
+    <div class="nama-roman">Tattvāsanā</div>
+    <div class="nama-meaning">She who has the <em>tattvas</em> as Her seat; She who abides in the <em>tattva</em>. The thirty-six tattvas of the Śaiva-Śākta system — from Śiva-tattva at the apex to the five elements at the base — constitute the Goddess's throne. She sits upon and encompasses the entire system of cosmic principles.</div>
+    <div class="nama-tags"><span class="tag">Thirty-Six Tattvas</span><span class="tag">Cosmology</span><span class="tag">Āsana</span></div>
+  </div>
+
+  <div class="nama-entry" id="n425">
+    <div class="nama-number">Nāmas 425–427</div>
+    <div class="nama-dev">तत् · त्वं · अयी</div>
+    <div class="nama-roman">Tat · Tvaṃ · Ayi</div>
+    <div class="nama-meaning">These three consecutive nāmas encode the great Vedāntic mahāvākya "Tat tvaṃ asi" (That thou art): <em>Tat</em> = That (the supreme Brahman, the Absolute); <em>Tvaṃ</em> = Thou (the individual self, Ātman); <em>Ayi</em> = O Mother! (the direct address). The Goddess IS the equation "That = Thou"; she is the non-dual reality in which subject and object, individual and universe, are shown to be identical. Bhāskararāya notes the boldness of this naming: the Sahasranāma itself participates in the mahāvākya's proclamation.</div>
+    <div class="nama-tags"><span class="tag">Mahāvākya</span><span class="tag">Vedānta</span><span class="tag">Non-Duality</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">428</td>
+      <td class="dev">पञ्चकोशान्तरस्थिता</td>
+      <td class="meaning"><em>Pañca-kośāntara-sthitā</em> — She who resides within the five sheaths. The Taittirīya Upaniṣad's model of five koshas — Annamaya, Prāṇamaya, Manomaya, Vijñānamaya, Ānandamaya — describe five concentric layers of the self. The Goddess dwells within them all, as the innermost witness transcending all five sheaths.</td>
+    </tr>
+    <tr>
+      <td class="num">429</td>
+      <td class="dev">निःसीममहिमा</td>
+      <td class="meaning"><em>Niḥsīma-mahimā</em> — She whose glory is limitless. <em>Sīmā</em> = boundary, limit. The Goddess's greatness has no boundary — not in space, time, depth, or dimension. All descriptions of her greatness are true and yet each falls infinitely short.</td>
+    </tr>
+    <tr>
+      <td class="num">430</td>
+      <td class="dev">नित्ययौवना</td>
+      <td class="meaning"><em>Nitya-yauvanā</em> — She who is ever youthful. The Goddess does not age because she is not subject to the passage of time; she IS time itself, and time does not age the timekeeper. Spiritually, this nāma affirms the eternal freshness of her grace — it never grows stale or diminished.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION IV — NĀMAS 431–460
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 13</div>
+<section id="s4" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Section IV · Nāmas 431–470</div>
+    <div class="section-title-dev">मदशालिनी — वयोऽवस्थाविवर्जिता</div>
+    <div class="section-title-eng">The Luminous Body · The Intoxicated Goddess · Epithets of Beauty</div>
+    <div class="section-subtitle">Śṛṅgāra in Form · Sandalwood & Champaka · The Kula Sequence · Divine Qualities</div>
+  </div>
+
+  <p class="intro-prose">
+    This section contains some of the most visually and devotionally vivid nāmas of the entire Sahasranāma — the extraordinary series (431–433) describing the Goddess in a state of rapturous, divine intoxication, with rolling reddened eyes and rosy cheeks; followed by epithets of form, fragrance, and beauty. The section then moves through the important Kula-sequence (nāmas 438–441) establishing the Goddess's sovereignty over the Kaula tradition, and concludes with the long sequence of divine qualities (443–450) and the famous trifocal description (<em>Tri-nayanā</em>, nāma 453).
+  </p>
+
+  <div class="nama-entry" id="n431">
+    <div class="nama-number">Nāma 431</div>
+    <div class="nama-dev">मदशालिनी</div>
+    <div class="nama-roman">Mada-śālinī</div>
+    <div class="nama-meaning">She who is shining in a state of divine inebriation or intoxication. <em>Mada</em> in this context is not ordinary drunkenness but the divine rapture (<em>divya-mada</em>) of supreme bliss — the Goddess's intoxication with her own nature, her own delight in being. The <em>Saubhāgya Ratnākara</em> describes this state as the spontaneous overflow of ānanda that cannot be contained.</div>
+    <div class="nama-tags"><span class="tag">Divine Rapture</span><span class="tag">Ānanda</span><span class="tag">Form</span></div>
+  </div>
+
+  <div class="nama-entry" id="n432">
+    <div class="nama-number">Nāma 432</div>
+    <div class="nama-dev">मदघूर्णितरक्ताक्षी</div>
+    <div class="nama-roman">Mada-ghūrṇita-raktākṣī</div>
+    <div class="nama-meaning">She whose eyes are reddened and rolling with rapture, turned inward. <em>Ghūrṇita</em> = rolling, swirling. The reddening of the Goddess's eyes is not from wine but from the intensity of inner bliss; the rolling of her eyes indicates consciousness turning back upon itself in the deepest samādhi. A profound visual theology: the introverted gaze of supreme awareness.</div>
+    <div class="nama-tags"><span class="tag">Samādhi</span><span class="tag">Inner Vision</span><span class="tag">Iconography</span></div>
+  </div>
+
+  <div class="nama-entry" id="n433">
+    <div class="nama-number">Nāma 433</div>
+    <div class="nama-dev">मदपाटलगण्डभूः</div>
+    <div class="nama-roman">Mada-pāṭala-gaṇḍa-bhūḥ</div>
+    <div class="nama-meaning">She whose cheeks are rosy with divine rapture. <em>Pāṭala</em> = pale red, rosy. The flushing of the Goddess's cheeks in the state of divine intoxication creates an image of supreme beauty and warmth — the visible sign of an inner state too blissful to conceal. This nāma is a favourite of devotional poetry across the Śrī Vidyā tradition.</div>
+    <div class="nama-tags"><span class="tag">Beauty</span><span class="tag">Devotional Imagery</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">434</td>
+      <td class="dev">चन्दनद्रवदिग्धाङ्गी</td>
+      <td class="meaning"><em>Candana-drava-digdhāṅgī</em> — She whose body is smeared with liquid sandalwood paste. Sandalwood (<em>candana</em>) cools, purifies, and perfumes. The Goddess's body anointed with sandalwood presents an image of supreme fragrance and cooling grace — she who soothes the fever of saṃsāra.</td>
+    </tr>
+    <tr>
+      <td class="num">435</td>
+      <td class="dev">चाम्पेयकुसुमप्रिया</td>
+      <td class="meaning"><em>Cāmpeya-kusuma-priyā</em> — She who is especially fond of champaka flowers. The champaka (Michelia champaca) is prized for its extraordinary fragrance and golden-white beauty. The Goddess's love of champaka flowers reflects a particular aesthetic sensibility — she favours what is both beautiful and intensely fragrant.</td>
+    </tr>
+    <tr>
+      <td class="num">436</td>
+      <td class="dev">कुशला</td>
+      <td class="meaning"><em>Kuśalā</em> — She who is skillful; she who is expert in all things. The Goddess's <em>kuśalatā</em> encompasses both craft and wisdom: she is supremely capable in every domain of activity, from the creation of worlds to the liberation of a single devotee's heart.</td>
+    </tr>
+    <tr>
+      <td class="num">437</td>
+      <td class="dev">कोमलाकारा</td>
+      <td class="meaning"><em>Komalākārā</em> — She who is graceful and tender in form. <em>Komala</em> = soft, delicate, beautiful. The Goddess's form is not merely powerful but gracefully, tenderly beautiful — the softness of her form is itself a teaching about the nature of divine power, which requires no hardness or aggression.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 14</div>
+
+  <div class="nama-entry" id="n438">
+    <div class="nama-number">Nāma 438</div>
+    <div class="nama-dev">कुरुकुल्ला</div>
+    <div class="nama-roman">Kurukullā</div>
+    <div class="nama-meaning">She who is the Śakti Kurukullā, residing in the Kuruvinda ruby. Kurukullā is one of the most fascinating deities of the Śākta-Buddhist interface — a red goddess of enchantment, holding a flower bow and arrows. Her presence in the Sahasranāma signals the catholicity of Lalitā's sovereignty across all Tantric streams.</div>
+    <div class="nama-tags"><span class="tag">Kurukullā</span><span class="tag">Enchantment</span><span class="tag">Tantric</span></div>
+  </div>
+
+  <div class="nama-entry" id="n439">
+    <div class="nama-number">Nāma 439</div>
+    <div class="nama-dev">कुलेश्वरी</div>
+    <div class="nama-roman">Kuleśvarī</div>
+    <div class="nama-meaning">She who is the ruler of Kula — the triad of knower, the known, and knowledge (<em>jñātṛ-jñāna-jñeya</em>). <em>Kula</em> in the Kaula tradition refers to the entire body of Śakti; Kuleśvarī is the supreme sovereign of the entire Śākta cosmos.</div>
+    <div class="nama-tags"><span class="tag">Kaula Tradition</span><span class="tag">Triad</span><span class="tag">Sovereignty</span></div>
+  </div>
+
+  <div class="nama-entry" id="n440">
+    <div class="nama-number">Nāma 440</div>
+    <div class="nama-dev">कुलकुण्डालया</div>
+    <div class="nama-roman">Kula-kuṇḍālayā</div>
+    <div class="nama-meaning">She who abides in the Kulakuṇḍa — the bindu at the centre of the pericarp in the Mūlādhāra cakra. This is the resting place of the Kuṇḍalinī Śakti before her awakening: the seed point of cosmic energy coiled in potential. The Goddess dwelling here is consciousness at the threshold of its first movement toward manifestation.</div>
+    <div class="nama-tags"><span class="tag">Kuṇḍalinī</span><span class="tag">Mūlādhāra</span><span class="tag">Bindu</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">441</td>
+      <td class="dev">कौलमार्गतत्परसेविता</td>
+      <td class="meaning"><em>Kaula-mārga-tatpara-sevitā</em> — She who is worshipped by those devoted to the Kaula tradition. The Kaula path — the path of sacred immanence, of finding the divine in all experience — reaches its fulfilment in worship of the Goddess. She is the Kaula path's ultimate reality and its supreme practitioner.</td>
+    </tr>
+    <tr>
+      <td class="num">442</td>
+      <td class="dev">कुमारगणनाथाम्बा</td>
+      <td class="meaning"><em>Kumāra-gaṇanātha-ambā</em> — She who is the mother of Kumāra (Subrahmaṇya / Skanda) and Gaṇanātha (Gaṇapati / Vināyaka). The cosmic mother gives birth to the two great divine sons who respectively govern wisdom-battle and obstacle-removal — the two primary necessities of the spiritual path.</td>
+    </tr>
+  </table>
+
+  <div class="ornament-line"><span>❧</span></div>
+
+  <p class="intro-prose">
+    Nāmas 443–450 present the "virtue-series" — eight consecutive nāmas naming the Goddess as divine qualities: contentment, nourishment, intelligence, fortitude, tranquility, auspiciousness, effulgence, and delight. These are not merely qualities she possesses; she IS each of these, in their essential, unconditioned form.
+  </p>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">443</td>
+      <td class="dev">तुष्टिः</td>
+      <td class="meaning"><em>Tuṣṭiḥ</em> — She who is ever content; contentment itself in its absolute form.</td>
+    </tr>
+    <tr>
+      <td class="num">444</td>
+      <td class="dev">पुष्टिः</td>
+      <td class="meaning"><em>Puṣṭiḥ</em> — She who is the power of nourishment; the divine force that sustains all growth.</td>
+    </tr>
+    <tr>
+      <td class="num">445</td>
+      <td class="dev">मतिः</td>
+      <td class="meaning"><em>Matiḥ</em> — She who manifests as intelligence; the illuminating power of the intellect.</td>
+    </tr>
+    <tr>
+      <td class="num">446</td>
+      <td class="dev">धृतिः</td>
+      <td class="meaning"><em>Dhṛtiḥ</em> — She who is fortitude; the unwavering steadiness of spirit in all circumstances.</td>
+    </tr>
+    <tr>
+      <td class="num">447</td>
+      <td class="dev">शान्तिः</td>
+      <td class="meaning"><em>Śāntiḥ</em> — She who is tranquility itself; not the tranquility of exhaustion but the peace of the ground of being.</td>
+    </tr>
+    <tr>
+      <td class="num">448</td>
+      <td class="dev">स्वस्तिमती</td>
+      <td class="meaning"><em>Svastimatī</em> — She who is the ultimate truth; she who possesses the svasti (auspiciousness, well-being).</td>
+    </tr>
+    <tr>
+      <td class="num">449</td>
+      <td class="dev">कान्तिः</td>
+      <td class="meaning"><em>Kāntiḥ</em> — She who is effulgence; the radiant beauty that draws all toward the divine.</td>
+    </tr>
+    <tr>
+      <td class="num">450</td>
+      <td class="dev">नन्दिनी</td>
+      <td class="meaning"><em>Nandinī</em> — She who gives delight; the inexhaustible source of joy in all its forms.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 15</div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">451</td>
+      <td class="dev">विघ्ननाशिनी</td>
+      <td class="meaning"><em>Vighna-nāśinī</em> — She who destroys all obstacles. While Gaṇeśa is her son and the primary obstacle-remover in devotional practice, the Goddess herself is the supreme remover — for all obstacles ultimately dissolve in the light of her awareness.</td>
+    </tr>
+    <tr>
+      <td class="num">452</td>
+      <td class="dev">तेजोवती</td>
+      <td class="meaning"><em>Tejasvatī</em> — She who is effulgent; possessed of supreme <em>tejas</em> (radiant energy, brilliance).</td>
+    </tr>
+    <tr>
+      <td class="num">453</td>
+      <td class="dev">त्रिनयना</td>
+      <td class="meaning"><em>Tri-nayanā</em> — She who has three eyes: the sun (right eye), the moon (left eye), and fire (the third eye between the brows). The Goddess's three eyes perceive all three times (past, present, future), all three worlds, and all three states of consciousness. The third eye — the eye of wisdom — is her most distinctive iconographic feature.</td>
+    </tr>
+    <tr>
+      <td class="num">454</td>
+      <td class="dev">लोलाक्षी-कामरूपिणी</td>
+      <td class="meaning"><em>Lolākṣī-Kāmarūpiṇī</em> — She who has rolling eyes; She who is in the form of love in women. This dual nāma presents the Goddess in her most intimate feminine aspect: the rolling, playful glance of a beautiful woman is itself a form of the divine Kāma-śakti.</td>
+    </tr>
+    <tr>
+      <td class="num">455</td>
+      <td class="dev">मालिनी</td>
+      <td class="meaning"><em>Mālinī</em> — She who is wearing garlands. The Goddess adorned with flower garlands presents the image of festive, auspicious beauty — the divine at play in its own celebration.</td>
+    </tr>
+    <tr>
+      <td class="num">456</td>
+      <td class="dev">हंसिनी</td>
+      <td class="meaning"><em>Haṃsinī</em> — She who is inseparable from Haṃsas — the great yogins who have reached the highest spiritual attainments. <em>Haṃsa</em> is also the great mantra of the breath: "So'ham" reversed is "haṃsa" — every inbreath and outbreath chants the Goddess's name.</td>
+    </tr>
+    <tr>
+      <td class="num">457</td>
+      <td class="dev">माता</td>
+      <td class="meaning"><em>Mātā</em> — She who is the mother of the universe. The simplest and most comprehensive nāma: she is simply and completely Mother — not a metaphor but the literal truth that all existence emerges from, is sustained by, and returns to her.</td>
+    </tr>
+    <tr>
+      <td class="num">458</td>
+      <td class="dev">मलयाचलवासिनी</td>
+      <td class="meaning"><em>Malaya-cala-vāsinī</em> — She who resides in the Malaya mountain (in southern India, source of the finest sandalwood). The Malaya mountain breathes sandalwood fragrance through its southern breezes; the Goddess's presence there makes the entire geography sacred.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 16</div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">459–465</td>
+      <td class="dev">सुमुखी · नलिनी · सुभ्रूः · शोभना · सुरनायिका · कालकण्ठी · कान्तिमती</td>
+      <td class="meaning">The beauty-series: <em>Sumukhī</em> (beautiful face), <em>Nalinī</em> (body soft as lotus petals), <em>Subhrūḥ</em> (beautiful eyebrows), <em>Śobhanā</em> (always radiant), <em>Sura-nāyikā</em> (leader of the gods), <em>Kālakaṇṭhī</em> (wife of Śiva, whose throat is dark), <em>Kāntimatī</em> (possessed of supreme radiance). This seven-nāma sequence presents the complete iconic beauty of the Goddess from face to bearing.</td>
+    </tr>
+    <tr>
+      <td class="num">466</td>
+      <td class="dev">क्षोभिणी</td>
+      <td class="meaning"><em>Kṣobhiṇī</em> — She who creates upheaval in the mind. The Goddess disturbs settled, comfortable, spiritually complacent states of mind — her grace does not merely confirm what we know but dissolves what we think we know, opening the space for genuine transformation.</td>
+    </tr>
+    <tr>
+      <td class="num">467</td>
+      <td class="dev">सूक्ष्मरूपिणी</td>
+      <td class="meaning"><em>Sūkṣma-rūpiṇī</em> — She who has a form too subtle to be perceived by the sense organs. The paradox: though the Sahasranāma has been describing her visible form in loving detail, her ultimate form is subtler than the subtlest — beyond perception, conceivable only by a consciousness purified through worship and meditation.</td>
+    </tr>
+    <tr>
+      <td class="num">468</td>
+      <td class="dev">वज्रेश्वरी</td>
+      <td class="meaning"><em>Vajreśvarī</em> — She who is Vajreśvarī, the sixth daily (Nityā) deity. <em>Vajra</em> = diamond/thunderbolt, both indestructible and luminous. Vajreśvarī's power is the indestructibility of consciousness itself.</td>
+    </tr>
+    <tr>
+      <td class="num">469</td>
+      <td class="dev">वामदेवी</td>
+      <td class="meaning"><em>Vāmadevī</em> — She who is the wife of Vāmadeva (one of the five faces of Śiva). <em>Vāma</em> also means beautiful, pleasing — she is the beautiful goddess, the most pleasing of all forms.</td>
+    </tr>
+    <tr>
+      <td class="num">470</td>
+      <td class="dev">वयोऽवस्थाविवर्जिता</td>
+      <td class="meaning"><em>Vayo-avasthā-vivarjitā</em> — She who is exempt from changes due to age or time. The divine form does not undergo the transformations of childhood, youth, and old age that mark embodied existence. She is eternally the same — ever fresh, ever present, ever complete.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION V — NĀMAS 471–503 (CHAKRAS I–III)
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 17</div>
+<section id="s5" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Section V · Nāmas 471–503</div>
+    <div class="section-title-dev">सिद्धेश्वरी — लाकिन्यम्बास्वरूपिणी</div>
+    <div class="section-title-eng">The Siddha-series · Viśuddhi · Anāhata · Maṇipūra Cakras</div>
+    <div class="section-subtitle">Yoginī Deities · Colours, Faces & Weapons · Food Offerings · Presiding Śaktis</div>
+  </div>
+
+  <p class="intro-prose">
+    Beginning with nāma 471, the Sahasranāma enters the great Cakra-sequence — one of its most encyclopaedic and technically precise passages, presenting the Goddess's presence at each of the principal cakras (energy centres) of the yogic body, along with the presiding Yoginī, her form, colour, number of faces, weapons, food-offerings, and the bodily substance she governs. This section covers the Viśuddhi (throat), Anāhata (heart), and Maṇipūra (navel) cakras.
+  </p>
+
+  <div class="nama-entry" id="n471">
+    <div class="nama-number">Nāmas 471–474 · Siddha-series</div>
+    <div class="nama-dev">सिद्धेश्वरी · सिद्धविद्या · सिद्धमाता · यशस्विनी</div>
+    <div class="nama-roman">Siddheśvarī · Siddha-vidyā · Siddha-mātā · Yaśasvinī</div>
+    <div class="nama-meaning">Four successive epithets of the Siddha-realm: She is the goddess worshipped by spiritual adepts (<em>Siddheśvarī</em>); she is the fifteen-syllabled Siddha-vidyā mantra itself (<em>Siddha-vidyā</em>); she is the mother of the Siddhas, those perfected beings who have attained supernatural powers through yogic practice (<em>Siddha-mātā</em>); and she is renowned throughout all realms for her incomparable excellence (<em>Yaśasvinī</em>).</div>
+    <div class="nama-tags"><span class="tag">Siddha Tradition</span><span class="tag">Mantra</span><span class="tag">Renown</span></div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Cakra I · Viśuddhi · Nāmas 475–484</div>
+    <div class="chapter-title-dev">विशुद्धिचक्र</div>
+    <div class="chapter-title-eng">The Viśuddhi Cakra · The Throat Centre · The Ḍākinī Śakti</div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 475</div>
+      <div class="verse-text"><strong>विशुद्धिचक्रनिलया</strong> — <em>Viśuddhi-cakra-nilayā</em> — She who resides in the Viśuddhi cakra. The Viśuddhi ("purification") cakra is located at the throat. It governs all forms of communication and creative expression; its element is ether (<em>ākāśa</em>); its mantra is <em>haṃ</em>. It is the centre where the gross elements are purified back into their subtle origins.</div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 476</div>
+      <div class="verse-text"><strong>आरक्तवर्णा</strong> — <em>Ārakta-varṇā</em> — She who is of slightly red (rosy) complexion at the Viśuddhi level. The colour of the Viśuddhi cakra is commonly described as smoky purple or deep blue, but here the Goddess's specific form at this level has a rosy hue.</div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 477</div>
+      <div class="verse-text"><strong>त्रिलोचना</strong> — <em>Tri-locanā</em> — She who has three eyes at the Viśuddhi level.</div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 478–479</div>
+      <div class="verse-text"><strong>खट्वाङ्गादिप्रहरणा · वदनैकसमन्विता</strong> — She armed with a club and other weapons; She who possesses one face at this level.</div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 480–484</div>
+      <div class="verse-text"><strong>पायसान्नप्रिया · त्वक्स्था · पशुलोकभयङ्करी · अमृतादिमहाशक्तिसंवृता · डाकिनीश्वरी</strong> — She fond of sweet rice; deity of the skin; She who fills mortal beings with fear; surrounded by Amṛtā and other Śakti deities; She who is the Ḍākinī deity — the presiding Yoginī of the Viśuddhi cakra, whose worship yields mastery over this centre.</div>
+    </div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Cakra II · Anāhata · Nāmas 485–494</div>
+    <div class="chapter-title-dev">अनाहतचक्र</div>
+    <div class="chapter-title-eng">The Anāhata Cakra · The Heart Centre · The Rākinī Śakti</div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 485</div>
+      <div class="verse-text"><strong>अनाहताब्जनिलया</strong> — <em>Anāhata-abja-nilayā</em> — She who resides in the Anāhata lotus in the heart. The Anāhata ("unstruck") cakra is the seat of the unstruck sound — <em>anāhata-nāda</em> — the cosmic sound that arises without any two things striking together. This is the level of the divine pulse of consciousness, heard in deep meditation.</div>
+    </div>
+
+    <table class="nama-table">
+      <tr>
+        <td class="num">486</td>
+        <td class="dev">श्यामाभा</td>
+        <td class="meaning"><em>Śyāmābhā</em> — She who is dark in complexion at the Anāhata level; the deep blue-black of infinite space.</td>
+      </tr>
+      <tr>
+        <td class="num">487</td>
+        <td class="dev">वदनद्वया</td>
+        <td class="meaning"><em>Vadana-dvayā</em> — She who has two faces at the Anāhata level, indicating the cakra's dual aspect of inner and outer, giving and receiving.</td>
+      </tr>
+      <tr>
+        <td class="num">488</td>
+        <td class="dev">दंष्ट्रोज्ज्वला</td>
+        <td class="meaning"><em>Daṃṣṭrojjvalā</em> — She who has shining tusks at this level — a fierce, protective aspect of the Goddess guarding the heart's most sacred space.</td>
+      </tr>
+      <tr>
+        <td class="num">489</td>
+        <td class="dev">अक्षमालादिधरा</td>
+        <td class="meaning"><em>Akṣa-mālā-ādi-dharā</em> — She wearing garlands of Rudrākṣa beads and other adornments.</td>
+      </tr>
+      <tr>
+        <td class="num">490</td>
+        <td class="dev">रुधिरसंस्थिता</td>
+        <td class="meaning"><em>Rudhira-saṃsthitā</em> — She who presides over the blood in the bodies of living beings at this level — the Anāhata governs the element of air (<em>vāyu</em>) and is connected with circulation and the life-breath.</td>
+      </tr>
+      <tr>
+        <td class="num">491</td>
+        <td class="dev">कालरात्र्यादिशक्त्यौघवृता</td>
+        <td class="meaning"><em>Kālarātri-ādi-śakti-ogha-vṛtā</em> — She surrounded by Kālarātri and other Śaktis in vast numbers.</td>
+      </tr>
+      <tr>
+        <td class="num">492</td>
+        <td class="dev">स्निग्धौदनप्रिया</td>
+        <td class="meaning"><em>Snigdha-odana-priyā</em> — She fond of food offerings containing ghee, oil and other fatty substances — reflecting the nourishing, lubricating quality associated with the heart cakra.</td>
+      </tr>
+      <tr>
+        <td class="num">493–494</td>
+        <td class="dev">महावीरेन्द्रवरदा · राकिण्यम्बास्वरूपिणी</td>
+        <td class="meaning">She who bestows boons on great warriors; She who is in the form of the Rākinī deity — the presiding Yoginī of the Anāhata cakra. Rākinī is dark blue, has two faces, and holds the drum, skull-cup, shield and trident.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-marker">Page 19</div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Cakra III · Maṇipūra · Nāmas 495–503</div>
+    <div class="chapter-title-dev">मणिपूरचक्र</div>
+    <div class="chapter-title-eng">The Maṇipūra Cakra · The Navel Centre · The Lākinī Śakti</div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 495</div>
+      <div class="verse-text"><strong>मणिपूराब्जनिलया</strong> — <em>Maṇipūra-abja-nilayā</em> — She who resides in the ten-petalled lotus of the Maṇipūra cakra. <em>Maṇipūra</em> = "city of gems" — this is the cakra of fire, will, and transformation, located at the navel. Its element is fire (<em>agni</em>); it governs digestion and metabolic transformation on all levels.</div>
+    </div>
+
+    <table class="nama-table">
+      <tr>
+        <td class="num">496</td>
+        <td class="dev">वदनत्रयसंयुता</td>
+        <td class="meaning"><em>Vadana-traya-saṃyutā</em> — She who has three faces at the Maṇipūra level, reflecting the fire-triangle (<em>vahni-trikoṇa</em>) central to this cakra's geometry.</td>
+      </tr>
+      <tr>
+        <td class="num">497</td>
+        <td class="dev">वज्रादिकायुधोपेता</td>
+        <td class="meaning"><em>Vajra-ādi-āyudha-upetā</em> — She who holds the vajra (lightning bolt) and other weapons at this level — the fierce energy of fire manifesting as the weapons of transformation.</td>
+      </tr>
+      <tr>
+        <td class="num">498</td>
+        <td class="dev">डामर्यादिभिरावृता</td>
+        <td class="meaning"><em>Ḍāmarī-ādi-bhir-āvṛtā</em> — She surrounded by Ḍāmarī and other attending deities of the Maṇipūra cakra.</td>
+      </tr>
+      <tr>
+        <td class="num">499</td>
+        <td class="dev">रक्तवर्णा</td>
+        <td class="meaning"><em>Rakta-varṇā</em> — She who is red in complexion at the Maṇipūra level — the deep red of fire and of the ten-petalled lotus.</td>
+      </tr>
+      <tr>
+        <td class="num">500</td>
+        <td class="dev">मांसनिष्ठा</td>
+        <td class="meaning"><em>Māṃsa-niṣṭhā</em> — She who presides over the flesh in living beings — the fire-cakra governs the flesh and its metabolic transformation.</td>
+      </tr>
+      <tr>
+        <td class="num">501–503</td>
+        <td class="dev">गुडान्नप्रीतमानसा · समस्तभक्तसुखदा · लाकिन्यम्बास्वरूपिणी</td>
+        <td class="meaning">She who is particularly fond of sweet rice made with raw sugar; She who confers happiness on all Her devotees — an important general epithet within the specific cakra sequence; She who is in the form of the Lākinī Yoginī, presiding deity of the Maṇipūra cakra.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION VI — NĀMAS 504–534 (CHAKRAS IV–VII)
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 20</div>
+<section id="s6" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Section VI · Nāmas 504–534</div>
+    <div class="section-title-dev">स्वाधिष्ठान — सहस्रदल</div>
+    <div class="section-title-eng">Svādhiṣṭhāna · Mūlādhāra · Ājñā · Sahasrāra</div>
+    <div class="section-subtitle">The Lower Cakras · The Kākinī · The Thousand-Petalled Lotus</div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Cakra IV · Svādhiṣṭhāna · Nāmas 504–513</div>
+    <div class="chapter-title-dev">स्वाधिष्ठानचक्र</div>
+    <div class="chapter-title-eng">The Svādhiṣṭhāna Cakra · The Sacral Centre · The Kākinī Śakti</div>
+
+    <table class="nama-table">
+      <tr>
+        <td class="num">504</td>
+        <td class="dev">स्वाधिष्ठानाम्बुजगता</td>
+        <td class="meaning"><em>Svādhiṣṭhāna-ambuja-gatā</em> — She who resides in the six-petalled lotus of the Svādhiṣṭhāna cakra. <em>Svādhiṣṭhāna</em> = "one's own abode." Located above the Mūlādhāra, its element is water; it governs desire, creativity, and the primal waters of existence.</td>
+      </tr>
+      <tr>
+        <td class="num">505</td>
+        <td class="dev">चतुर्वक्त्रमनोहरा</td>
+        <td class="meaning"><em>Catur-vaktra-manoharā</em> — She who has four beautiful faces at the Svādhiṣṭhāna level.</td>
+      </tr>
+      <tr>
+        <td class="num">506</td>
+        <td class="dev">शूलाद्यायुधसम्पन्ना</td>
+        <td class="meaning"><em>Śūla-ādi-āyudha-sampannā</em> — She possessing the trident and other weapons — noose, skull, and the gesture of fearlessness — at this cakra level.</td>
+      </tr>
+      <tr>
+        <td class="num">507</td>
+        <td class="dev">पीतवर्णा</td>
+        <td class="meaning"><em>Pīta-varṇā</em> — She who is yellow in colour at the Svādhiṣṭhāna level — the golden yellow associated with the water element.</td>
+      </tr>
+      <tr>
+        <td class="num">508</td>
+        <td class="dev">अतिगर्विता</td>
+        <td class="meaning"><em>Ati-garvitā</em> — She who is very proud at this level — not vanity but the self-sufficient certainty of one who knows her own nature completely.</td>
+      </tr>
+      <tr>
+        <td class="num">509</td>
+        <td class="dev">मेदोनिष्ठा</td>
+        <td class="meaning"><em>Medo-niṣṭhā</em> — She who resides in the fat in living beings — the water cakra governs the body's fluid and fatty tissues.</td>
+      </tr>
+      <tr>
+        <td class="num">510–513</td>
+        <td class="dev">मधुप्रीता · बन्धिन्यादिसमन्विता · दध्यन्नासक्तहृदया · काकिनीरूपधारिणी</td>
+        <td class="meaning">She fond of honey; accompanied by Bandhinī and other Śaktis; particularly fond of curd-offerings; She who is in the form of the Kākinī Yoginī — the presiding deity of the Svādhiṣṭhāna, yellow-complexioned with four faces.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-marker">Page 21</div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Cakra V · Mūlādhāra · Nāmas 514–520</div>
+    <div class="chapter-title-dev">मूलाधारचक्र</div>
+    <div class="chapter-title-eng">The Mūlādhāra Cakra · The Root Centre · The Sākinī Śakti</div>
+
+    <table class="nama-table">
+      <tr>
+        <td class="num">514</td>
+        <td class="dev">मूलाधाराम्बुजारूढा</td>
+        <td class="meaning"><em>Mūlādhāra-ambuja-ārūḍhā</em> — She who is seated in the lotus of the Mūlādhāra cakra. The root cakra — seat of the earth element, the Kuṇḍalinī Śakti, and the primordial energy — is the Goddess's most fundamental residence in the human body.</td>
+      </tr>
+      <tr>
+        <td class="num">515</td>
+        <td class="dev">पञ्चवक्त्रा</td>
+        <td class="meaning"><em>Pañca-vaktrā</em> — She who has five faces at the Mūlādhāra level — corresponding to the five elements that originate from this cakra.</td>
+      </tr>
+      <tr>
+        <td class="num">516</td>
+        <td class="dev">अस्थिसंस्थिता</td>
+        <td class="meaning"><em>Asthi-saṃsthitā</em> — She who resides in the bones — the earth cakra governs the body's skeletal structure, the densest physical matter.</td>
+      </tr>
+      <tr>
+        <td class="num">517</td>
+        <td class="dev">अङ्कुशादिप्रहरणा</td>
+        <td class="meaning"><em>Aṅkuśa-ādi-praharaṇā</em> — She who holds the goad and other weapons at this level.</td>
+      </tr>
+      <tr>
+        <td class="num">518–520</td>
+        <td class="dev">वरदादिनिषेविता · मुद्गौदनासक्तचित्ता · साकिन्यम्बास्वरूपिणी</td>
+        <td class="meaning">Attended by Varadā and other Śaktis; particularly fond of mudga-lentil offerings; She who is in the form of the Sākinī Yoginī — the presiding deity of the Mūlādhāra, who governs the element of earth and the bones.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Cakra VI · Ājñā · Nāmas 521–527</div>
+    <div class="chapter-title-dev">आज्ञाचक्र</div>
+    <div class="chapter-title-eng">The Ājñā Cakra · The Command Centre · The Hākinī Śakti</div>
+
+    <table class="nama-table">
+      <tr>
+        <td class="num">521</td>
+        <td class="dev">आज्ञाचक्राब्जनिलया</td>
+        <td class="meaning"><em>Ājñā-cakra-abja-nilayā</em> — She who resides in the two-petalled lotus of the Ājñā cakra. The Ājñā ("command" or "authority") cakra is located between the eyebrows — the seat of intuition, inner vision, and the guru's command. Its two petals represent the two channels of Iḍā and Piṅgalā meeting at the third eye.</td>
+      </tr>
+      <tr>
+        <td class="num">522</td>
+        <td class="dev">शुक्लवर्णा</td>
+        <td class="meaning"><em>Śukla-varṇā</em> — She who is white at the Ājñā level — the purity and luminosity of pure awareness beyond all duality.</td>
+      </tr>
+      <tr>
+        <td class="num">523</td>
+        <td class="dev">षडानना</td>
+        <td class="meaning"><em>Ṣaḍ-ānanā</em> — She who has six faces at the Ājñā level — though this cakra has only two petals, the deity's six faces suggest omnidirectional perception, the eye of wisdom seeing in all directions.</td>
+      </tr>
+      <tr>
+        <td class="num">524</td>
+        <td class="dev">मज्जासंस्था</td>
+        <td class="meaning"><em>Majjā-saṃsthā</em> — She who is the presiding deity of the bone marrow — the subtlest bodily substance corresponding to the subtlest cakra below the crown.</td>
+      </tr>
+      <tr>
+        <td class="num">525–527</td>
+        <td class="dev">हंसवतीमुख्यशक्तिसमन्विता · हरिद्रान्नैकरसिका · हाकिनीरूपधारिणी</td>
+        <td class="meaning">Accompanied by Haṃsavatī and Kṣamāvatī Śaktis in the two petals; particularly fond of turmeric-seasoned food; She who is in the form of the Hākinī Devī — the presiding deity of the Ājñā cakra, white-complexioned with six faces, holding the drum, skull, rosary, and showing the gestures of knowledge and fearlessness.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="page-marker">Page 22</div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Cakra VII · Sahasrāra · Nāmas 528–534</div>
+    <div class="chapter-title-dev">सहस्रदलपद्म</div>
+    <div class="chapter-title-eng">The Sahasrāra · The Thousand-Petalled Lotus · The Yākinī Śakti</div>
+
+    <div class="verse">
+      <div class="verse-num">Nāma 528</div>
+      <div class="verse-text"><strong>सहस्रदलपद्मस्था</strong> — <em>Sahasra-dala-padma-sthā</em> — She who resides in the thousand-petalled lotus (Sahasrāra). The Sahasrāra is the crown of the yogic body — the summit of consciousness, the seat of Śiva-consciousness, the place where the awakened Kuṇḍalinī finally merges with pure awareness. This is the Goddess's ultimate yogic residence: the place of the great union (<em>mahā-yoga</em>), where Śiva and Śakti are indistinguishable.</div>
+    </div>
+
+    <table class="nama-table">
+      <tr>
+        <td class="num">529</td>
+        <td class="dev">सर्ववर्णोपशोभिता</td>
+        <td class="meaning"><em>Sarva-varṇa-upaśobhitā</em> — She who is radiant in all colours at the Sahasrāra — the thousand petals display all the colours of the spectrum, representing the complete range of conscious experience unified in a single awareness.</td>
+      </tr>
+      <tr>
+        <td class="num">530</td>
+        <td class="dev">सर्वायुधधरा</td>
+        <td class="meaning"><em>Sarva-āyudha-dharā</em> — She who holds all known weapons at this supreme level — at the Sahasrāra, all the powers of all the lower cakras are unified and transcended.</td>
+      </tr>
+      <tr>
+        <td class="num">531</td>
+        <td class="dev">शुक्लसंस्थिता</td>
+        <td class="meaning"><em>Śukla-saṃsthitā</em> — She who resides in the semen (or pure creative essence) — the subtle creative substance associated with the crown cakra in yogic physiology.</td>
+      </tr>
+      <tr>
+        <td class="num">532</td>
+        <td class="dev">सर्वतोमुखी</td>
+        <td class="meaning"><em>Sarvato-mukhī</em> — She who has faces turned in all directions at the Sahasrāra — the complete omnidirectionality of pure awareness, which has no front or back, no preferred direction.</td>
+      </tr>
+      <tr>
+        <td class="num">533–534</td>
+        <td class="dev">सर्वौदनप्रीतचित्ता · याकिन्यम्बास्वरूपिणी</td>
+        <td class="meaning">She whose mind is pleased by all food offerings — the Sahasrāra deity accepts all without discrimination; She who is in the form of the Yākinī Yoginī, the presiding deity of the Sahasrāra cakra.</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION VII — NĀMAS 535–574
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 23</div>
+<section id="s7" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Section VII · Nāmas 535–574</div>
+    <div class="section-title-dev">स्वाहा — प्रज्ञानघनरूपिणी</div>
+    <div class="section-title-eng">Vedic Invocations · Knowledge & Liberation · The Closing Sequence</div>
+    <div class="section-subtitle">Svāhā · Svadhā · Vedas · Smṛti · Gāyatrī · Kātyāyanī · Final Epithets</div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">535</td>
+      <td class="dev">स्वाहा</td>
+      <td class="meaning"><em>Svāhā</em> — She who is the object of the invocation "Svāhā" chanted at the end of mantras when offering oblations into the sacrificial fire. The fire sacrifice is complete only when the Goddess, as Svāhā, receives the offering. She is both the fire and the deity who accepts the oblation.</td>
+    </tr>
+    <tr>
+      <td class="num">536</td>
+      <td class="dev">स्वधा</td>
+      <td class="meaning"><em>Svadhā</em> — She who is the object of the "Svadhā" invocation used in ancestral rites (Śrāddha). Just as "Svāhā" connects the living to the divine through fire, "Svadhā" connects the living to their ancestors. The Goddess as Svadhā is the mediator of the entire chain of cosmic debt and gift-giving.</td>
+    </tr>
+    <tr>
+      <td class="num">537</td>
+      <td class="dev">अमतिः</td>
+      <td class="meaning"><em>Amatiḥ</em> — She who is in the form of ignorance or nescience (<em>avidyā</em>). A radical nāma: the Goddess IS ignorance, not as something opposed to her but as her own deliberate power (<em>māyā-śakti</em>). Ignorance is not a failure of the divine plan — it is its instrument.</td>
+    </tr>
+    <tr>
+      <td class="num">538</td>
+      <td class="dev">मेधा</td>
+      <td class="meaning"><em>Medhā</em> — She who is in the form of wisdom — specifically the power of retentive intelligence that holds knowledge without loss. She is the cognitive power that makes learning possible.</td>
+    </tr>
+    <tr>
+      <td class="num">539</td>
+      <td class="dev">श्रुतिः</td>
+      <td class="meaning"><em>Śrutiḥ</em> — She who is in the form of the Vedas (<em>śruti</em> = that which is heard, the directly revealed scriptures). The Vedas are not merely texts about the Goddess — they are her sonic form in the domain of revealed knowledge.</td>
+    </tr>
+    <tr>
+      <td class="num">540</td>
+      <td class="dev">स्मृतिः</td>
+      <td class="meaning"><em>Smṛtiḥ</em> — She who is in the form of Smṛti — the remembered scriptures (Dharmaśāstras, Purāṇas, Epics) that elaborate and apply the Vedic revelation. The entire body of sacred literature is her self-disclosure in the domain of memory and tradition.</td>
+    </tr>
+    <tr>
+      <td class="num">541</td>
+      <td class="dev">अनुत्तमा</td>
+      <td class="meaning"><em>Anuttamā</em> — She who is the best; She who is not excelled by anyone. The superlative that admits no comparison: above her there is nothing, beside her there is nothing equivalent.</td>
+    </tr>
+    <tr>
+      <td class="num">542</td>
+      <td class="dev">पुण्यकीर्तिः</td>
+      <td class="meaning"><em>Puṇya-kīrtiḥ</em> — She whose fame is sacred and righteous; merely speaking of her glory accumulates merit.</td>
+    </tr>
+    <tr>
+      <td class="num">543</td>
+      <td class="dev">पुण्यलभ्या</td>
+      <td class="meaning"><em>Puṇya-labhyā</em> — She who is attained only by righteous souls; accumulated virtue is the prerequisite for her grace to become operative.</td>
+    </tr>
+    <tr>
+      <td class="num">544</td>
+      <td class="dev">पुण्यश्रवणकीर्तना</td>
+      <td class="meaning"><em>Puṇya-śravaṇa-kīrtanā</em> — She who bestows merit on anyone who hears of Her and praises Her. The mere act of listening to the Sahasranāma being recited, or of praising the Goddess in any way, generates spiritual merit — an extraordinary promise of accessibility.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 24</div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">545</td>
+      <td class="dev">पुलोमजार्चिता</td>
+      <td class="meaning"><em>Pulomajā-arcitā</em> — She who is worshipped by Pulomajā (Śacī, wife of Indra). Even the queen of the gods performs her worship.</td>
+    </tr>
+    <tr>
+      <td class="num">546</td>
+      <td class="dev">बन्धमोचनी</td>
+      <td class="meaning"><em>Bandha-mocanī</em> — She who gives release from bondage. The three bonds that hold the soul in saṃsāra — <em>āṇava</em> (individuation), <em>māyīya</em> (duality), <em>kārma</em> (action) — are dissolved by the Goddess's grace.</td>
+    </tr>
+    <tr>
+      <td class="num">547</td>
+      <td class="dev">बर्बरालका</td>
+      <td class="meaning"><em>Barbarālakā</em> — She who has wavy, curling locks of hair. The Goddess's curling hair is a beloved iconographic detail — a sign of both wildness and beauty, of the divine energy's refusal to be perfectly contained.</td>
+    </tr>
+    <tr>
+      <td class="num">548</td>
+      <td class="dev">विमर्शरूपिणी</td>
+      <td class="meaning"><em>Vimarśa-rūpiṇī</em> — She who is in the form of Vimarśa — the reflective, self-aware aspect of consciousness. In Kashmir Śaivism, <em>Vimarśa</em> is the self-luminous self-awareness that makes consciousness not merely illuminating but also self-knowing. She is this power of self-reflection itself.</td>
+    </tr>
+    <tr>
+      <td class="num">549</td>
+      <td class="dev">विद्या</td>
+      <td class="meaning"><em>Vidyā</em> — She who is in the form of knowledge itself — all knowledge, from the most practical to the most liberated.</td>
+    </tr>
+    <tr>
+      <td class="num">550</td>
+      <td class="dev">वियदादि जगत्प्रसूः</td>
+      <td class="meaning"><em>Viyad-ādi jagat-prasūḥ</em> — She who is the Mother of the universe, the aggregate of all elements beginning with ether (<em>viyat/ākāśa</em>). From the subtlest (ether) to the densest (earth), all five elements and all that is composed of them are born from her.</td>
+    </tr>
+    <tr>
+      <td class="num">551</td>
+      <td class="dev">सर्वव्याधिप्रशमनी</td>
+      <td class="meaning"><em>Sarva-vyādhi-praśamanī</em> — She who removes all diseases and sorrows. The healing power of the Goddess extends from physical disease to the deep existential suffering of saṃsāra.</td>
+    </tr>
+    <tr>
+      <td class="num">552</td>
+      <td class="dev">सर्वमृत्युनिवारिणी</td>
+      <td class="meaning"><em>Sarva-mṛtyu-nivāriṇī</em> — She who guards her devotees from all deaths — not merely physical but the spiritual death of forgetting one's divine nature.</td>
+    </tr>
+    <tr>
+      <td class="num">553</td>
+      <td class="dev">अग्रगण्या</td>
+      <td class="meaning"><em>Agra-gaṇyā</em> — She who is to be considered the foremost; She who stands first among all.</td>
+    </tr>
+    <tr>
+      <td class="num">554</td>
+      <td class="dev">अचिन्त्यरूपा</td>
+      <td class="meaning"><em>Acintya-rūpā</em> — She who is of a form beyond the reach of thought. Though countless devotees have meditated on her form for millennia, no mental construct fully grasps it; she exceeds every concept of her.</td>
+    </tr>
+    <tr>
+      <td class="num">555</td>
+      <td class="dev">कलिकल्मषनाशिनी</td>
+      <td class="meaning"><em>Kali-kalmaṣa-nāśinī</em> — She who is the destroyer of the sins of the age of Kali. The present cosmic epoch — Kaliyuga — is characterised by the diminishment of virtue, the shortening of attention, and the degradation of spiritual practice. The Goddess's name alone, properly heard and contemplated, counteracts all of Kali's effects.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 25</div>
+
+  <div class="nama-entry" id="n556">
+    <div class="nama-number">Nāma 556</div>
+    <div class="nama-dev">कात्यायनी</div>
+    <div class="nama-roman">Kātyāyanī</div>
+    <div class="nama-meaning">She who is the daughter of the sage Kata; one of the most beloved forms of the Goddess in popular worship. Kātyāyanī appears in the Devī Māhātmya as one of the primary forms of Mahā Devī; she is the seventh Navadurgā; she is worshipped by the Gopīs in the Bhāgavata Purāṇa. Her name connects the supreme Lalitā to the full breadth of Śākta devotional tradition across all texts.</div>
+    <div class="nama-tags"><span class="tag">Navadurgā</span><span class="tag">Devī Māhātmya</span><span class="tag">Bhāgavata</span></div>
+  </div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">557</td>
+      <td class="dev">कालहन्त्री</td>
+      <td class="meaning"><em>Kāla-hantrī</em> — She who is the destroyer of time (death, Kāla). Kāla = time and death simultaneously in Sanskrit. The Goddess transcends and destroys the very principle of time — she who is eternal overcomes the power of the transient.</td>
+    </tr>
+    <tr>
+      <td class="num">558</td>
+      <td class="dev">कमलाक्षनिषेविता</td>
+      <td class="meaning"><em>Kamalākṣa-niṣevitā</em> — She in whom Viṣṇu (lotus-eyed one) takes refuge. Even the preserver of the universe finds his ultimate shelter in the Goddess.</td>
+    </tr>
+    <tr>
+      <td class="num">559</td>
+      <td class="dev">ताम्बूलपूरितमुखी</td>
+      <td class="meaning"><em>Tāmbūla-pūrita-mukhī</em> — She whose mouth is full and fragrant from chewing betel. An intimate, domestic image: the Goddess in the moment of everyday pleasure — the reddened lips, the fragrant breath, the slight smile. A favourite image of devotional poetry.</td>
+    </tr>
+    <tr>
+      <td class="num">560</td>
+      <td class="dev">दाडिमीकुसुमप्रभा</td>
+      <td class="meaning"><em>Dāḍimī-kusuma-prabhā</em> — She who shines like a pomegranate flower. The pomegranate blossom is a deep, warm red — one of the most vivid of nature's colours. The Goddess's complexion and radiance are compared to this intense, auspicious red.</td>
+    </tr>
+    <tr>
+      <td class="num">561</td>
+      <td class="dev">मृगाक्षी</td>
+      <td class="meaning"><em>Mṛgākṣī</em> — She whose eyes are long and beautiful like those of a doe. The deer's eyes — wide, dark, luminous, gentle yet aware — are the Indian classical standard of the most beautiful eyes. The Goddess's eyes combine all the deer's qualities with infinite depth.</td>
+    </tr>
+    <tr>
+      <td class="num">562</td>
+      <td class="dev">मोहिनी</td>
+      <td class="meaning"><em>Mohinī</em> — She who is enchanting; the great enchantress who bewilders all beings. This is not a negative quality: the Goddess's enchantment is the power of beauty and love that draws all consciousness back toward its source.</td>
+    </tr>
+    <tr>
+      <td class="num">563</td>
+      <td class="dev">मुख्या</td>
+      <td class="meaning"><em>Mukhyā</em> — She who is the first, the foremost, the primary one.</td>
+    </tr>
+    <tr>
+      <td class="num">564–565</td>
+      <td class="dev">मृडानी · मित्ररूपिणी</td>
+      <td class="meaning"><em>Mṛḍānī</em> — wife of Mṛḍa (the gentle, gracious aspect of Śiva); <em>Mitra-rūpiṇī</em> — She who is the friend of all, the form of cosmic friendship and benevolence.</td>
+    </tr>
+    <tr>
+      <td class="num">566–570</td>
+      <td class="dev">नित्यतृप्ता · भक्तनिधिः · नियन्त्री · निखिलेश्वरी · मैत्र्यादिवासनालभ्या</td>
+      <td class="meaning">She eternally contented; the devotee's inexhaustible treasure; She who controls all beings on the right path; ruler of all; She attained through love and other good dispositions — a remarkable statement that the Goddess's path begins with loving-kindness (<em>maitrī</em>), suggesting the Buddha's teaching and the universality of the path to her.</td>
+    </tr>
+  </table>
+
+  <div class="page-marker">Page 26</div>
+
+  <table class="nama-table">
+    <tr>
+      <td class="num">571</td>
+      <td class="dev">महाप्रलयसाक्षिणी</td>
+      <td class="meaning"><em>Mahā-pralaya-sākṣiṇī</em> — She who is witness to the great dissolution. When all worlds dissolve at the end of the cosmic cycle, when even Brahmā and Śiva return to their seed-state, the Goddess remains as the pure witness. She is the one constant that survives all dissolution.</td>
+    </tr>
+    <tr>
+      <td class="num">572</td>
+      <td class="dev">पराशक्तिः</td>
+      <td class="meaning"><em>Parā-śaktiḥ</em> — She who is the original, supreme power. Not power in its many manifestations but the primordial power itself — the root-energy from which all other energies derive.</td>
+    </tr>
+    <tr>
+      <td class="num">573</td>
+      <td class="dev">परानिष्ठा</td>
+      <td class="meaning"><em>Parā-niṣṭhā</em> — She who is the supreme end; the supreme abidance. All spiritual paths — all religions, all traditions, all individual seeking — find their final resting point in her. She is the ultimate destination that all journeys approach from different directions.</td>
+    </tr>
+    <tr>
+      <td class="num">574</td>
+      <td class="dev">प्रज्ञानघनरूपिणी</td>
+      <td class="meaning"><em>Prajñāna-ghana-rūpiṇī</em> — She who is pure, condensed knowledge. The final nāma of this session echoes the great Upaniṣadic definition of Brahman: <em>prajñānam brahma</em> — Brahman is pure consciousness. The Goddess is this very Brahman — not as a distant abstraction but as condensed, crystallised, total knowledge in a single living reality.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ADHYĀYA 14
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 27</div>
+<hr class="page-break"/>
+<section id="adhyaya14" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Adhyāya 14 · Brahmāṇḍa Purāṇa · Uttarabhāga</div>
+    <div class="section-title-dev">कामेश्वरप्रादुर्भावः</div>
+    <div class="section-title-eng">Manifestation of Kāmeśvara</div>
+    <div class="section-subtitle">Hayagrīva Narrates to Agastya · The Divine City · Kāmeśvara's Form</div>
+  </div>
+
+  <div class="phil-box">
+    <div class="phil-box-title">Prefatory Note</div>
+    <p>The Āgamas regard Parama-Śiva and his Śakti Lalitā as superior to the trinity of Brahmā, Viṣṇu and Śiva. From the philosophical standpoint there is no difference between Power and the Master of Power (Śakti and Śaktimān). When the Supreme Power Lalitā manifests, her consort Parama Śiva must also manifest. Here he does so and is designated Kāmeśvara on account of his most beautiful form.</p>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Verses 1–21 · Arrival of the Gods · The Divine City</div>
+    <div class="chapter-title-dev">देवागमनम् — दिव्यनगरनिर्माणम्</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 1–8 · The Assembly of All Gods</div>
+      <div class="verse-text">
+        At the same time, Brahmā — the grandfather of worlds — desirous of seeing the Goddess of the Devas, came with the great sages. Then Viṣṇu arrived on Garuḍa; Śiva came on his bull. Nārada and the celestial sages came as a group. The Gandharvas Viśvāvasu and others, as well as Yakṣas, arrived. At Brahmā's command, Viśvakarmā built a divine city on a par with Amarāvatī — the city of the immortals.
+        <br/><br/>
+        The goddess Durgā (presiding deity of all mantras) and Śyāmā (presiding deity of all lores) came to Ambikā. The divine mothers surrounded by their attendant goblins, Aṇimā and the other Siddhis, crores of Yoginīs, Bhairavas, Kṣetrapālas, Mahāśāstā, Mahāgaṇeśvara (Vināyaka), Skanda, Baṭuka, and Vīrabhadra — all came and bowed to the great Goddess.
+      </div>
+      <div class="verse-dev">एतावता ब्रह्मा देवर्षिगणैः सह देवतानां देवीं द्रष्टुमागतः।</div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 9–13 · Description of the Divine City</div>
+      <div class="verse-text">
+        The city was beautiful with its ramparts, arched gateways, and multi-storeyed buildings. It had large stables for horses, elephants, and chariots. It was splendid with royal pathways, charming abodes of ministers and the twice-born, and with Vetālas and servants of every kind. In the centre stood the royal palace — divine, beautified with gateways and minarets, with many halls and assembly chambers. A great hall of thrones was studded with all nine kinds of precious stones. In the middle stood a divine throne made of Cintāmaṇi (wish-yielding) stone — self-luminous, unparalleled, resembling the rising sun.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 14–19 · Brahmā's Reflection</div>
+      <div class="verse-text">
+        Brahmā surveyed all this and thought: "Even if ignorant and puerile, the one who presides over this city shall excel all worlds by its power alone. Yet a woman alone does not deserve to rule a kingdom — nor does a man alone. The Śruti says one should crown a man united in wedlock to a suitable and agreeable woman. This lady shines like the very embodiment of the presiding deity of the sentiment of love. Excepting Śaṅkara, no one in the three worlds is worthy to be her bridegroom."
+        <br/><br/>
+        Even as Brahmā thought this, Maheśvara appeared before him — having assumed a form that fascinated the entire universe. He had a divine personality endowed with the handsome features of ten million Kandarpas (gods of love), dressed in divine robes, adorned with crown, necklaces, bracelets, and earrings, besmeared with heavenly unguents.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verse 21–25 · The Name Kāmeśvara · The Mutual Beholding</div>
+      <div class="verse-text">
+        Brahmā, the grandfather of worlds, embraced that youthful hero with a charming body and named him <em>Kāmeśvara</em>. Coming to the decision — "This is a befitting bridegroom for the supreme Śakti" — all accompanied him to the Goddess. Brahmā, Viṣṇu, and Maheśvara praised Parā Śakti. On seeing that fawn-eyed Goddess, the youthful Nīlalohita (Śiva) became overwhelmed with love and forgot his activities.
+        <br/><br/>
+        On seeing him who appeared like Smara (the god of love) who had regained his physical body, the Goddess of tender form was also overpowered by the god of love. She considered him entirely befitting herself. Both, excited and afflicted by love, gazed at each other with eagerness. Though learned, self-controlled, and specially conversant with all emotional states, their conduct could not be comprehended by others — they were agitated and secretly joyful.
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote-block">
+    <div class="footnote-title">Footnotes</div>
+    <p class="footnote" data-n="1">[1] Verses 1–8 establish that Lalitā is the Supreme Deity — all lesser gods, divinities, and Siddhis come to pay their obeisance to her. The comprehensive list signals the catholicity of her sovereignty across all the religious traditions of India.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ADHYĀYA 15
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 28</div>
+<section id="adhyaya15" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Adhyāya 15 · Brahmāṇḍa Purāṇa · Uttarabhāga</div>
+    <div class="section-title-dev">ललितायाः कामेश्वरेण विवाहमहोत्सवः</div>
+    <div class="section-title-eng">Festivities in Honour of the Marriage of Lalitā with Kāmeśvara</div>
+    <div class="section-subtitle">The Goddess's Autonomy · The Four Forms of Marriage · The Garland · Royal Coronation</div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Verses 1–17 · The Goddess's Declaration · The Choice</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 1–3 · The Goddess's Sovereignty</div>
+      <div class="verse-text">
+        On hearing Brahmā's words, the Goddess — with a tender smile upon her lotus-face — spoke to the Suras whose leaders were Brahmā and Viṣṇu: <em>"O Devas, I am always independent. My conduct of life and my sports and pastimes are in accordance with my own wishes and whims. My husband shall be one whose conduct of life is befitting mine."</em>
+        <br/><br/>
+        All the Devas promised: "Let it be so."
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 4–10 · The Four Types of Marriage</div>
+      <div class="verse-text">
+        Brahmā then spoke about the four types of marriage: (<em>i</em>) Kālakrītā — contracted for a period; (<em>ii</em>) Krayakrītā — acquired by purchase; (<em>iii</em>) Pitṛdattā — given in marriage by parents; (<em>iv</em>) Svayaṃyutā — joined of one's own will, as in the Gāndharva form.
+        <br/><br/>
+        Brahmā then declared: "It is from the non-dualistic supreme Brahman — devoid of the state of being existent or non-existent, of the nature of Cit and Ānanda — that Prakṛti was born. You were that Brahman and you alone were that Prakṛti. You are beginningless immanence in everything — of the nature of Kārya (effect) and Kāraṇa (cause). Sanaka and other Yogins seek you alone. You are the five-formed Brahman: Sadrūpā, Asadrūpā, Karmarūpā, Vyaktodayātmikā, and Avyaktodayātmikā. Resort to a Puruṣa with the desire to bless the world."
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 11–17 · The Garland of Choice</div>
+      <div class="verse-text">
+        Entreated thus by Brahmā and the Suras, the Goddess lifted a garland and hurled it into the sky with her hand. The garland — rendering the firmament splendid — fell upon the neck of Kāmeśvara.
+        <br/><br/>
+        The Devas beginning with Brahmā and Viṣṇu rejoiced. Gentle breezes wafted; clouds showered flowers.
+        <br/><br/>
+        Brahmā said to Janārdana: "O Hari, the marriage of these two Blessed Ones should be performed in accordance with religious injunctions. The auspicious hour obtained by the Devas is conducive to the welfare of the entire universe. This Goddess is similar in form to you; further, you are her brother. It behoves you to give this auspicious lady to Kāmaśiva."
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Verses 18–45 · The Gifts of the Gods · The Royal Coronation · The City of Plenty</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 19–25 · Divine Wedding Gifts</div>
+      <div class="verse-text">
+        The divine gifts presented to the couple were extraordinary in their scope and symbolism: Brahmā gave them a sugarcane bow of imperishable nature and adamantine strength. Hari gave immutable, unfading flowery weapons (arrows). Varuṇa gave the serpentine noose (Nāgapāśa). Viśvakarmā gave the goad. Agni gave a crown. The Moon and Sun gave two great ear-rings. The Ocean gave an ornament studded with all nine precious stones. Indra gave an everlasting honey-vessel. Kubera gave a necklace of Cintāmaṇi gems. Viṣṇu gave an imperial umbrella; Gaṅgā and Yamunā gave two moon-bright chowries. The eight Vasus, Rudras, Ādityas, Aśvins, Guardians of the Quarters, Maruts, Sādhyas, Gandharvas, and Lords of the Pramathas all presented their respective weapons and chariots, horses, and elephants of great strength.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 26–42 · The Chariot Kusumākara · The Royal Procession</div>
+      <div class="verse-text">
+        For the imperial coronation, Brahmā fashioned an aerial chariot named <em>Kusumākara</em> — bearing never-fading flower garlands, impregnable to all weapons, capable of moving freely through heaven, firmament, and earth. Its fragrance was so auspicious that merely inhaling it would destroy all delusion, sickness, hunger, and agony.
+        <br/><br/>
+        The divine couple was seated in the chariot, served by groups of Suras sounding lutes, flutes, and drums. By her own brilliance the Goddess lit the streets through which she passed. Thousands of celestial damsels standing atop mansions showered her with fried grains and unbroken rice. She slowly went round the streets, delighting in vocal songs and the notes of musical instruments for the sake of auspiciousness.
+        <br/><br/>
+        After the Nīrājana rites performed by celestial damsels, she entered the great Assembly chamber. Accompanied by Śambhu, she occupied the throne. Being omniscient, she immediately understood all the desires in the minds of the assembled nobles and — with the cast of her benign glance — fulfilled every one of them.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verse 35 · The Names Kāmākṣī and Kāmeśvarī</div>
+      <div class="verse-text">
+        Observing this activity of the Goddess — this immediate fulfillment of desires through a single glance — Brahmā the grandfather of worlds gave her the two epithets: <strong>Kāmākṣī</strong> (she whose eyes fulfil all desires) and <strong>Kāmeśvarī</strong> (the sovereign of all desires).
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 36–53 · The City of Abundance · The Departure of the Gods</div>
+      <div class="verse-text">
+        At the Goddess's bidding, a miraculous cloud rained upon the city with excessively valuable articles and divine ornaments. In every house of the city, a Cintāmaṇi gem, a Kalpa-vṛkṣa (wish-yielding tree), Goddess Lakṣmī herself, and Kāmadhenu cows (wish-yielding) stood for the victory of the Goddess.
+        <br/><br/>
+        All the citizens were equipped with every desirable object and were delighted forever. Brahmā, Hari, Mahadeva, Vāsava, all the gods, all celestial sages, all the Yogins of the Sanaka lineage, all Manus and great sages, Gandharvas, Apsarases, Yakṣas — all began to live in that city without any hindrance or suffering. The Goddess who loved all of them never went elsewhere; with great love she delighted them always.
+        <br/><br/>
+        Thus Kāmaśaṅkara accompanied by Ambikā ruled as the sole emperor of the three worlds for ten thousand years — which passed like a single moment.
+        <br/><br/>
+        Thereafter, the sage Nārada arrived and reminded the Goddess of the demon Bhaṇḍa, who was harassing the three worlds and could be subdued by her alone. The Goddess then dispatched the immortal ones to their respective abodes and regions — though they continued to serve Śiva and Śivā through their partial incarnations.
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote-block">
+    <div class="footnote-title">Footnotes</div>
+    <p class="footnote" data-n="1">[1] Verses 4–7 show a later development from the eight-fold marriage classification of the Smṛti period — the four forms given here with their distinctive terms (Kālakrītā etc.) represent a Tantric reclassification.</p>
+    <p class="footnote" data-n="2">[2] The marriage scene depicted in verse 18 is beautifully represented in a panel in the Mīnākṣī Temple, Madurai, where the deity is called Sundareśvara (Śiva).</p>
+    <p class="footnote" data-n="3">[3] Verses 26–54 describe the coronation of Lalitā and Kāmeśvara in extensive detail.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ADHYĀYA 16
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 30</div>
+<section id="adhyaya16" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Adhyāya 16 · Brahmāṇḍa Purāṇa · Uttarabhāga</div>
+    <div class="section-title-dev">विजयमार्चः सैन्येन सह</div>
+    <div class="section-title-eng">March of Victory along with the Army</div>
+    <div class="section-subtitle">The Drum of the Seven Oceans · Sampatkarī · The Cavalry · Daṇḍanāthā</div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Verses 1–36 · The March against Bhaṇḍāsura Begins</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 1–6 · Gathering of the Army · The Ocean-Drums</div>
+      <div class="verse-text">
+        Lalitā, the great Goddess and mother of worlds, set out to conquer Bhaṇḍa Daitya — the thorn to the three worlds. She gathered the seven oceans together in the form of a Mardala drum; the soldiers filled the sky with its tremendously loud sound. Many other instruments of every type — Mṛdaṅgas, Murajas, Paṭahas, Ḍhakkās, Selukas, cymbals, Huḍukas, Ghaṭas, Ānakas, Paṇavas, Gomukhas, Ardhacandrikās, Diṇḍimas, Jharjharas, Barbaras, Huṃkāras, Kākatuṇḍas — were sounded in preparation for the great battle.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 7–13 · The Deity Sampatkarī · The Elephant Division</div>
+      <div class="verse-text">
+        A deity named Sampatkarī arose from the goad-missile of Lalitā Parameśānī and moved forward with the other Śaktis. She was reddish in colour like the midday sun, served by many crores of elephants, horses, and chariots. She mounted the great excited elephant Kaṇakolāhala — huge as a mountain, appearing to relish fierce battle. A great army shouting fiercely followed her, the clusters of banners hitting the thick clouds.
+        <br/><br/>
+        The horripilation of that deity, pressed firmly within her stout breasts, shone brilliantly like the desire within her heart for an elaborate preparation for war. A vibrant thin-bladed sword in her hand shone dreadfully like the terrifying knitting of Death's eyebrows. Excellent elephants — crores and crores — followed like huge mountains caught in a portentous whirlwind.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 14–28 · The Cavalry · The Deity Atitvaritavikrānti · Description of the Horses</div>
+      <div class="verse-text">
+        Then the deity Atitvaritavikrānti — "Extremely Speedy like Horse-gallop" — born of Lalitā's lustrous noose-weapon, moved ahead seated on a horse. Along with her, an army consisting mainly of horses moved forward, digging and tearing the ground with their hoofs. Different well-bred horses of every auspicious mark followed: Vanāyujas, Kāmbojas, Pāradas, Sindhudeśajas, Ṭaṅkaṇas, Parvatīyas, Pārasīkas, Daradas, Yāvanodbhūtas, Gāndharvas, Kairātas — horses of every frontier and territory.
+        <br/><br/>
+        These horses were well-trained, steady-minded, able to comprehend their masters' wishes, trained in the five kinds of paces, and carried auspicious marks: Phalaśukti, Śvetaśukti, Devapadma, Devamaṇi, Devasvastika, Svastikaśukti, Gaḍura, Puṣpagaṇḍikā. They had the velocity of the wind.
+        <br/><br/>
+        The great Goddess herself rode the horse named Aparājita — exceedingly refulgent, tall and stately, with a glistening bridle, thick clusters of mane, a bushy tail, jewels and bells on the shanks. She held in her four hands the noose, the goad, the cane, and the bridle. She resembled the midday sun. Her seated figure on the horse moved up and down as though causing the horse to dance.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 31–36 · The Vanguard Śaktis · The Banners</div>
+      <div class="verse-text">
+        A few Śaktis with wonderfully hard arms rose up and pierced the ten quarters with adamantine arrows. Fierce Śaktis of Daṇḍanāthā kept watch over the vanguard with swords and shields, leaping and springing about. Śaktis with canes tossed and struck hundreds of times to prevent jamming of soldiers. Others moved ahead holding aloft tall banners and flags marked with pictures of buffaloes, deer, and lions. Thousands of Śaktis held the white umbrella of Daṇḍanāthā with their lustrous hands and moved forward.
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote-block">
+    <div class="footnote-title">Footnotes</div>
+    <p class="footnote" data-n="1">[1] Verses 3–6 give a list of musical instruments of the medieval period. Many of these are seen in the frescoes and panels of the cave temples at Ajanta, Ellora, and other sites. Among them, Niḥsāṇa is a Sanskritisation of a Persian word.</p>
+    <p class="footnote" data-n="2">[2] Verses 16–22 enumerate the different breeds of horses and the regions from which they came — a valuable historical record of the horse-breeding traditions of ancient India.</p>
+    <p class="footnote" data-n="3">[3] The goddess in charge of cavalry is significantly named "(a śakti capable of) extremely speedy horse-gallop" — Atitvaritavikrānti.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ADHYĀYA 17
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 31</div>
+<section id="adhyaya17" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Adhyāya 17 · Brahmāṇḍa Purāṇa · Uttarabhāga</div>
+    <div class="section-title-dev">श्यामलादलस्य सैन्यमार्चः</div>
+    <div class="section-title-eng">The March of the Army of Śyāmalā</div>
+    <div class="section-subtitle">Daṇḍanāthā on the Lion · The Twelve Names of Potriṇī · Mantriṇī's Army · The Sixteen Names of Śyāmalā</div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Verses 1–22 · The White Umbrellas · Daṇḍanāthā Mounts Her Lion</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 1–12 · The Umbrella-Sky · The Boar-Faced Warriors · Vajraghoṣa the Lion</div>
+      <div class="verse-text">
+        At the time of Daṇḍanāthā's setting out, the sky shone as though adorned with innumerable moons — due to the countless white umbrellas. Their lustre was dispelled in the shadows by the jewels set into their handles.
+        <br/><br/>
+        Dreadful Bhairavas such as Caṇḍadaṇḍa proceeded in the vanguard with tridents, their tawny matted hair illuminating the quarters like lightning. Many soldiers with the faces of Boars — same size, shape, ornaments, and weapons as the goddess Potriṇī — rode on thousands of buffaloes. From their sharp curved teeth, smoke and flames issued forth covering the sky.
+        <br/><br/>
+        Then Daṇḍanāthā descended from her elephant chariot and mounted the great lion <em>Vajraghoṣa</em> — her own vehicle. It shook its thick mane, kept its mouth wide open, and its gnashing curved teeth deafened all the quarters. Its claws sank down to Pātāla. It was three Yojanas in height. As she betook herself to the task of slaying the Asuras, the three worlds experienced excessive alarm.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 16–20 · The Twelve Names of Daṇḍanāthā</div>
+      <div class="verse-text">
+        The frightened heaven-dwellers praised the goddess with her twelve names: <em>Pañcamī, Daṇḍanāthā, Saṅketā, Samayeśvarī, Samayasaṅketā, Vārāhī, Potriṇī, Vārtālī, Mahāsenā, Ājñā, Cakreśvarī</em> and <em>Arighnī</em>. "If a man stays within the adamantine cage of these twelve names, he will never meet with misery in any difficult situation."
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 23–35 · The Army of Śyāmalā Mantriṇī</div>
+      <div class="verse-text">
+        Then marched the army of Śaktis mostly bearing ornaments expressive of the sentiment of Love — dark-complexioned like tigresses, holding Vīṇās. Some danced and sang with the sweet notes of cuckoos; some played lutes, flutes, and drums. Some rode peacocks; others had swans, mongooses, or cuckoos as vehicles; some were in covered palanquins. All were dark-complexioned.
+        <br/><br/>
+        Mantranāyikā — of dark complexion like a cloud — passed through the midst of these Śaktis. She was seated in a great chariot with lofty flagstaffs. Her armour had the colour of the rising sun. Pride and inebriation made her eyes roving. Small drops of sweat made her lotus-face charming. Her eyebrows danced as she glanced repeatedly at the excessively elated army. A triangular umbrella of peacock-feathers rose above her.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 33–35 · The Sixteen Names of Śyāmalā</div>
+      <div class="verse-text">
+        The heaven-dwellers praised Mantriṇī with her sixteen names: <em>Saṅgīta-yoginī, Śyāmalā, Mantranāyikā, Mantriṇī, Saciveśī, Pradhāneśī, Śukapriyā, Vīṇāvatī, Vaiṇikī, Mudriṇī, Priyakapriyā, Nīpapriyā, Kadambeśī, Kadambavana-vāsinī</em> and <em>Sadāmadā</em>. "If any person eulogises Saciveśānī even once with these names, the entire unit of the three worlds will undoubtedly be in his control."
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 38–51 · Dhanurveda's Gift · The Bow Citrajīva</div>
+      <div class="verse-text">
+        From the young parrot held in Mantriṇī's hand, the figure of Dhanurveda (the science of archery) emerged — a hero with four arms, three heads, and three eyes. He bowed to Pradhāneśī and spoke:
+        <br/><br/>
+        <em>"O goddess Mantriṇāyikā, you are preparing to fight Bhaṇḍa, the leader of the Asuras. I should render you all assistance. This great bow is known as Citrajīva — competent to exterminate all Dānavas. Accept it. Here also are two quivers with an everlasting supply of arrows, wonderfully embellished with gold."</em>
+        <br/><br/>
+        Śyāmalā accepted the great bow Citrajīva and played upon its string repeatedly, filling the universe with its twanging sound — and the delight of all the heaven-dwellers.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ADHYĀYA 18
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 32</div>
+<section id="adhyaya18" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Adhyāya 18 · Brahmāṇḍa Purāṇa · Uttarabhāga</div>
+    <div class="section-title-dev">ललिताया विजयमार्चः</div>
+    <div class="section-title-eng">The Victorious March of the Army of Lalitā Parameśvarī</div>
+    <div class="section-subtitle">The Chariot Śrīcakra · The Goddess's Form in Battle Array · Twenty-Five Names</div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">Verses 1–19 · The Goddess in Battle Array</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 1–8 · The Form of Lalitā on the March</div>
+      <div class="verse-text">
+        Lalitā moved forward with the intention of waging war, assisted by Rājanāyikā. Her goad blazed; she held a noose like a living serpent; her bangles tingled as she held the sugarcane bow and five flowery arrows shining brightly.
+        <br/><br/>
+        She scattered a cascade of radiance in all directions — more dazzlingly red than a thousand suns. Radiating the lustre of her face, she made the sky appear filled with moons. A circular white umbrella of ten-Yojana extent — studded with spotlessly pure white pearls — pervaded the three worlds above her. The groups of female attendants — chief among them Vijayā — fanned her with four Cāmaras (chowries) rendered splendid with gems, lovely as clusters of lotuses in fresh moonlight.
+        <br/><br/>
+        She drove the chariot named <em>Śrīcakra</em> — its flagstaffs more than ten Yojanas in height, continuously roaring and rumbling, scraping the cluster of clouds high above. In her martial garb of tawny-red, she was eulogised by the gods through twenty-five epithets.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 14–19 · The Twenty-Five Names of Lalitā Parameśvarī</div>
+      <div class="verse-text">
+        The twenty-five names are: <em>Siṃhāsanā, Śrīlalitā, Mahārājñī, Parāṅkuśā, Cāpiṇī, Tripurā, Mahā-tripura-Sundarī, Sundarī, Cakranāthā, Saṃrājñī, Cakriṇī, Cakreśvarī, Mahādevī, Kāmeśī, Parameśvarī, Kāmarāja-priyā, Kāmakoṭigā, Cakravartinī, Mahāvidyā, Śivānaṅga-vallabhā, Sarvapāṭalā, Kulanāthā, Āmnāyanāthā, Sarvāmnāya-nivāsinī</em> and <em>Śṛṅgāranāyikā</em>.
+        <br/><br/>
+        Those who eulogise Lalitā Parameśvarī through these twenty-five names shall attain good fortune, the eight Siddhis, and great reputation.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ADHYĀYA 19
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 33</div>
+<section id="adhyaya19" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Adhyāya 19 · Brahmāṇḍa Purāṇa · Uttarabhāga</div>
+    <div class="section-title-dev">चक्रराजस्थदेवताः</div>
+    <div class="section-title-eng">Deities Stationed on the Chariot Cakrarāja</div>
+    <div class="section-subtitle">The Nine Steps · Prakaṭa to Rahasya Yoginīs · Nityā Śaktis · The Geyacakra</div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">The Structure of the Cakrarāja · The Chariot of Lalitā</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 3–60 · The Nine Steps of the Cakrarāja</div>
+      <div class="verse-text">
+        The Cakrarāja has nine steps radiating outward from the central throne (Ānanda-mahā-pīṭha). The deities are arranged from innermost (most secret) to outermost (manifest), in ascending steps:
+        <br/><br/>
+        <strong>Step I (Ānanda-mahā-pīṭha):</strong> Fifteen eternal Nityā deities of the form of time — comparable in grandeur to Lalitā herself: <em>Kāmeśī, Bhagamālā, Nityaklinnā, Bheruṇḍā, Vahni-vāsinī, Mahāvajreśvarī, Druti, Tvaritādevī, Kulasundarī, Nityā, Nīlapatākā, Vijayā, Sarvamaṅgalā, Jvālāmālinikā</em> and <em>Citrā</em>.
+        <br/><br/>
+        <strong>Step II:</strong> Three most beloved deities — <em>Kāmeśī, Vajreśī,</em> and <em>Bhagamālinī</em> — comparable to Lalitā in grandeur. They have eight arms holding bows, arrows, a drinking bowl, a citron, a dagger, shield, serpentine noose, and bell. They are intoxicated and keep secrets.
+        <br/><br/>
+        <strong>Step III:</strong> Eight Rahasya-yoginī deities, destroyers of Asuras: <em>Vaśinī, Kāmeśī, Bhoginī, Vimalā, Aruṇā, Javinī, Sarveśī</em> and <em>Kaulinī</em>. They are the well-known presiding deities of speech, of the lustre of the red Aśoka tree, holding bows, arrows, armour, lutes, and books.
+        <br/><br/>
+        <strong>Step IV:</strong> Ten Nigarbha-yoginī deities, benevolent givers: <em>Sarvajñā, Sarvaśakti, Sarvaiśvarya-pradā, Sarvajñānamayī, Sarvavyādhi-vināśinī, Sarvādhāra-svarūpā, Sarvapāpaharā, Sarvānandamayī, Sarvarakṣā-svarūpiṇī,</em> and <em>Sarvepsita-phala-pradā</em>. They hold the thunderbolt, javelin, iron club, and discus.
+        <br/><br/>
+        <strong>Step V:</strong> Ten Kulottīrṇā deities — auspicious, kind-hearted: <em>Sarvasiddhi-pradā, Sarvasampad-pradā, Sarvapriyaṅkarī, Sarvamaṅgala-kāriṇī, Sarvakāma-pradā, Sarvaduḥkha-vimocinī, Sarvamṛtyu-praśaminī, Sarvavighna-nivāriṇī, Sarvāṅga-sundarī,</em> and <em>Sarvasaubhāgya-dāyinī</em>. Their minds are filled with kindness.
+        <br/><br/>
+        <strong>Step VI:</strong> Twelve Sampradāya (traditional) deities / Ājñā-śaktis — fiery element predominating, risen from the ashes of Kāma. Their bows and arrows are of fire; their shields are named Vahni-cakra: <em>Sarvasaṃkṣobhiṇī, Sarvavidrāviṇī, Sarvākarṣaṇikā, Sarvāhlādinikā, Sarva-sammohinī, Sarvastambhanā, Sarvajṛmbhaṇā, Sarvonmādanā, Sarvārthasādhikā, Sarvasampatti-pūraṇī, Sarvamantramayī,</em> and <em>Sarvadvandva-kṣayaṅkarī</em>.
+        <br/><br/>
+        <strong>Step VII:</strong> Six Gupta-tarā deities — eroticism was their forte, with names signifying the arrows of Anaṅga: <em>Anaṅga-madanā, Anaṅga-madanāturā, Anaṅga-lekhā, Anaṅga-vegā, Anaṅgāṅkuśā,</em> and <em>Anaṅga-mālāṅgī</em>. They hold sugarcane bow, flower-arrows, bouquets, and lotuses.
+        <br/><br/>
+        <strong>Step VIII:</strong> Sixteen Gupta ("secret") Śaktis — the sixteen digits of the moon, also called the sixteen Nityā Śaktis: <em>Kāmākarṣaṇikā, Buddhyākarṣaṇikā, Ahaṃkārākarṣiṇī, Śabdākarṣaṇikā, Sparśākarṣaṇikā, Rūpākarṣaṇikā, Rasākarṣaṇikā, Gandhākarṣaṇikā, Cittākarṣaṇikā, Dhairyākarṣaṇikā, Smṛtyākarṣaṇikā, Nāmākarṣaṇikā, Bījākarṣaṇikā, Ātmākarṣaṇikā, Amṛtākarṣaṇī,</em> and <em>Śarīrākarṣiṇī</em>. They resemble the coral tree; they have four arms and three eyes; their crowns shine like the sun and moon.
+        <br/><br/>
+        <strong>Step IX (outermost):</strong> Ten Prakaṭa (manifest) Śaktis — ten Siddhi-devīs like Aṇimā, eight Mātṛ-Śaktis beginning with Brāhmī, and ten Mudrā-devīs. The Siddhi-devīs: <em>Aṇimā, Mahimā, Laghimā, Garimā, Īśitā, Vaśitā, Prāpti-siddhi, Prākāmya-siddhi, Mukti-siddhi,</em> and <em>Sarvakāmā siddhi</em>. The Mātṛ-Śaktis: <em>Brāhmī, Māheśvarī, Kaumārī, Vaiṣṇavī, Vārāhī, Māhendrī, Cāmuṇḍā,</em> and <em>Mahālakṣmī</em>. The Mudrā-devīs: <em>Sarvasaṃkṣobhiṇī, Sarvavidrāviṇī, Sarvākarṣaṇā, Sarvavaśaṅkarī, Sarvonmādanā, Sarvamahāṅkuśā, Sarvakhecarikā, Sarvabījā, Sarvayoni,</em> and <em>Sarvatrikhaṇḍikā</em>.
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-block">
+    <div class="chapter-label">The Chariot of Mantriṇīnāthā — Geyacakra (Gīticakra)</div>
+    <div class="chapter-title-dev">मन्त्रिणीनाथाया रथः — गेयचक्रम्</div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 61–92 · The Seven Steps of the Geyacakra</div>
+      <div class="verse-text">
+        The Geyacakra (also called Gīticakra) of Mantriṇīnāthā has seven steps:
+        <br/><br/>
+        <strong>Step I:</strong> (<em>i</em>) Mantriṇī — the administrative head, second only to Lalitā; (<em>ii</em>) Saṅgīta-yoginī — the most beloved deity of Śrīdevī, seated in the centre.
+        <br/><br/>
+        <strong>Step II:</strong> Three deities — <em>Rati, Prīti</em> and <em>Manojā</em> — dark-complexioned like the Tamāla tree, with lutes and bows, competent to exterminate Dānavas.
+        <br/><br/>
+        <strong>Step III:</strong> Five deities of the arrows of Kāma — <em>Drāviṇī, Śoṣiṇī, Bandhinī, Mohinī</em> and <em>Unmādinī</em>. On the same step beneath them: the five Kāmadevas — <em>Kāmarāja, Kandarpa, Manmatha, Makaradhvaja</em> and <em>Manobhava</em> — all capable of enchanting the three worlds.
+        <br/><br/>
+        <strong>Step IV:</strong> Eight Mātṛ-devatās (Brāhmī and others, with Caṇḍikā as the eighth instead of Mahālakṣmī). Below them: <em>Lakṣmī, Sarasvatī, Rati, Prīti, Kīrti, Śānti, Puṣṭi</em> and <em>Tuṣṭi</em> — the eight Kumārīs (Virgins) with red eyes and lances.
+        <br/><br/>
+        <strong>Step V:</strong> Sixteen deities beginning with Vāmā: <em>Vāmā, Jyeṣṭhā, Raudrī, Śānti, Śraddhā, Sarasvatī, Śrī, Bhūśakti, Lakṣmī, Sṛṣṭi, Mohinī, Pramāthinī, Āśvasinī, Vīci, Vidyunmālinī, Surānandā</em> and <em>Nāgabuddhikā</em>. Of ruby lustre, covered in adamantine armour, they hold thunderbolts, batons, Śataghnīs, and Bhuśuṇḍikās.
+        <br/><br/>
+        <strong>Step VI:</strong> Eight Bhairavas — <em>Asitāṅga, Ruru, Caṇḍa, Krodha, Unmatta, Kapālī, Bhīṣaṇa</em> and <em>Saṃhāra</em> — blue-complexioned, holding tridents and drinking bowls.
+        <br/><br/>
+        <strong>Step VII:</strong> <em>Mātaṅgī, Siddhalakṣmī, Mahāmātaṅgikā,</em> and <em>Mahatī Siddhalakṣmī</em>. Beneath this step: Gaṇapas, Kṣetrapālas, Durgāmbā, Baṭuka — armed and furious against Bhaṇḍa. Also Lakṣmī, Sarasvatī, and the treasures Śaṅkha and Padma holding weapons. The ten rulers of the cardinal points (from Śakra to Viṣṇu) stationed here in the forms of Śaktis, serving Mantriṇāthā.
+      </div>
+    </div>
+
+    <div class="verse">
+      <div class="verse-num">Verses 86–95 · The Role of Mantriṇī</div>
+      <div class="verse-text">
+        The protectors of the cardinal points resorted to the Gīticakra because they were eager to remind Lalitā about the task of slaying Bhaṇḍa through the support of Mantriṇī. All submissions and petitions of all Devas to Mahādevī yielded results only when submitted through Mantriṇī.
+        <br/><br/>
+        Because she was the deity of music, she was Śrīdevī's most beloved. She never transgresses what is laid down in fulfilling tasks. In the Śakti empire of Śrīdevī, the deity Mantriṇī was powerful enough to do, undo, and alter all activities — or refrain from doing anything. Hence all protectors of the quarters, desirous of Śrīdevī's victory, continued to serve Mantriṇī — who was her chief Aide.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PHILOSOPHICAL ANALYSIS
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 34</div>
+<hr class="page-break"/>
+<section id="philosophical" class="section-block">
+  <div class="section-header">
+    <div class="section-number">Philosophical Analysis · Part V</div>
+    <div class="section-title-dev">दार्शनिकविश्लेषणम्</div>
+    <div class="section-title-eng">Philosophical Analysis of Part V</div>
+  </div>
+
+  <section id="sound">
+    <div class="section-number" style="margin-bottom:0.6rem;">The Vāk Cosmology</div>
+    <div class="section-title-eng" style="font-size:1.1rem; margin-bottom:1rem;">नादविचारः · The Four Levels of Sound</div>
+
+    <p class="intro-prose">
+      The Vāk-sequence (nāmas 366–371) presents one of the most complete sound cosmologies in any single passage of Hindu scripture. The four levels — <em>Parā, Paśyantī, Madhyamā, Vaikharī</em> — describe a hierarchy of sound (and consciousness) from the most absolute to the most manifest, each level corresponding to a region of the yogic body. What is philosophically remarkable is that the Goddess is identified not with any single level but with all four simultaneously.
+    </p>
+
+    <p class="intro-prose">
+      This means that the Goddess is simultaneously: (<em>i</em>) the absolute silence that precedes all sound; (<em>ii</em>) the first movement of awareness toward expression; (<em>iii</em>) the intermediate conceptual formulation; and (<em>iv</em>) the audible, articulate word. The Śrī Vidyā teaching is that the mantra one chants in worship (Vaikharī) carries within it all the higher levels — that when the conditions of consciousness are right, a Vaikharī utterance can become transparent to the Parā level. This is the metaphysical basis for the claim that the Śrī Vidyā mantra is self-revealing.
+    </p>
+  </section>
+
+  <div class="ornament-line"><span>❧</span></div>
+
+  <section id="chakra">
+    <div class="section-number" style="margin-bottom:0.6rem;">The Cakra Theology</div>
+    <div class="section-title-eng" style="font-size:1.1rem; margin-bottom:1rem;">चक्रविमर्शः · The Goddess in the Yogic Body</div>
+
+    <p class="intro-prose">
+      The Cakra-sequence (nāmas 475–534) is perhaps the most encyclopaedically precise passage in the Sahasranāma, presenting a complete system of six cakras (plus the Sahasrāra) with their associated Yoginī deities, forms, colours, faces, weapons, bodily substances, and food-offerings. What is philosophically significant is the claim this sequence makes: the Goddess is not merely accessible at the crown of the head in deep meditation. She is present at every level of the yogic body simultaneously — from the root cakra's earthy density to the crown's luminous openness.
+    </p>
+
+    <p class="intro-prose">
+      The Cakra-theology of the Sahasranāma resolves the apparent tension between immanence and transcendence: the Goddess is fully present in the body (she resides in the bones, blood, flesh, marrow, fat, and semen at successive cakra-levels) and simultaneously transcendent (she resides in the Sahasrāra beyond all form). The body is thus not an obstacle to be overcome but the very instrument of her worship. The full yogic body is her temple.
+    </p>
+  </section>
+
+  <blockquote>
+    <p>"The struggle between Lalitā and Bhaṇḍāsura is a symbolic description of the struggle between good and evil forces. The description of the chariot Cakrarāja is equally symbolic: the nine steps represent the nine āvaraṇas (enclosures) of the Śrī Cakra yantra. Worshipping at the chariot's nine steps is equivalent to the avaraṇa-pūjā of the Śrī Cakra — the ritual traversal from the outermost manifest forms of the Goddess to the innermost bindu point where she is pure, undivided consciousness."</p>
+    <cite>— Note on the Chariot of Lalitā · Brahmāṇḍa Purāṇa · Uttarabhāga Commentary</cite>
+  </blockquote>
+</section>
+
+<!-- ══════════════════════════════════════════
+     COLOPHON
+══════════════════════════════════════════ -->
+<div class="page-marker">Page 35</div>
+<section id="colophon" class="colophon">
+  <div class="final-dev">ॐ तत् सत्</div>
+  <p>Thus concludes the Fifth Session of the Lalitopākhyāna — Part V.</p>
+  <p>Nāmas 366–574 · Adhyāya 14–19 of the Brahmāṇḍa Purāṇa · Uttarabhāga</p>
+  <p><em>After Bhāskararāya Makhin · Śaṅkarācārya · The Brahmāṇḍa Purāṇa</em></p>
+  <p style="margin-top:1rem;">Scholarly Edition · Session V · 35 Pages</p>
+
+  <div style="margin: 1.8rem 0; color: var(--gold); font-size: 1.3rem; letter-spacing: 0.3em; opacity: 0.7;">
+    ❈ ❈ ❈
+  </div>
+
+  <p style="font-family: 'Noto Serif Devanagari', serif; font-size: 1.1rem; color: var(--crimson);">
+    श्री ललिताम्बा प्रसन्नतु
+  </p>
+  <p><em>May Śrī Lalitāmbā be gracious.</em></p>
+
+  <div class="nav-links">
+    <a href="https://lalithafour.culturalmusings.com/">← Part IV · Nāmas 225–365</a>
+    <a href="https://lalithatwo.culturalmusings.com/">Lalitā Home</a>
+  </div>
+
+  <div style="margin-top:2rem; font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.15em; color:var(--gold-dim);">
+    BRAHMĀṆḌA PURĀṆA · UTTARABHĀGA · LALITOPĀKHYĀNA
+  </div>
+</section>
+
+</main>
+
+<!-- SCROLL TO TOP -->
+<button id="scrolltop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// TOC close on outside click
+document.addEventListener('click', function(e) {
+  var panel = document.getElementById('toc-panel');
+  var toggle = document.getElementById('toc-toggle');
+  if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== toggle) {
+    panel.classList.remove('open');
+  }
+});
+// TOC link close
+document.querySelectorAll('#toc-panel a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('toc-panel').classList.remove('open');
+  });
+});
+// Scroll to top button
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('scrolltop');
+  if (window.scrollY > 600) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+</script>
+</body>
+</html>
